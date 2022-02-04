@@ -1,4 +1,5 @@
 --È¸¿ø
+select * from member;
 create table member(
 	mem_id varchar2(20),
 	mem_pw varchar2(20) not null,

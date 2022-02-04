@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.MemberDTO;
 
 public class MemberDAO {
 	private Connection conn;
@@ -50,14 +51,11 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int memberJoin(MemberDTO member) {
-
 		connect();
-
-		sql = "insert into web_member values(?,?,?,?,?)";
+		sql = "insert into member values(?,?,?,?,?)";
 		try {
-
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getMem_id());
 			psmt.setString(2, member.getMem_pw());
@@ -74,33 +72,27 @@ public class MemberDAO {
 		}
 		return cnt;
 	}
-	
-	public int memberLogin(String id, String pw) {
 
+	public MemberDTO memberLogin(String id, String pw) {
 		connect();
-
-		sql = "select mem_pw from member where mem_id=?";
+		MemberDTO member = null;
+		sql = "select mem_nick, mem_age, mem_gen from member where mem_id=? and mem_pw=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
-
+			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).contentEquals(pw)) {
-					return 1; // 로그인 성공
-				}
-				else {
-					return 0; // 비밀번호 불일치
-				}
+				String nick = rs.getString(1);
+				int age = rs.getInt(2);
+				String gen = rs.getString(3);
+				member = new MemberDTO(id, null, nick, age ,gen);
 			}
-			return -1; // 아이디 없음
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-
-		return -2; // DB오류
+		return member;
 	}
-	
 }
