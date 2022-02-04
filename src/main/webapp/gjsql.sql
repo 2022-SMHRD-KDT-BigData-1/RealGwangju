@@ -132,8 +132,13 @@ create table review(
       constraint review_fk foreign key(mem_id) references member(mem_id)
 )
 
-
-
+-- 이미지 경로 저장
+create table imageadd(
+      imgadd blob not null,
+      imgname varchar2(20),
+      imgct varchar2(20) not null,
+      constraint imageadd_imgname_pk primary key(imgname)
+)
 
 select * from MEMBER
 select * from LOCATION
@@ -145,6 +150,7 @@ select * from P
 select * from RES
 select * from CF
 select * from REVIEW
+select * from imageadd
 
 
 
