@@ -152,5 +152,6 @@ select * from REVIEW
 select * from imageadd
 
 
+drop table imageadd
 
 
