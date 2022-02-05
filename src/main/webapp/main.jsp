@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>h1</h1>
+<a href="login.jsp">로그인</a><br>
+<a href="join.jsp">회원가입</a><br>
+<a href="likeList.jsp">찜목록</a><br>
+<a href="likeCon.do">찜하기</a><br>
 </body>
-</html>ㅅ
+</html>

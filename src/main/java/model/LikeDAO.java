@@ -5,10 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import model.MemberDTO;
-
-public class MemberDAO {
+public class LikeDAO {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
@@ -52,16 +51,33 @@ public class MemberDAO {
 		}
 	}
 
-	public int memberJoin(MemberDTO member) {
+	public ArrayList<String> selectLikeList(String id) {
 		connect();
-		sql = "insert into member values(?,?,?,?,?)";
+		ArrayList<String> likeList = new ArrayList<String>();
+		sql = "select mem_like from visit_like where mem_id=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, member.getMem_id());
-			psmt.setString(2, member.getMem_pw());
-			psmt.setString(3, member.getMem_nick());
-			psmt.setInt(4, member.getMem_age());
-			psmt.setString(5, member.getMem_gen());
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				likeList.add(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return likeList;
+	}
+
+	public int like(String id, String ts_name) {
+		connect();
+		sql = "insert into visit_like values(?,?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, ts_name);
 
 			cnt = psmt.executeUpdate();
 
@@ -73,26 +89,4 @@ public class MemberDAO {
 		return cnt;
 	}
 
-	public MemberDTO memberLogin(String id, String pw) {
-		connect();
-		MemberDTO member = null;
-		sql = "select mem_nick, mem_age, mem_gen from member where mem_id=? and mem_pw=?";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				String nick = rs.getString(1);
-				int age = rs.getInt(2);
-				String gen = rs.getString(3);
-				member = new MemberDTO(id, null, nick, age ,gen);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return member;
-	}
 }
