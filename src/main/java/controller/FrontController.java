@@ -22,6 +22,8 @@ public class FrontController extends HttpServlet {
 			map = new HashMap<String, iCommand>();
 			map.put("/JoinCon.do", new JoinCon());
 			map.put("/LoginCon.do", new LoginCon());
+			map.put("/LikeListCon.do", new LikeListCon());
+			map.put("/LikeCon.do", new LikeCon());
 		}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

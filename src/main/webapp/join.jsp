@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>회원가입 페이지</h1>
-
+   <todo여기 성별 나이를 버튼 형식 바꾸기>ㅣ혀ㅣㅕ혀ㅣㅣㅕㅎ 
 	<form action="JoinCon.do" method="post">
 		<table border="1">
 			<tr>

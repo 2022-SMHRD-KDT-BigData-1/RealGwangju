@@ -10,5 +10,6 @@
 <a href="login.jsp">로그인</a><br>
 <a href="join.jsp">회원가입</a><br>
 <a href="likeList.jsp">찜목록</a><br>
+<a href="likeCon.do">찜하기</a><br>
 </body>
 </html>
