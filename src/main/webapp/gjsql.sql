@@ -69,6 +69,7 @@ create table ts(
     ts_time varchar2(20),
     ts_ct varchar2(20),
     ts_loc number(5) not null,
+    ts_img clob,
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
@@ -86,6 +87,7 @@ create table p(
        p_ct varchar2(20),
        p_add varchar2(40) not null,
        p_loc number(5) not null,
+       p_img clob,
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );
@@ -102,6 +104,7 @@ create table res(
        res_ct varchar2(20),
        res_add varchar2(40) not null,
        res_loc number(5) not null,
+       res_img clob,
        constraint res_res_num_pk primary key(res_num),
        constraint res_fk foreign key(res_loc) references location(loc)       
 );
@@ -118,6 +121,7 @@ create table cf(
        cf_ct varchar2(20),
        cf_add varchar2(40) not null,
        cf_loc number(5) not null,
+       cf_img clob,
        constraint cf_cf_num_pk primary key(cf_num),
        constraint cf_fk foreign key(cf_loc) references location(loc)       
 );
@@ -129,19 +133,12 @@ create sequence cf_cf_num_seq increment by 1 start with 1 maxvalue 99999 nocache
 create table review(
       mem_id varchar2(20),
       re_title varchar2(20),
-      re_content blob,
+      re_content varchar2(800),
       re_date date,
       constraint review_mem_id_pk primary key(mem_id),
       constraint review_fk foreign key(mem_id) references member(mem_id)
 )
 
--- 이미지 경로 저장
-create table imageadd(
-      imgadd blob not null,
-      imgname varchar2(20),
-      imgct varchar2(20) not null,
-      constraint imageadd_imgname_pk primary key(imgname)
-)
 
 select * from MEMBER
 select * from LOCATION
@@ -153,9 +150,14 @@ select * from P
 select * from RES
 select * from CF
 select * from REVIEW
-select * from imageadd
 
 
-drop table imageadd
+drop table ts
+
+
+
+
+
+
 
 
