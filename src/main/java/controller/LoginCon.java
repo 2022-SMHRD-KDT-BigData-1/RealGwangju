@@ -15,8 +15,9 @@ public class LoginCon implements iCommand {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 
-		// 이메일, 비밀번호, 전화번호, 주소
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
@@ -24,14 +25,15 @@ public class LoginCon implements iCommand {
 		MemberDTO member = dao.memberLogin(id, pw);
 
 		if (member != null) {
-			System.out.println("로그인 성공");
 			HttpSession session = request.getSession();
 			session.setAttribute("member", member);
-			response.sendRedirect("main.jsp");
+			out.print("<script>");
+			out.print("alert('로그인 성공..!');");
+			out.print("location.href='main.jsp';");
+			out.print("</script>");
+//			response.sendRedirect("main.jsp");
 		} else {
-			System.out.println("로그인실패");
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
+//			response.setContentType("text/html; charset=utf-8");
 			out.print("<script>");
 			out.print("alert('로그인 실패..!');");
 			out.print("location.href='login.jsp';");

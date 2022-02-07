@@ -17,20 +17,13 @@ public class VisitDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_3_0115";
 			String password = "smhrd3";
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {
-			// OracleDriver 클래스가 해당 위치에 없는경우(ojdbc6.jar 미포함)
-			// 해결방안: WEB-INF->lib->ojdbc6.jar 저장
-
-			// 2. OracleDriver 경로가 오타인경우
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// DB연결 정보가 정확하지 않을 경우
-
 			e.printStackTrace();
 		}
 	}
@@ -51,6 +44,33 @@ public class VisitDAO {
 		}
 	}
 
+	public TsDTO selectTsInfo(String ts_name) {
+		connect();
+		TsDTO ts = null;
+		sql = "select ts_tel, ts_time, ts_ct, ts_add, ts_loc, ts_img, ts_info from ts where ts_name=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, ts_name);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				ts = new TsDTO(
+							ts_name,
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getString(4),
+							rs.getInt(5),
+							rs.getString(6),
+							rs.getString(7)
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 
+		return ts;
+	}
 }
 

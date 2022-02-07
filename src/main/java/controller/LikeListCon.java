@@ -1,6 +1,8 @@
 package controller;
 
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -21,7 +23,16 @@ public class LikeListCon implements iCommand {
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session =request.getSession();
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		MemberDTO member = null;
+		member=(MemberDTO)session.getAttribute("member");
+		if(member==null) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('로그인시 이용가능합니다');");
+			out.print("history.back();");
+			out.print("</script>");
+		}
 		String id = member.getMem_id();
 		
 		
@@ -33,8 +44,7 @@ public class LikeListCon implements iCommand {
 		}
 		//session방식
 //		HttpSession session = request.getSession();
-//		response.sendRedirect("select.jsp");
-
+//		response.sendRedirect("likeList.jsp");
 		// forward방식
 		request.setAttribute("likeList", likeList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("likeList.jsp");
