@@ -64,44 +64,41 @@ create sequence visit_like_visit_num_seq increment by 1 start with 1 maxvalue 99
 --관광지
 create table ts(
     ts_num number(10),
-	ts_name varchar2(20) not null,
-	ts_tel number(20),
-    ts_time varchar2(20),
-    ts_ct varchar2(20),
-    ts_add varchar2(40) not null,
-    ts_loc number(5) not null,
+	ts_name varchar2(400) not null,
+	ts_tel varchar2(100),
+    ts_time varchar2(500),
+    ts_ct varchar2(200),
+    ts_add varchar2(100) not null,
+    ts_loc number(5),
     ts_img clob,
-    ts_info varchar2(800),
+    ts_info clob,
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 drop table ts
 drop sequence ts_ts_num_seq
-=======
+
 select * from TS
 insert into ts values(ts_ts_num_seq.nextval, '테스트이름',123,'테스트시간','테스트ct','테스트add',1,'https://www.google.com/imgres?imgurl=https%3A%2F%2Ft1.daumcdn.net%2Fthumb%2FR720x0%2F%3Ffname%3Dhttp%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F2D9%2Fimage%2FnGbkJwBs8Ou3Cv5DbxApRbMZ2XQ.jpg&imgrefurl=https%3A%2F%2Fbrunch.co.kr%2F%40bong%2F94&tbnid=kOVXG2M028p-AM&vet=12ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ..i&docid=kCTXM1I4MxMnPM&w=720&h=540&q=%EA%B4%80%EA%B4%91%EC%A7%80&ved=2ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ','테스트info');
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
-=======
+
 select * from TS
 insert into ts values(ts_ts_num_seq.nextval, '테스트이름',123,'테스트시간','테스트ct','테스트add',1,'https://www.google.com/imgres?imgurl=https%3A%2F%2Ft1.daumcdn.net%2Fthumb%2FR720x0%2F%3Ffname%3Dhttp%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F2D9%2Fimage%2FnGbkJwBs8Ou3Cv5DbxApRbMZ2XQ.jpg&imgrefurl=https%3A%2F%2Fbrunch.co.kr%2F%40bong%2F94&tbnid=kOVXG2M028p-AM&vet=12ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ..i&docid=kCTXM1I4MxMnPM&w=720&h=540&q=%EA%B4%80%EA%B4%91%EC%A7%80&ved=2ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ','테스트info');
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
+
 --관광지 시퀀스
 create sequence ts_ts_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
 --주차장
 create table p(
        p_num number(10),
-       p_name varchar2(20) not null,
-       p_tel number(20),
-       p_time varchar2(20),
-       p_ct varchar2(20),
-       p_add varchar2(40) not null,
-       p_loc number(5) not null,
+       p_name varchar2(400) not null,
+       p_tel varchar2(100),
+       p_time varchar2(500),
+       p_ct varchar2(200),
+       p_add varchar2(100) not null,
+       p_loc number(5),
        p_img clob,
-       p_info varchar2(800),
+       p_info clob,
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );
@@ -109,17 +106,19 @@ create table p(
 --주차장 시퀀스
 create sequence p_p_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
+drop table p
+drop sequence p_p_num_seq
 --식당
 create table res(
        res_num number(10),
-       res_name varchar2(20) not null,
-       res_tel number(20),
-       res_time varchar2(20),
-       res_ct varchar2(20),
-       res_add varchar2(40) not null,
-       res_loc number(5) not null,
+       res_name varchar2(400) not null,
+       res_tel varchar2(100),
+       res_time varchar2(500),
+       res_ct varchar2(200),
+       res_add varchar2(100) not null,
+       res_loc number(5),
        res_img clob,
-       res_info varchar2(800),
+       res_info clob,
        constraint res_res_num_pk primary key(res_num),
        constraint res_fk foreign key(res_loc) references location(loc)       
 );
@@ -127,23 +126,45 @@ create table res(
 --식당 시퀀스
 create sequence res_res_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
+drop table res
+drop sequence res_res_num_seq
 --카페
 create table cf(
        cf_num number(10),
-       cf_name varchar2(20) not null,
-       cf_tel number(20),
-       cf_time varchar2(20),
-       cf_ct varchar2(20),
-       cf_add varchar2(40) not null,
-       cf_loc number(5) not null,
+       cf_name varchar2(400) not null,
+       cf_tel varchar2(100),
+       cf_time varchar2(500),
+       cf_ct varchar2(200),
+       cf_add varchar2(100) not null,
+       cf_loc number(5),
        cf_img clob,
-       cf_info varchar2(800),
+       cf_info clob,
        constraint cf_cf_num_pk primary key(cf_num),
        constraint cf_fk foreign key(cf_loc) references location(loc)       
 );
 
 --카페 시퀀스
 create sequence cf_cf_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
+
+drop table cf
+drop sequence cf_cf_num_seq
+
+-- 숙박 테이블
+create table accom(
+       accom_num number(10),
+       accom_name varchar2(400) not null,
+       accom_tel varchar2(100),
+       accom_time varchar2(500),
+       accom_ct varchar2(200),
+       accom_add varchar2(100) not null,
+       accom_loc number(5),
+       accom_img clob,
+       accom_info clob,
+       constraint accom_accom_num_pk primary key(accom_num),
+       constraint accom_fk foreign key(accom_loc) references location(loc)       
+);
+
+create sequence accom_accom_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
 --리뷰 게시판
 create table review(
