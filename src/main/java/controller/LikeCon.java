@@ -3,14 +3,13 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.LikeDAO;
 import model.MemberDTO;
-import model.VisitDAO;
 
 public class LikeCon implements iCommand {
 //할일 :
@@ -21,11 +20,22 @@ public class LikeCon implements iCommand {
 		request.setCharacterEncoding("utf-8");
 
 		HttpSession session =request.getSession();
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		MemberDTO member = null;
+		member=(MemberDTO)session.getAttribute("member");
+		if(member==null) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('로그인시 이용가능합니다');");
+			out.print("history.back();");
+			out.print("</script>");
+		}
+		
+		
+		
 		String id = member.getMem_id();
-//		String ts_name= "";   <<< 여기해야함
-//		
-		VisitDAO dao = new VisitDAO();
+		String ts_name = request.getParameter("ts_name");
+		LikeDAO dao = new LikeDAO();
 		int cnt = dao.like(id, ts_name);
 
 		if (cnt > 0) {
@@ -34,6 +44,7 @@ public class LikeCon implements iCommand {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('찜목록에 추가했어요~');");
+			out.print("history.back()");
 			out.print("</script>");
 		} else {
 			System.out.println("찜목록에 추가실패");

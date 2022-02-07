@@ -17,20 +17,13 @@ public class LikeDAO {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 			String user = "campus_f_3_0115";
 			String password = "smhrd3";
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {
-			// OracleDriver 클래스가 해당 위치에 없는경우(ojdbc6.jar 미포함)
-			// 해결방안: WEB-INF->lib->ojdbc6.jar 저장
-
-			// 2. OracleDriver 경로가 오타인경우
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// DB연결 정보가 정확하지 않을 경우
-
 			e.printStackTrace();
 		}
 	}
@@ -73,7 +66,9 @@ public class LikeDAO {
 
 	public int like(String id, String ts_name) {
 		connect();
-		sql = "insert into visit_like values(?,?)";
+		System.out.println(id+", "+ts_name);
+//		sql = "insert into visit_like values(?,?)";
+		sql = "insert into visit_like values(visit_like_visit_num_seq.nextval,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
