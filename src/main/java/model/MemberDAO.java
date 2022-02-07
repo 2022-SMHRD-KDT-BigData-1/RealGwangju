@@ -95,4 +95,29 @@ public class MemberDAO {
 		}
 		return member;
 	}
+	
+	public int checkId(String id) {
+		connect();
+		int idCheck = 0;
+		
+		try {
+			sql = "select * from member where mem_id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if(rs.next() || id.equals("")) {
+				idCheck = 0;
+			} else {
+				idCheck = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return idCheck;
+		
+		
+	}
+	
 }
