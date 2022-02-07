@@ -66,12 +66,16 @@ create table ts(
 	ts_tel number(20),
     ts_time varchar2(20),
     ts_ct varchar2(20),
+    ts_add varchar2(40) not null,
     ts_loc number(5) not null,
     ts_img clob,
+    ts_info varchar2(800),
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
 
+drop table ts
+drop sequence ts_ts_num_seq
 --°ü±¤Áö ½ÃÄö½º
 create sequence ts_ts_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
@@ -85,6 +89,7 @@ create table p(
        p_add varchar2(40) not null,
        p_loc number(5) not null,
        p_img clob,
+       p_info varchar2(800),
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );
@@ -102,6 +107,7 @@ create table res(
        res_add varchar2(40) not null,
        res_loc number(5) not null,
        res_img clob,
+       res_info varchar2(800),
        constraint res_res_num_pk primary key(res_num),
        constraint res_fk foreign key(res_loc) references location(loc)       
 );
@@ -119,6 +125,7 @@ create table cf(
        cf_add varchar2(40) not null,
        cf_loc number(5) not null,
        cf_img clob,
+       cf_info varchar2(800),
        constraint cf_cf_num_pk primary key(cf_num),
        constraint cf_fk foreign key(cf_loc) references location(loc)       
 );
