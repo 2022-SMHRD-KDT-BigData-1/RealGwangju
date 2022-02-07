@@ -126,7 +126,7 @@ create sequence cf_cf_num_seq increment by 1 start with 1 maxvalue 99999 nocache
 create table review(
       mem_id varchar2(20),
       re_title varchar2(20),
-      re_content blob,
+      re_content varchar2(800),
       re_date date,
       constraint review_mem_id_pk primary key(mem_id),
       constraint review_fk foreign key(mem_id) references member(mem_id)
@@ -134,12 +134,11 @@ create table review(
 
 -- 이미지 경로 저장
 create table imageadd(
-      imgadd blob not null,
+      imgadd clob not null,
       imgname varchar2(20),
       imgct varchar2(20) not null,
       constraint imageadd_imgname_pk primary key(imgname)
 )
-
 
 
 select * from MEMBER
@@ -154,7 +153,7 @@ select * from CF
 select * from REVIEW
 select * from imageadd
 
-drop table imageadd
+drop table review
 
 --insert into imageadd values(
 --UTL_RAW.CAST_TO_RAW(TO_BLOB(LPAD( ))
