@@ -6,16 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>주소로 장소 표시하기</title>
-    
+<meta charset="UTF-8">
+<title>주소로 장소 표시하기</title>
+<script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-<div id="map" style="width:100%;height:700px;"></div>
+	<div id="map" style="width: 100%; height: 600px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
-<script>
+	
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
+	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -25,11 +27,10 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-<%
-TsDAO ts = new TsDAO();
-ArrayList<TsDTO> list = ts.tsAddress();
-for(int i = 0; i < list.size(); i++)
-{%>
+<%TsDAO ts = new TsDAO();
+ArrayList<TsDTO> list = ts.tsAddress();%>
+<%-- for(int i = 0; i < list.size(); i++)
+{
 var positions = [
 	{
 		address: <%= list.get(i).getTs_add()%>,
@@ -38,9 +39,27 @@ var positions = [
 		time:<%=list.get(i).getTs_time()%>,
 		img:<%=list.get(i).getTs_img()%>
 	}
-	
 ]
-<%}%>
+<%}%> --%>
+
+
+	$.ajax({
+		type:"GET",
+		url: "./model/TsDAO",
+		dataType:"text",
+		data :ts.tsAddress ,
+		success:function(){
+			console.log(data)
+			$.each(data , function(){
+				console.log(data[0].areaLocation);
+			})
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			alert("ㅜㅜ")
+		}
+	});
+
+
 for (let i = 0; i < positions.length; i++){
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
@@ -61,7 +80,7 @@ geocoder.addressSearch(positions[i].address, function(result, status) {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].text+ positions[i].address+ positions[i].tel+ positions[i].time+ positions[i].img'</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].text+'</div>'
         });
         infowindow.open(map, marker);
 		kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));

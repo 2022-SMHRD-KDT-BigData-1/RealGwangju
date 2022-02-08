@@ -1,11 +1,11 @@
 --회원
 select * from member;
 create table member(
-	mem_id varchar2(20),
+	mem_id varchar2(30),
 	mem_pw varchar2(20) not null,
 	mem_nick varchar2(20) not null,
 	mem_age number(3),
-	mem_gen varchar2(2),
+	mem_gen varchar2(6),
 	constraint member_mem_id_pk primary key(mem_id),
 	constraint member_mem_nick_UK UNIQUE(mem_nick)
 );
@@ -72,26 +72,20 @@ create table ts(
     ts_loc number(5),
     ts_img clob,
     ts_info clob,
+    ts_views number(10) default 0,
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 
 drop table ts
 drop sequence ts_ts_num_seq
 
 select * from TS
 insert into ts values(ts_ts_num_seq.nextval, '테스트이름',123,'테스트시간','테스트ct','테스트add',1,'https://www.google.com/imgres?imgurl=https%3A%2F%2Ft1.daumcdn.net%2Fthumb%2FR720x0%2F%3Ffname%3Dhttp%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F2D9%2Fimage%2FnGbkJwBs8Ou3Cv5DbxApRbMZ2XQ.jpg&imgrefurl=https%3A%2F%2Fbrunch.co.kr%2F%40bong%2F94&tbnid=kOVXG2M028p-AM&vet=12ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ..i&docid=kCTXM1I4MxMnPM&w=720&h=540&q=%EA%B4%80%EA%B4%91%EC%A7%80&ved=2ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ','테스트info');
-<<<<<<< HEAD
-=======
 
 select * from TS
 insert into ts values(ts_ts_num_seq.nextval, '테스트이름',123,'테스트시간','테스트ct','테스트add',1,'https://www.google.com/imgres?imgurl=https%3A%2F%2Ft1.daumcdn.net%2Fthumb%2FR720x0%2F%3Ffname%3Dhttp%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F2D9%2Fimage%2FnGbkJwBs8Ou3Cv5DbxApRbMZ2XQ.jpg&imgrefurl=https%3A%2F%2Fbrunch.co.kr%2F%40bong%2F94&tbnid=kOVXG2M028p-AM&vet=12ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ..i&docid=kCTXM1I4MxMnPM&w=720&h=540&q=%EA%B4%80%EA%B4%91%EC%A7%80&ved=2ahUKEwi4r-T56uz1AhUXAqYKHaCOClAQMygAegUIARDPAQ','테스트info');
 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 --관광지 시퀀스
 create sequence ts_ts_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
@@ -189,11 +183,15 @@ create table theme(
       theme_ct varchar2(200),
       theme_course varchar2(400) not null,
       theme_dis varchar2(400),
+      theme_img clob,
       constraint theme_theme_num_pk primary key(theme_num)
 )
 
 --테마 관광 시퀀스
 create sequence theme_theme_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
+
+drop table theme
+drop sequence theme_theme_num_seq
 
 select * from MEMBER
 select * from LOCATION
@@ -205,11 +203,11 @@ select * from P
 select * from RES
 select * from CF
 select * from REVIEW
-
+select * from theme
+select * from accom
 
 drop table ts
-
-
+drop table imageadd
 
 
 
