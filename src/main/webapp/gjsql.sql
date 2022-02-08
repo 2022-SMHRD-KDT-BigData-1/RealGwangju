@@ -138,7 +138,6 @@ create table cf(
        cf_add varchar2(100) not null,
        cf_loc number(5),
        cf_img clob,
-       cf_info clob,
        constraint cf_cf_num_pk primary key(cf_num),
        constraint cf_fk foreign key(cf_loc) references location(loc)       
 );
@@ -176,6 +175,18 @@ create table review(
       constraint review_fk foreign key(mem_id) references member(mem_id)
 )
 
+--Å×¸¶ °ü±¤
+create table theme(
+      theme_num number(10),
+      theme_name varchar2(400) not null,
+      theme_ct varchar2(200),
+      theme_course varchar2(400) not null,
+      theme_dis varchar2(400),
+      constraint theme_theme_num_pk primary key(theme_num)
+)
+
+--Å×¸¶ °ü±¤ ½ÃÄö½º
+create sequence theme_theme_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
 select * from MEMBER
 select * from LOCATION
