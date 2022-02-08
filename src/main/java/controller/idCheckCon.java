@@ -20,12 +20,12 @@ public class idCheckCon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("mem_id");
+		String InputId = request.getParameter("check_id");
 		PrintWriter out = response.getWriter();
 		
 		MemberDAO dao = new MemberDAO();
 		
-		int idCheck = dao.checkId(userId);
+		int idCheck = dao.checkId(InputId);
 		
 		if(idCheck == 0) {
 			System.out.println("이미 존재하는 아이디입니다");

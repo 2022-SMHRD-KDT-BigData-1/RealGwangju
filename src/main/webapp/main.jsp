@@ -25,12 +25,9 @@
 
 	<a href="LikeListCon.do">찜목록</a>
 	<br>
-	<a href="Ts_viewCon.do?ts_name=테스트이름">ts_view</a>
+	<a href="Ts_viewCon.do?ts_name=광주우">ts_view</a>
 
 
-<script>
-
-</script>
 
 
 </body>

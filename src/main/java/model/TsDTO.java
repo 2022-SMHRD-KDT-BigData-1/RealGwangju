@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 public class TsDTO {
 		
 		private String ts_name;
-		private int ts_tel;
+		private String ts_tel;
 		private String ts_time;
 		private String ts_ct;
 		private String ts_add;

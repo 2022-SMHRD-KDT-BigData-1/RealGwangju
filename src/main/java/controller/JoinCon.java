@@ -29,20 +29,18 @@ public class JoinCon implements iCommand  {
 		if(cnt>0) { //회원가입 성공 > join_success (email정보전달)
 			System.out.println("회원가입 성공");
 			request.setAttribute("success_data", nick);
-//			response.setContentType("text/html; charset=utf-8");
-//			PrintWriter out = response.getWriter();
-//			out.print("<script>");
-//			out.print("alert('회원가입 성공');");
-//			out.print("</script>");
-			//forward방식으로 페이지 이동
-			RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
-			dispatcher.forward(request, response);
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('회원가입 성공');");
+			out.print("location.href='main.jsp';");
+			out.print("</script>");
 		}else {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('회원가입 실패..!');");
-			out.print("location.href='main.jsp';");
+//			out.print("location.href='main.jsp';");
 			out.print("</script>");
 		}
 		

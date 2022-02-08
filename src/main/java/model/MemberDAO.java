@@ -96,16 +96,16 @@ public class MemberDAO {
 		return member;
 	}
 	
-	public int checkId(String id) {
+	public int checkId(String InputId) {
 		connect();
 		int idCheck = 0;
 		
 		try {
 			sql = "select * from member where mem_id = ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, InputId);
 			rs = psmt.executeQuery();
-			if(rs.next() || id.equals("")) {
+			if(rs.next() || InputId.equals("")) {
 				idCheck = 0;
 			} else {
 				idCheck = 1;

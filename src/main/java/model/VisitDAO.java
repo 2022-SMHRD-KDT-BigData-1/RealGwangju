@@ -55,7 +55,7 @@ public class VisitDAO {
 			if(rs.next()) {
 				ts = new TsDTO(
 							ts_name,
-							rs.getInt(1),
+							rs.getString(1),
 							rs.getString(2),
 							rs.getString(3),
 							rs.getString(4),
