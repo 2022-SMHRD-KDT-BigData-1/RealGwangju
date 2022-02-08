@@ -8,15 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>주소로 장소 표시하기</title>
-<script src="jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
-
+<script src="jquery-3.6.0.min.js"></script>
 	<div id="map" style="width: 100%; height: 600px;"></div>
 
 	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
+	
 	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -27,10 +28,10 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-<%TsDAO ts = new TsDAO();
-ArrayList<TsDTO> list = ts.tsAddress();%>
-<%-- for(int i = 0; i < list.size(); i++)
-{
+<%-- <%TsDAO ts = new TsDAO();
+ArrayList<TsDTO> list = ts.tsAddress();
+for(int i = 0; i < list.size(); i++)
+{%>
 var positions = [
 	{
 		address: <%= list.get(i).getTs_add()%>,
@@ -43,15 +44,15 @@ var positions = [
 <%}%> --%>
 
 
-	$.ajax({
+$.ajax({
 		type:"GET",
-		url: "./model/TsDAO",
+		url: ".src/main/java/model/TsDAO",
 		dataType:"text",
 		data :ts.tsAddress ,
 		success:function(){
 			console.log(data)
 			$.each(data , function(){
-				console.log(data[0].areaLocation);
+				console.log(data[i].areaLocation);
 			})
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
