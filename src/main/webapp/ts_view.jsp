@@ -21,6 +21,7 @@
 	<h2>ts_loc : ${tsInfo.ts_loc}</h2>
 	ts_img : <img src="${tsInfo.ts_img}">
 	<h2>ts_info : ${tsInfo.ts_info}</h2>
+	<h2>ts_views : ${tsInfo.ts_views}</h2>
 
 
 

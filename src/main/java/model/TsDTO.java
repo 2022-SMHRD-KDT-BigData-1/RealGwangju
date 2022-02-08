@@ -16,4 +16,11 @@ public class TsDTO {
 		private int ts_loc;
 		private String ts_img;
 		private String ts_info;
+		private int ts_views;
+		
+		TsDTO(String ts_name, String ts_img){
+			this.ts_name = ts_name;
+			this.ts_img = ts_img;
+		}
+		
 	}
