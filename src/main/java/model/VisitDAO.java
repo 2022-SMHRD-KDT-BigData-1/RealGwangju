@@ -12,7 +12,7 @@ public class VisitDAO {
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	private int cnt;
-	private String sql;
+//	private String sql;
 
 	public void connect() {
 		try {
@@ -47,23 +47,22 @@ public class VisitDAO {
 	public TsDTO selectTsInfo(String ts_name) {
 		connect();
 		TsDTO ts = null;
-		sql = "select ts_tel, ts_time, ts_ct, ts_add, ts_loc, ts_img, ts_info from ts where ts_name=?";
 		try {
-			psmt = conn.prepareStatement(sql);
+			String plusViewsSql = "update ts set ts_views = ts_views+1 where ts_name=?";
+			psmt = conn.prepareStatement(plusViewsSql);
 			psmt.setString(1, ts_name);
 			rs = psmt.executeQuery();
-			if(rs.next()) {
-				ts = new TsDTO(
-							ts_name,
-							rs.getString(1),
-							rs.getString(2),
-							rs.getString(3),
-							rs.getString(4),
-							rs.getInt(5),
-							rs.getString(6),
-							rs.getString(7)
-						);
+			if (rs.next()) {
+				String getTsInfoSql = "select ts_tel, ts_time, ts_ct, ts_add, ts_loc, ts_img, ts_info, ts_views from ts where ts_name=?";
+				psmt = conn.prepareStatement(getTsInfoSql);
+				psmt.setString(1, ts_name);
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+							rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+				}
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -72,5 +71,29 @@ public class VisitDAO {
 
 		return ts;
 	}
-}
 
+	public ArrayList<TsDTO> selectRank10() {
+		connect();
+		ArrayList<TsDTO> tsRank10 = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10";
+			
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRank10.add(
+						new TsDTO(rs.getString("ts_name"), rs.getString("ts_img"))
+						);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRank10;
+	}
+
+
+}

@@ -198,8 +198,8 @@ select * from REVIEW
 
 drop table ts
 
-
-
+select ts_name, ts_views from ts order by desc ts_views where ROWNUM <=10
+select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10
 
 
 

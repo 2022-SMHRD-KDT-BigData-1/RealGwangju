@@ -1,0 +1,329 @@
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@font-face {
+    font-family: 'HSGyeoulNoonkott20';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HSGyeoulNoonkott20.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ROKAFSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    margin: 0px;
+    font-family:  'Hanna', sans-serif;
+    font-size: 25px;
+}
+
+.top{
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+.top3{
+    padding-top: 100px;
+}
+
+a{text-decoration-line: none;}
+a:visited 
+{ color: black; text-decoration: none;}
+a:hover
+ { color: black; text-decoration: none;}
+ .img_sizebig{
+    text-align: center;
+    margin-top: 20px;
+    height: 680px;
+    /* background-image: url("img/main/plz22.png"); */
+}
+.img_sizebig:before{
+    content: '';
+    background: linear-gradient(to top , white, transparent);
+    position: absolute;
+    left: 0;
+    height:680px;
+    width: 300vw;
+    /* background-image: url("img/main/plz11.png"); */
+    
+    /* animation: fadein 2s;
+    animation: fadeout 2s;
+    
+    animation: fadein 2s;
+    animation: fadeout 2s;
+    background-image: url("img/main/plz3.png");
+    animation: fadein 2s;
+    animation: fadeout 2s; */
+}
+.titi{
+    margin-top: 100px;
+    text-align: right;
+    font-size: 4em;
+    right: 100px;
+    color: white;
+    font-family: fantasy;
+    position: absolute;
+    animation: slide_start_right 2s;
+    font-family: 'HSGyeoulNoonkott20';
+    /* font-family:  'Hanna', sans-serif; */
+    
+}
+.rank1{
+    position: absolute; 
+    top: 0;
+    
+}
+
+/* 二꾨줈 彛덀뀥�뀥�뀥�슧�뒛�젮�꽌 罹먮윭��留뚮뱶�뒗div */
+.search_line{
+    padding:0;
+    padding-top: 100px;   
+}
+.search_favorite{
+    /* width: ; */
+    margin-top: 200px;
+    border: solid black;
+}
+.search_button{
+    border: solid 1px;
+    border-radius: 0%;
+    height: 50px;
+    width: 100px;
+    color: black;
+    /* border: 2px skyblue; */
+    opacity:1;
+}
+.container2{
+    width: 600vw;
+    padding-left: 5vw;
+    position: relative;
+    transition-duration: 500ms;
+}
+.top_view_img{
+    overflow: hidden;
+    padding-top: 100px;
+    width: 600px;
+    /* left:-1200px; */
+    position: relative;
+    height: auto;
+    margin: 30px;
+}
+.r_view{
+    height: 700px;
+    padding-bottom: 0px;
+   
+}
+.view_img_line{
+    /* width: -100%; */
+    display: flex;
+    height: 400px;
+    transition-duration: 500ms;
+}
+.view_img{
+    width: 600px;
+    height:400px;
+    
+}
+.view_title{
+    padding-left: 100px;
+
+    z-index: 1000000001;
+     bottom: 200px;
+   left : 90%
+}   
+
+.view_title button{
+    width: 150px;
+    border: solid red;
+    border-radius: 5%;
+    margin-right: 20px;
+}
+
+.search_rank{
+    font-style: normal;
+
+    margin-right: 10px;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: red;
+    border-radius: 15%;
+    /* background-size: 50px; */
+    font-family: 'ROKAFSansBold';
+    color: white;
+}
+.search_rank2{
+    font-style: normal;
+
+    margin-right: 10px;
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: gray;
+    border-radius: 15%;
+    /* background-size: 50px; */
+    font-family: 'ROKAFSansBold';
+    color: white;
+}
+.img-slide{
+    /* position: relative; */
+    display:inline-block;
+    font-size: 20px;
+    width: 30vw;
+    
+  
+}
+.silde-text{
+    margin-left: 20px;
+    font-size: 28px;
+}
+
+.img-size{
+    width: 30vw;
+    height: 320px;
+    padding-right: 5%;
+   
+}
+
+.search_bar{
+    background-image: url(/img/other/m_glass.PNG);
+    background-position: center left;
+    background-position: 10px;
+    padding-left: 40px;
+    background-repeat: no-repeat;
+   width: 600px;
+   font-family: none;
+
+}
+.inner{
+    position: relative;
+}
+/* .text-slide{
+    display:inline;
+    font-size: 28px;
+} */
+.view_tab{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.prev{
+    position: absolute;
+    top: 130px;
+    left: 40px;
+    z-index: 1000;
+    /* color: black; */
+    display:inline;
+
+}
+
+.pr3{
+    position: absolute;
+    top: 60%;
+    color:black;
+    border-radius: 0;
+    width: 20px;
+    left:0px;
+}
+.nx3{
+    position: absolute;
+    top : 60%;
+    left :580px;
+    color: black;
+    border-radius: 0;
+    width: 20px;
+
+}
+
+.next{
+    position: absolute;
+    top: 130px;   
+    right: 40px;
+    z-index: 1000;
+    display:inline;
+}
+.container3{
+    margin-top: 100px;
+    width: 100%;
+    height: 150px;
+    background-color: gray;
+    text-align: center;
+}
+.bottom-text{
+    text-align: center;
+}
+button{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    color: red;
+    border: 2px skyblue;
+    opacity: 0.5;
+}
+@keyframes slide_start_right {
+    from{
+        right : -100px;
+        opacity: 0;
+    }
+    to{
+        right : 100px;
+        opacity: 1;
+    }
+}
+
+.join_main{
+    /* padding-left: 50%; */
+    padding-top: 150px;
+    width: '1000px';
+} 
+@keyframes fadein {
+    from{
+        opacity: 0;
+    }    
+    to{
+        opacity: 1;
+    }
+}
+@keyframes fadeout{
+    from{
+        opacity: 1;
+    }    
+    to{
+        opacity: 0;
+    }
+}
+.table-1{
+   /*  width: 20%; */
+}
+.table-2{
+   /*  width: 60%; */
+    /* font-family: none; */
+}
+.table-3{
+   /*  width: 20%; */
+    text-align: right;
+}
+.table-3 button{
+    border-radius: 10%;
+    height: 40px;
+    width: 100%;
+    border: solid black 1px;
+    background-color: white;
+}
+tr td{
+   padding-top: 40px;
+}
+
+li{
+    display: inline;
+    width:33%;
+    
+    font-size: 22px;
+    /* font-family: none; */
+}
+ul{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%; 
+}
