@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<script src="jquery-3.6.0.min.js"></script>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 	<div id="map" style="width: 100%; height: 600px;"></div>
 
 	
@@ -28,7 +28,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-<%-- <%TsDAO ts = new TsDAO();
+ 
+<%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
 for(int i = 0; i < list.size(); i++)
 {%>
@@ -41,24 +42,7 @@ var positions = [
 		img:<%=list.get(i).getTs_img()%>
 	}
 ]
-<%}%> --%>
-
-
-$.ajax({
-		type:"GET",
-		url: ".src/main/java/model/TsDAO",
-		dataType:"text",
-		data :ts.tsAddress ,
-		success:function(){
-			console.log(data)
-			$.each(data , function(){
-				console.log(data[i].areaLocation);
-			})
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			alert("ㅜㅜ")
-		}
-	});
+<%}%>
 
 
 for (let i = 0; i < positions.length; i++){

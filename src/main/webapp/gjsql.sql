@@ -207,14 +207,12 @@ select * from theme
 select * from accom
 
 drop table ts
-<<<<<<< HEAD
 
 select ts_name, ts_views from ts order by desc ts_views where ROWNUM <=10
 select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10
-=======
+
 drop table imageadd
 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 
 
 
