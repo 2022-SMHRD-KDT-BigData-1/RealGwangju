@@ -48,7 +48,6 @@ String resulttime = holy+temptime+holy;
 
 String tempimg = list.get(i).getTs_img();
 String resultimg = holy+tempimg+holy;
-
 %>
 var positions = [
 	{
@@ -60,20 +59,24 @@ var positions = [
 	}
 ]
 <%}%>
+var len = <%=list.size()%>
 
-
-for (let i = 0; i < positions.length; i++){
+for (let i = 0; i < len; i++){
+	console.log(len)
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(positions[i].address, function(result, status) {
-
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+        var coords = new kakao.maps.LatLng(result[i].y, result[i].x);
+        console.log(coords)
+        let lat = result[i].y // 위도
+        console.log(lat)
+        let lon = result[i].x // 경도
+        console.log(lon)
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new kakao.maps.Marker({
             map: map,
