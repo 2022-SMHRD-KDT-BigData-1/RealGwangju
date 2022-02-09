@@ -52,19 +52,17 @@ String resultimg = holy+tempimg+holy;
 %>
 
 var positions = [
-	
 		[<%=resultAddress%>],
 		[<%=resulttext%>],
 		[<%=resulttel%>],
 		[<%=resulttime%>],
 		[<%=resultimg%>]
-	
 ]
 
 var geocoder = new kakao.maps.services.Geocoder();
 
 //주소로 좌표를 검색합니다
-geocoder.addressSearch(positions[0], function(result, status) {
+geocoder.addressSearch(add, function(result, status) {
  // 정상적으로 검색이 완료됐으면 
   if (status === kakao.maps.services.Status.OK) {
 
@@ -75,19 +73,29 @@ geocoder.addressSearch(positions[0], function(result, status) {
          position: coords
      });
 
+     
      // 인포윈도우로 장소에 대한 설명을 표시합니다
      var infowindow = new kakao.maps.InfoWindow({
          content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + positions[1]+'<br>'+ '주소 : '+positions[0]+'<br>'+'전화번호 : ' + positions[2]+'<br>'+'영업시간 : ' + positions[3]+ '</div>'
      });
-     infowindow.open(map, marker);
-		//kakao.maps.event.addListener(marker, 'mouseclick', makeOverListener(map, marker, infowindow));
-		//kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+
+     (function(marker, infowindow){
+     kakao.maps.event.addListener(marker, 'mouseover' , function(){
+    	 infowindow.open(map, marker);
+    });
+     
+     kakao.maps.event.addListener(marker, 'mouseout' , function(){
+    	 infowindow.close();
+    });
+     })(marker,infowindow);
+
      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
      
      map.setCenter(coords);
  } 
 });    
 <%}%>
+
 
 
 
