@@ -31,15 +31,32 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
  
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
-for(int i = 0; i < list.size(); i++)
-{%>
+for(int i = 0; i < list.size(); i++) {
+	
+String tempAddress = list.get(i).getTs_add();
+String holy = "'";
+String resultAddress = holy+tempAddress+holy;
+
+String temptext = list.get(i).getTs_name();
+String resulttext = holy+temptext+holy;
+
+String temptel = list.get(i).getTs_tel();
+String resulttel = holy+temptel+holy;
+
+String temptime = list.get(i).getTs_time();
+String resulttime = holy+temptime+holy;
+
+String tempimg = list.get(i).getTs_img();
+String resultimg = holy+tempimg+holy;
+
+%>
 var positions = [
 	{
-		address: <%= list.get(i).getTs_add()%>,
-		text:<%=list.get(i).getTs_name()%>,
-		tel:<%=list.get(i).getTs_tel()%>,
-		time:<%=list.get(i).getTs_time()%>,
-		img:<%=list.get(i).getTs_img()%>
+		address: <%= resultAddress%>,
+		text:<%=resulttext%>,
+		tel:<%=resulttel%>,
+		time:<%=resulttime%>,
+		img:<%=resultimg%>
 	}
 ]
 <%}%>
@@ -65,11 +82,11 @@ geocoder.addressSearch(positions[i].address, function(result, status) {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].text+'</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].text+'<br>'+positions[i].address+'<br>'+positions[i].tel+'<br>'+positions[i].time+'</div>'
         });
         infowindow.open(map, marker);
-		kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-		kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		//kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+		//kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         
         map.setCenter(coords);
