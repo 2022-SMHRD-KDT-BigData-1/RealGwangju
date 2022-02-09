@@ -94,12 +94,9 @@ create table p(
        p_num number(10),
        p_name varchar2(400) not null,
        p_tel varchar2(100),
-       p_time varchar2(500),
        p_ct varchar2(200),
        p_add varchar2(100) not null,
        p_loc number(5),
-       p_img clob,
-       p_info clob,
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );

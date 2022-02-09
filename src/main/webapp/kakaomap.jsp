@@ -3,6 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 5 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -49,53 +50,45 @@ String resulttime = holy+temptime+holy;
 String tempimg = list.get(i).getTs_img();
 String resultimg = holy+tempimg+holy;
 %>
-var positions = [
-	{
-		address: <%= resultAddress%>,
-		text:<%=resulttext%>,
-		tel:<%=resulttel%>,
-		time:<%=resulttime%>,
-		img:<%=resultimg%>
-	}
-]
-<%}%>
-var len = <%=list.size()%>
 
-for (let i = 0; i < len; i++){
-	console.log(len)
-// 주소-좌표 변환 객체를 생성합니다
+var positions = [
+	
+		[<%=resultAddress%>],
+		[<%=resulttext%>],
+		[<%=resulttel%>],
+		[<%=resulttime%>],
+		[<%=resultimg%>]
+	
+]
+
 var geocoder = new kakao.maps.services.Geocoder();
 
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch(positions[i].address, function(result, status) {
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
+//주소로 좌표를 검색합니다
+geocoder.addressSearch(positions[0], function(result, status) {
+ // 정상적으로 검색이 완료됐으면 
+  if (status === kakao.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[i].y, result[i].x);
-        console.log(coords)
-        let lat = result[i].y // 위도
-        console.log(lat)
-        let lon = result[i].x // 경도
-        console.log(lon)
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
+     var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+     // 결과값으로 받은 위치를 마커로 표시합니다
+     var marker = new kakao.maps.Marker({
+         map: map,
+         position: coords
+     });
 
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].text+'<br>'+positions[i].address+'<br>'+positions[i].tel+'<br>'+positions[i].time+'</div>'
-        });
-        infowindow.open(map, marker);
-		//kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+     // 인포윈도우로 장소에 대한 설명을 표시합니다
+     var infowindow = new kakao.maps.InfoWindow({
+         content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + positions[1]+'<br>'+ '주소 : '+positions[0]+'<br>'+'전화번호 : ' + positions[2]+'<br>'+'영업시간 : ' + positions[3]+ '</div>'
+     });
+     infowindow.open(map, marker);
+		//kakao.maps.event.addListener(marker, 'mouseclick', makeOverListener(map, marker, infowindow));
 		//kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        
-        map.setCenter(coords);
-    } 
+     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+     
+     map.setCenter(coords);
+ } 
 });    
-}
+<%}%>
+
 
 
 </script>
