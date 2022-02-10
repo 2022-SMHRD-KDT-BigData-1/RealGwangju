@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+<jsp:include page="topBar.jsp"></jsp:include>
 
 	<a href="LikeCon.do?ts_name=${tsInfo.ts_name}">찜하기</a>
 	<br>
@@ -24,6 +24,6 @@
 	<h2>ts_views : ${tsInfo.ts_views}</h2>
 
 
-
+<jsp:include page="bottomBar.jsp"></jsp:include>
 </body>
 </html>

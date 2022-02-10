@@ -18,42 +18,48 @@ public class LikeCon implements iCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 
-		HttpSession session =request.getSession();
+		HttpSession session = request.getSession();
 		MemberDTO member = null;
-		member=(MemberDTO)session.getAttribute("member");
-		if(member==null) {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
+		member = (MemberDTO) session.getAttribute("member");
+		if (member == null) {
 			out.print("<script>");
 			out.print("alert('로그인시 이용가능합니다');");
 			out.print("history.back();");
 			out.print("</script>");
 		}
-		
-		
-		
+
 		String id = member.getMem_id();
 		String ts_name = request.getParameter("ts_name");
 		LikeDAO dao = new LikeDAO();
-		int cnt = dao.like(id, ts_name);
-
-		if (cnt > 0) {
-			System.out.println("찜목록에 추가성공");
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
+		int likeIsDuplicate = dao.like_duplicate_check(id, ts_name);
+		if (likeIsDuplicate > 0) {
+			System.out.println("찜목록에 이미있음");
 			out.print("<script>");
-			out.print("alert('찜목록에 추가했어요~');");
+			out.print("alert('이미 찜이 되어있습니다.');");
 			out.print("history.back()");
 			out.print("</script>");
+
 		} else {
-			System.out.println("찜목록에 추가실패");
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.print("<script>");
-			out.print("alert('찜목록 저장 실패');");
+
+			int cnt = dao.like(id, ts_name);
+
+			if (cnt > 0) {
+				System.out.println("찜목록에 추가성공");
+				out.print("<script>");
+				out.print("alert('찜목록에 추가했어요~');");
+				out.print("history.back()");
+				out.print("</script>");
+			} else {
+				System.out.println("찜목록에 추가실패");
+				out.print("<script>");
+				out.print("alert('찜목록 저장 실패');");
+				out.print("history.back()");
 //			out.print("location.href='main.jsp';");
-			out.print("</script>");
+				out.print("</script>");
+			}
 		}
 
 	}
