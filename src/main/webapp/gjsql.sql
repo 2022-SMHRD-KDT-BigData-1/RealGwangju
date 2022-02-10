@@ -94,12 +94,9 @@ create table p(
        p_num number(10),
        p_name varchar2(400) not null,
        p_tel varchar2(100),
-       p_time varchar2(500),
        p_ct varchar2(200),
        p_add varchar2(100) not null,
        p_loc number(5),
-       p_img clob,
-       p_info clob,
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );
@@ -207,14 +204,12 @@ select * from theme
 select * from accom
 
 drop table ts
-<<<<<<< HEAD
 
 select ts_name, ts_views from ts order by desc ts_views where ROWNUM <=10
 select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10
-=======
+
 drop table imageadd
 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 
 
 

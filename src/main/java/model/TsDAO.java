@@ -70,7 +70,7 @@ public class TsDAO {
 				String ts_add = rs.getString(4);
 				String ts_img = rs.getString(5);
 				
-				TsDTO ts = new TsDTO(ts_name, ts_tel, ts_time, null, ts_add, 0, ts_img, null);
+				TsDTO ts = new TsDTO(ts_name, ts_tel, ts_time, null, ts_add, 0, ts_img, null, 0);
 				list.add(ts);
 			}
 		} catch (SQLException e) {
