@@ -71,6 +71,33 @@ public class VisitDAO {
 
 		return ts;
 	}
+	public ResDTO selectResInfo(String res_name) {
+		connect();
+		ResDTO res = null;
+		try {
+			String plusViewsSql = "update res set res_views = res_views+1 where res_name=?";
+			psmt = conn.prepareStatement(plusViewsSql);
+			psmt.setString(1, res_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views from ts where res_name=?";
+				psmt = conn.prepareStatement(getResInfoSql);
+				psmt.setString(1, res_name);
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					res = new ResDTO(res_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+							rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return res;
+	}
 
 	public ArrayList<TsDTO> selectRank10() {
 		connect();

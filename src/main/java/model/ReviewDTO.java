@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본생성자 생성
 @AllArgsConstructor // 모든 필드변수를 초기화하는 생성자 생성
 public class ReviewDTO {
-	private String mem_id;
+	private String visit_name;
+	private String mem_nick;
 	private String re_title;
 	private String re_content;
+	private String re_date;
 }

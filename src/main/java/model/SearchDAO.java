@@ -66,4 +66,26 @@ public class SearchDAO {
 		}
 		return searchedTsList;
 	}
+	public ArrayList<ResDTO> search_res(String search_word) {
+		
+		connect();
+		ArrayList<ResDTO> searchedResList = new ArrayList<ResDTO>();
+		try {
+			sql = "select res_name, res_img from res where res_name like ? or res_info like ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%"+search_word+"%");
+			psmt.setString(2, "%"+search_word+"%");
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				searchedResList.add(
+						new ResDTO(rs.getString("res_name"), rs.getString("res_img"))
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return searchedResList;
+	}
 }

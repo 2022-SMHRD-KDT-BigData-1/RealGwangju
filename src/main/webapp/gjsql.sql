@@ -163,15 +163,20 @@ create table accom(
 
 create sequence accom_accom_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
+drop table review
 --¸®ºä °Ô½ÃÆÇ
+select * from review
 create table review(
-      mem_id varchar2(20),
-      re_title varchar2(20),
-      re_content varchar2(800),
-      re_date date,
-      constraint review_mem_id_pk primary key(mem_id),
-      constraint review_fk foreign key(mem_id) references member(mem_id)
+      re_num number(10),
+      visit_name varchar2(400) not null,
+      mem_nick varchar2(20) not null,
+      re_title varchar2(20) not null,
+      re_content varchar2(800) not null,
+      re_date date default sysdate,
+      constraint review_re_num_pk primary key(re_num)
 )
+create sequence review_re_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
+
 
 --Å×¸¶ °ü±¤
 create table theme(
@@ -210,8 +215,15 @@ select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views d
 
 drop table imageadd
 
+<<<<<<< HEAD
+alter table res add res_views number(10) default 0
+alter table cf add cf_views number(10) default 0
+alter table p add p_views number(10) default 0
+select * from res
+=======
 select ts_name, ts_tel, ts_time, ts_add, ts_img from ts
 
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 
 
 
