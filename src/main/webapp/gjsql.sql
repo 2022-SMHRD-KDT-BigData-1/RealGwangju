@@ -215,10 +215,15 @@ select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views d
 
 drop table imageadd
 
+<<<<<<< HEAD
 alter table res add res_views number(10) default 0
 alter table cf add cf_views number(10) default 0
 alter table p add p_views number(10) default 0
 select * from res
+=======
+select ts_name, ts_tel, ts_time, ts_add, ts_img from ts
+
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BigData-1/RealGwangju.git
 
 
 

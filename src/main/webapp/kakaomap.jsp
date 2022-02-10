@@ -32,40 +32,44 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
  
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
+
 for(int i = 0; i < list.size(); i++) {
 	
 String tempAddress = list.get(i).getTs_add();
 String holy = "'";
 String resultAddress = holy+tempAddress+holy;
 
-String temptext = list.get(i).getTs_name();
-String resulttext = holy+temptext+holy;
+String tempText = list.get(i).getTs_name();
+String resultText = holy+tempText+holy;
 
-String temptel = list.get(i).getTs_tel();
-String resulttel = holy+temptel+holy;
+String tempTel = list.get(i).getTs_tel();
+String resultTel = holy+tempTel+holy;
 
-String temptime = list.get(i).getTs_time();
-String resulttime = holy+temptime+holy;
+String tempTime = list.get(i).getTs_time();
+String resultTime = holy+tempTime+holy;
 
-String tempimg = list.get(i).getTs_img();
-String resultimg = holy+tempimg+holy;
+String tempImg = list.get(i).getTs_img();
+String resultImg = holy+tempImg+holy;
 %>
 
+
 var positions = [
-		[<%=resultAddress%>],
-		[<%=resulttext%>],
-		[<%=resulttel%>],
-		[<%=resulttime%>],
-		[<%=resultimg%>]
+	[<%=resultAddress%>],
+	[<%=resultText%>],
+	[<%=resultTel%>],
+	[<%=resultTime%>],
+	[<%=resultImg%>]
 ]
+
+
+
 
 var geocoder = new kakao.maps.services.Geocoder();
 
 //주소로 좌표를 검색합니다
-geocoder.addressSearch(add, function(result, status) {
+geocoder.addressSearch(positions[0], function(result, status) {
  // 정상적으로 검색이 완료됐으면 
   if (status === kakao.maps.services.Status.OK) {
-
      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
      // 결과값으로 받은 위치를 마커로 표시합니다
      var marker = new kakao.maps.Marker({
@@ -74,10 +78,11 @@ geocoder.addressSearch(add, function(result, status) {
      });
 
      
-     // 인포윈도우로 장소에 대한 설명을 표시합니다
-     var infowindow = new kakao.maps.InfoWindow({
-         content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + positions[1]+'<br>'+ '주소 : '+positions[0]+'<br>'+'전화번호 : ' + positions[2]+'<br>'+'영업시간 : ' + positions[3]+ '</div>'
-     });
+    	 var infowindow = new kakao.maps.InfoWindow({
+             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + <%=resultText%>+'<br>'+ '주소 : '+<%=resultAddress%>+'<br>'+'전화번호 : ' + <%=resultTel%>+'<br>'+'영업시간 : ' + <%=resultTime%>+ '</div>'
+    	 });
+    	
+   
 
      (function(marker, infowindow){
      kakao.maps.event.addListener(marker, 'mouseover' , function(){
