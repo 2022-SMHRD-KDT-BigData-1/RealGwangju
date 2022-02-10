@@ -61,9 +61,6 @@ var positions = [
 	[<%=resultImg%>]
 ]
 
-
-
-
 var geocoder = new kakao.maps.services.Geocoder();
 
 //주소로 좌표를 검색합니다
