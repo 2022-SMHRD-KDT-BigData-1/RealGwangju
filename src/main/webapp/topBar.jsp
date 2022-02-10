@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 	<div class="containar">
 		<!-- 최상단메뉴바 -->
 		<div class="row top">
@@ -65,6 +66,45 @@
 			<div class="col-md-1 b">메뉴</div>
 
 		</div>
+		  <!-- 줄였을때 네비게이션바 -->
+        <div class="row top2_active">
+           <div class="nav_bar">
+            <button class="nav_bar_button" onclick="clk()">
+                <span class="nav_bar_img"> <img src="img/other/nav_icon (1).png">
+                </span>
+            </button>
+            <hr style="color: red;">
+            <div>
+                <ul class="nav_list">
+                    <li style="color: red;"> <img src="img/gwang.PNG "
+                         style="width: 38px; height: 38px;"> 두유노광주
+                         <!-- <button style="padding-left: 50%;
+                         position: absolute;">x</button> -->
+                         </li>
+                    <li>  <a href="gwang_search.html">검색</a></li>
+                    <li> <A href="ts_view.html">추천</A>    </li>
+                    <li>리뷰</li>
+                    <li>메뉴</li>
+                </ul>
+            </div>
+         
+           </div>
+           <script type="text/javascript">
+               function clk(){
+                   if($('.nav_list').css('display')=='none'){
+                    $('.nav_list').show();
+                   }
+                   else{
+                    $('.nav_list').hide();
+                   }
+               }
+
+           </script>
+         
+          <!-- <span class="navbar-toggler-icon"> -->
+            
+
+        </div>
 	</div>
 </body>
 </html>

@@ -23,6 +23,7 @@ request.setAttribute("tsRank10", tsRank10);
 <title>Do you know Gwangju?</title>
 </head>
 <body>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 	<jsp:include page="topBar.jsp"></jsp:include>
 
 	<!-- 메인 이미지 -->
