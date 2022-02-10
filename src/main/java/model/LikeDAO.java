@@ -44,6 +44,47 @@ public class LikeDAO {
 		}
 	}
 
+	public int like(String id, String ts_name) {
+		connect();
+		System.out.println(id + ", " + ts_name);
+//		sql = "insert into visit_like values(?,?)";
+		try {
+			sql = "insert into visit_like values(visit_like_visit_num_seq.nextval,?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, ts_name);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	public int like_duplicate_check(String id, String ts_name) {
+		connect();
+		try {
+			sql = "select mem_like from visit_like where mem_id=? and mem_like=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, ts_name);
+			
+			rs = psmt.executeQuery();
+			cnt=0;
+			if(rs.next()) {
+				cnt=1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
 	public ArrayList<String> selectLikeList(String id) {
 		connect();
 		ArrayList<String> likeList = new ArrayList<String>();
@@ -60,21 +101,20 @@ public class LikeDAO {
 		} finally {
 			close();
 		}
-
 		return likeList;
 	}
 
-	public int like(String id, String ts_name) {
+	public int deleteLikeList(String id, String[] delete_ts_nameList) {
 		connect();
-		System.out.println(id+", "+ts_name);
-//		sql = "insert into visit_like values(?,?)";
-		sql = "insert into visit_like values(visit_like_visit_num_seq.nextval,?,?)";
+		cnt = 0;
 		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, ts_name);
-
-			cnt = psmt.executeUpdate();
+			for (int i = 0; i < delete_ts_nameList.length; i++) {
+				sql = "delete from visit_like where mem_id=? and mem_like=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				psmt.setString(2, delete_ts_nameList[i]);
+				cnt = psmt.executeUpdate();
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

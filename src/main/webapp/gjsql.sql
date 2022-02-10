@@ -51,8 +51,8 @@ create sequence mem_score_mem_num_seq increment by 1 start with 1 maxvalue 99999
 --Âò ¸ñ·Ï
 create table visit_like(
     visit_num number(10),
-	mem_id varchar2(20) not null,
-	mem_like varchar2(20),
+	mem_id varchar2(30) not null,
+	mem_like varchar2(200),
     constraint visit_like_visit_num_pk primary key(visit_num),
 	constraint visit_like_fk foreign key(mem_id) references member(mem_id)
 );

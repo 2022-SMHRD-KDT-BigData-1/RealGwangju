@@ -272,9 +272,10 @@ button{
 }
 
 .join_main{
-    /* padding-left: 50%; */
+    padding-left: 30%;
+    padding-right: 30%;
     padding-top: 150px;
-    width: '1000px';
+     /*text-alig0n: center;*/
 } 
 @keyframes fadein {
     from{

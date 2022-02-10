@@ -22,13 +22,13 @@ table {
 </head>
 <body>
 
-
+<jsp:include page="topBar.jsp"></jsp:include>
 	<div class="join_main"><!--  -->
 		<table>
 			<tr>
 				<td class="table-1">아이디</td>
 				<td class="table-2"><input type="text" name="id"
-					class="input_id"> <font id="checkId" size="2"></font></td>
+					class="input_id"><br><font id="checkId" size="2"></font></td>
 			</tr>
 			<tr>
 				<td class="table-1">비밀번호</td>
@@ -38,7 +38,7 @@ table {
 			<tr>
 				<td class="table-1">비밀번호 확인</td>
 				<td class="table-2"><input type="password" name="pw2" id="pw2"
-					onchange="check_pw()"><font id="checkPw" size="2"></font></td>
+					onchange="check_pw()"><br><font id="checkPw" size="2"></font></td>
 			</tr>
 			<tr>
 				<td class="table-1">닉네임</td>
@@ -68,6 +68,7 @@ table {
 
 		</table>
 	</div>
+<jsp:include page="bottomBar.jsp"></jsp:include>
 
 
 	<script src="assets/js/jquery-3.6.0.min.js"></script>

@@ -26,6 +26,9 @@ public class FrontController extends HttpServlet {
 			map.put("/LikeCon.do", new LikeCon());
 			map.put("/LikeListCon.do", new LikeListCon());
 			map.put("/Ts_viewCon.do", new Ts_viewCon());
+			map.put("/DeleteLikeListCon.do", new DeleteLikeListCon());
+			map.put("/SearchCon.do", new SearchCon());
+			map.put("/WriteReviewCon.do", new WriteReviewCon());
 		}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
