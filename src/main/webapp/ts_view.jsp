@@ -22,6 +22,17 @@
 	ts_img : <img src="${tsInfo.ts_img}">
 	<h2>ts_info : ${tsInfo.ts_info}</h2>
 	<h2>ts_views : ${tsInfo.ts_views}</h2>
+	
+	
+	
+	<c:choose>
+		<c:when test="${empty review}">
+			<h2>리뷰작성페이지 출력</h2>
+		</c:when>
+		<c:otherwise>
+			<h3>${review.re_date}</h3>
+		</c:otherwise>
+	</c:choose>
 
 
 <jsp:include page="bottomBar.jsp"></jsp:include>

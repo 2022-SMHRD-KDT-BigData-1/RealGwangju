@@ -46,7 +46,7 @@ request.setAttribute("tsRank10", tsRank10);
 			<div class="container2 cn1">
 				<c:forEach var="ts" items="${tsRank10}" varStatus="status">
 					<div class="img-slide">
-						<a href="Ts_viewCon.do?ts_name=${ts.ts_name}"> <span><img
+						<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
 								src="${ts.ts_img}" class="img-size">${status.index+1}위</span> <span
 							class="silde-text">${ts.ts_name}</span>
 						</a>
