@@ -32,6 +32,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
  
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
+
 for(int i = 0; i < list.size(); i++) {
 	
 String tempAddress = list.get(i).getTs_add();
@@ -51,13 +52,17 @@ String tempImg = list.get(i).getTs_img();
 String resultImg = holy+tempImg+holy;
 %>
 
+
 var positions = [
-		[<%=resultAddress%>],
-		[<%=resultText%>],
-		[<%=resultTel%>],
-		[<%=resultTime%>],
-		[<%=resultImg%>]
+	[<%=resultAddress%>],
+	[<%=resultText%>],
+	[<%=resultTel%>],
+	[<%=resultTime%>],
+	[<%=resultImg%>]
 ]
+
+
+
 
 var geocoder = new kakao.maps.services.Geocoder();
 
@@ -65,7 +70,6 @@ var geocoder = new kakao.maps.services.Geocoder();
 geocoder.addressSearch(positions[0], function(result, status) {
  // 정상적으로 검색이 완료됐으면 
   if (status === kakao.maps.services.Status.OK) {
-
      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
      // 결과값으로 받은 위치를 마커로 표시합니다
      var marker = new kakao.maps.Marker({
@@ -75,11 +79,10 @@ geocoder.addressSearch(positions[0], function(result, status) {
 
      
     	 var infowindow = new kakao.maps.InfoWindow({
-             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + positions[1]+'<br>'+ '주소 : '+positions[0]+'<br>'+'전화번호 : ' + positions[2]+'<br>'+'영업시간 : ' + positions[3]+ '</div>'
-         });
-	
-     // 인포윈도우로 장소에 대한 설명을 표시합니다
-     
+             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + <%=resultText%>+'<br>'+ '주소 : '+<%=resultAddress%>+'<br>'+'전화번호 : ' + <%=resultTel%>+'<br>'+'영업시간 : ' + <%=resultTime%>+ '</div>'
+    	 });
+    	
+   
 
      (function(marker, infowindow){
      kakao.maps.event.addListener(marker, 'mouseover' , function(){

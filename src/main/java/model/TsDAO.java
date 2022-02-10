@@ -53,7 +53,6 @@ public class TsDAO {
 	
 	public ArrayList<TsDTO> tsAddress(){
 		ArrayList<TsDTO> list = new ArrayList<TsDTO>();
-		
 		connect();
 		
 		sql = "select ts_name, ts_tel, ts_time, ts_add, ts_img from ts";
@@ -72,6 +71,7 @@ public class TsDAO {
 				
 				TsDTO ts = new TsDTO(ts_name, ts_tel, ts_time, null, ts_add, 0, ts_img, null, 0);
 				list.add(ts);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

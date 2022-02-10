@@ -210,7 +210,7 @@ select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views d
 
 drop table imageadd
 
-
+select ts_name, ts_tel, ts_time, ts_add, ts_img from ts
 
 
 
