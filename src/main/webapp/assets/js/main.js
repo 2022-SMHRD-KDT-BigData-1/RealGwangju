@@ -1,5 +1,5 @@
 
-$('.input_id').focusout(function() {
+$('.input_id').keyup(function() {
 	let InputId = $('.input_id').val();
 
 	$.ajax({
