@@ -7,13 +7,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<build>
+		<finalName>RealGwangju</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
 					<configuration>
-						<release>15</release>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
 				<plugin>
