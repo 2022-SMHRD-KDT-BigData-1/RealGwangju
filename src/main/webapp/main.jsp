@@ -49,7 +49,7 @@ request.setAttribute("tsRank10", tsRank10);
 					<div class="img-slide">
 						<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
 								src="${ts.ts_img}" class="img-size">${status.index+1}위</span> <span
-							class="silde-text">${ts.ts_name}</span>
+							class="slide-text">${ts.ts_name}</span>
 						</a>
 					</div>
 				</c:forEach>

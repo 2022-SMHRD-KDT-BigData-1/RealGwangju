@@ -92,7 +92,7 @@ a:hover
     
 }
 
-/* 죄로 쭈ㅜㅜㅜ욱늘려서 캐러셀만드는div */
+/* 二꾨줈 彛덀뀥�뀥�뀥�슧�뒛�젮�꽌 罹먮윭��留뚮뱶�뒗div */
 .search_line{
     padding:0;
     padding-top: 100px;   
@@ -121,22 +121,24 @@ a:hover
     opacity:1;
 }
 .container2{
-    width: 300vw;
+    width: 500vw;
     padding-left: 5vw;
     position: relative;
     transition-duration: 500ms;
+    height: auto;
 }
 .top_view_img{
     /* overflow: hidden; */
     padding-top: 100px;
     width: 600px;
     /* left:-1200px; */
-    position: relative;
+    position: absolute;
     height: auto;
     margin: 30px;
     /* left: -1200px; */
 }
 .r_view{
+	position: relative;
     height: 700px;
     padding-bottom: 0px;
    
@@ -242,14 +244,13 @@ a:hover
 .view_title{
    
     /* background-color: rebeccapurple; */
-    position: relative;
+    position: absolute;
     padding-left: 100px;
-    text-align: left;
+    /* text-align: left; */
     padding-top: 60px;
-    /* bottom: 200px; */
-    /* z-index: 10000; */
-
-   left :550px
+   top:200px;
+	
+   left :650px;
 }   
 
 .view_title button{
@@ -293,9 +294,10 @@ a:hover
     
   
 }
-.silde-text{
+.slide-text{
     margin-left: 20px;
-    font-size: 28px;
+    font-size: 24px;
+
 }
 
 .img-size{

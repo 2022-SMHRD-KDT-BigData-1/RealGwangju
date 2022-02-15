@@ -47,7 +47,7 @@
                </div>
                      <div class="view_title">
                         <!-- 이름 -->
-                        <p><h1>아무튼 제목</h1></p>
+                        <p><h1>아무튼튼 제목</h1></p>
                             <!-- 주소 -->
                         <p>주소 : 어느행성</p>
 
@@ -158,6 +158,7 @@
                     </div>
                     <div class="view_riew">
                         <ul class="review_main">
+                        <!-- review_no는 리뷰가 하나도 없을 떄 ul안에서 실행 -->
                             <li class="review_no" style="text-align: center;">
                              
                                 <P style="padding-left: 2%;">
@@ -165,6 +166,8 @@
                                 리뷰가 없습니다. 리뷰를 작성해 주세요.</P>
                              
                         </li>
+                     	<!-- review_in은 리뷰가 있을때 반복문으로 돌리면서 보여주면 되지않을까?
+                     	vutton은 아 나중에구현해봄 -->
                             <li class="review_in">
                                 <p class="review_id" style="padding-left: 5%;">아이디</p>
                                 <hr style="color: black;">
@@ -174,8 +177,8 @@
                                 dddddddddddddddddddddd
                                 ddddddddddddddddddddddddddd뷰</P>
                              
-                                <P class="deleteandrebuild"><button>X</button>
-                                    <button>수정</button></P>
+                                <P class="deleteandrebuild"><button>수정</button>
+                                    <button>x</button></P>
                                    
                                         
                         </li>
@@ -188,8 +191,8 @@
                             dddddddddddddddddddddd
                             ddddddddddddddddddddddddddd뷰</P>
                          
-                            <P class="deleteandrebuild"><button>X</button>
-                                <button>수정</button></P>
+                            <P class="deleteandrebuild"><button>수정</button>
+                                <button>x</button></P>
                                
                                     
                     </li>
@@ -210,8 +213,8 @@
                     </div>
 
              </div>
-             너가만든 아무튼그것
-<%--   
+           
+<%--     너가만든 아무튼그것
   <jsp:include page="topBar.jsp"></jsp:include>
 
 	<a href="LikeCon.do?ts_name=${tsInfo.ts_name}">찜하기</a>
