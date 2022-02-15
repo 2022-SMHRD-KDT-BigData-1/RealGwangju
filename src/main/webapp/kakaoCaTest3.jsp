@@ -32,28 +32,56 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 var positions = []
 
+<%
+String tempAddress = "";
+String holy = "'";
+String resultAddress = "";
+String tempText = "";
+String resultText = "";
+String tempTel = "";
+String resultTel = "";
+String tempTime = "";
+String resultTime = "";
+String tempImg = "";
+String resultImg = "";
+%>
+
+
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
+ArrayList<TsDAO> temp = new ArrayList<>();
 
 for(int i = 0; i < list.size(); i++) {
 	
-String tempAddress = list.get(i).getTs_add();
-String holy = "'";
-String resultAddress = holy+tempAddress+holy;
+tempAddress = list.get(i).getTs_add();
 
-String tempText = list.get(i).getTs_name();
-String resultText = holy+tempText+holy;
+resultAddress = holy+tempAddress+holy;
 
-String tempTel = list.get(i).getTs_tel();
-String resultTel = holy+tempTel+holy;
+tempText = list.get(i).getTs_name();
+resultText = holy+tempText+holy;
 
-String tempTime = list.get(i).getTs_time();
-String resultTime = holy+tempTime+holy;
+tempTel = list.get(i).getTs_tel();
+resultTel = holy+tempTel+holy;
 
-String tempImg = list.get(i).getTs_img();
-String resultImg = holy+tempImg+holy;
+tempTime = list.get(i).getTs_time();
+resultTime = holy+tempTime+holy;
+
+tempImg = list.get(i).getTs_img();
+resultImg = holy+tempImg+holy;
+
+
+%>
+positions[i] = list.get(i);
+<%
 }
 %>
+
+<%for(int k = 0; k < list.size(); k++){%>
+	positions[k] = [holy + list.get(i).getTs_add() + holy, holy + list.get(i).getTs_name() + holy]
+	<%System.out.println(list.get(k));%>
+<%}%>
+
+
 
 
 <%-- var positions = [
