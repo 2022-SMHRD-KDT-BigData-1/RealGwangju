@@ -495,8 +495,9 @@ ul{
 
 }
 .inimg{
-    width:100%;
-    height: 20vw;
+	
+    width:25vw;
+    height: 15vw;
     /* display: inline; */
 }
 .intext{

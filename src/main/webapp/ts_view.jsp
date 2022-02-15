@@ -63,7 +63,7 @@
                     // 조정버튼
                     let a= 1;
                   
-          
+        
                         $('button.pr3').click(function(){
                         
                         if(a==1){

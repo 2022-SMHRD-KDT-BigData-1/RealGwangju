@@ -103,10 +103,12 @@
                     <p style="text-align: left; margin-left: 200px;">관광지 </p>
                     <ul class="result_box">
                         <!-- 한칸을 area div로 묶음 -->
-                    <div class="area">
+                  
+                  	<%for(int i = 0; i<6; i++){
+                  		%>  <div class="area">
                         <li class="result_boxin"><a href="search_react.html" class="result_link">
                             <span>
-                            <img src="img/main_img/test1.PNG" class="inimg">
+                            <img src="img/main_img/test<%=i+1%>.PNG" class="inimg">
                          
                         </span>
                         <span class="intext">
@@ -118,51 +120,16 @@
                     </a></li>
                     </div>
                     <!-- 여기까지 1칸 -->
-                    <div class="area">
-                        <li class="result_boxin"><a href="#" class="result_link">
-                            <span>
-                            <img src="img/main_img/test1.PNG" class="inimg">
-                         
-                        </span>
-                        <span class="intext">
-                            2번테스트
-                        </span>
-                    </div>
-                   
-                    <div class="area">
-                        <li class="result_boxin"><a href="#" class="result_link">
-                            <span>
-                            <img src="img/main_img/test1.PNG" class="inimg">
-                         
-                        </span>
-                        <span class="intext">
-                            3번테스트
-                        </span>
-                    </div>
-                    <div class="area">
-                        <li class="result_boxin"><a href="#" class="result_link">
-                            <span>
-                            <img src="img/main_img/test1.PNG" class="inimg">
-                         
-                        </span>
-                        <span class="intext">
-                            4번테스트
-                        </span>
-                    </div>
-                    <div class="area">
-                        <li class="result_boxin"><a href="#" class="result_link">
-                            <span>
-                            <img src="img/main_img/test1.PNG" class="inimg">
-                         
-                        </span>
-                        <span class="intext">
-                            4번테스트
-                        </span>
-                    </div>
+                  <%} %>      
                    </ul>
+                   <div>
+                      <button>1</button>
+                   </div>
+                
                 </div>
+               	<!-- 검샋 1 -->
             </div>     
-        </div>
+      
         <script>
            
 
