@@ -34,7 +34,7 @@ var positions = []
 
 <%
 String tempAddress = "";
-String holy = "'";
+String holy = "";
 String resultAddress = "";
 String tempText = "";
 String resultText = "";
@@ -44,12 +44,13 @@ String tempTime = "";
 String resultTime = "";
 String tempImg = "";
 String resultImg = "";
+//int cnt = 0;
 %>
 
 
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
-ArrayList<TsDAO> temp = new ArrayList<>();
+//ArrayList<TsDAO> temp = new ArrayList<>();
 
 for(int i = 0; i < list.size(); i++) {
 	
@@ -71,16 +72,18 @@ resultImg = holy+tempImg+holy;
 
 
 %>
-positions[i] = list.get(i);
+for(var i = 0; i < )
+positions[0] = [<%=resultAddress%>, <%=resultText%>, <%=resultTel%>, <%=resultTime%>, <%=resultImg%>]
+
 <%
 }
 %>
 
-<%for(int k = 0; k < list.size(); k++){%>
+<%-- <%for(int k = 0; k < list.size(); k++){%>
 	positions[k] = [holy + list.get(i).getTs_add() + holy, holy + list.get(i).getTs_name() + holy]
 	<%System.out.println(list.get(k));%>
 <%}%>
-
+ --%>
 
 
 
