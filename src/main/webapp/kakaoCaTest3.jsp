@@ -30,7 +30,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
- 
+var positions = []
+
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
 
@@ -51,19 +52,20 @@ String resultTime = holy+tempTime+holy;
 
 String tempImg = list.get(i).getTs_img();
 String resultImg = holy+tempImg+holy;
+}
 %>
 
 
-var positions = [
+<%-- var positions = [
 	[<%=resultAddress%>],
 	[<%=resultText%>],
 	[<%=resultTel%>],
 	[<%=resultTime%>],
 	[<%=resultImg%>]
-]
+] --%>
 
 var geocoder = new kakao.maps.services.Geocoder();
-
+for(var i = 0; i < positions.length; i++){
 //주소로 좌표를 검색합니다
 var marker = null;
 var infowindow = null;
@@ -100,7 +102,7 @@ geocoder.addressSearch(positions[0], function(result, status) {
      //map.setCenter(coords);
  } 
 });    
-<%}%>
+
 
 
 
