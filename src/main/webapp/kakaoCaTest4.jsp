@@ -45,15 +45,15 @@
 					// 현재 배열의 원소를 사용가능한 객체로 바꿔준다음에
 					let data = JSON.parse(result[i]);	
 					$("#start").append("<tr>" 
-							+ "<td>" + data.title + "</td>"
-							+ "<td>" + data.tel + "</td>"
-							+ "<td>" + data.tiem + "</td>"
-							+ "<td>" + data.ct + "</td>"
-							+ "<td>" + data.add + "</td>"
-							+ "<td>" + data.loc + "</td>"
-							+ "<td>" + data.img + "</td>"
-							+ "<td>" + data.deatil + "</td>"
-							+ "<td>" + data.view + "</td>"
+							+ "<td>" + data.ts_name + "</td>"
+							+ "<td>" + data.ts_tel + "</td>"
+							+ "<td>" + data.ts_time + "</td>"
+							+ "<td>" + data.ts_ct + "</td>"
+							+ "<td>" + data.ts_add + "</td>"
+							+ "<td>" + data.ts_loc + "</td>"
+							+ "<td>" + data.ts_img + "</td>"
+							+ "<td>" + data.ts_info + "</td>"
+							+ "<td>" + data.ts_views + "</td>"
 							+ "</tr>");	
 				}
 			},
