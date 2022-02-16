@@ -22,20 +22,9 @@ public class mapCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("요청이 들어왔다!");
-		
-		
-		TsDTO ts1 = new TsDTO("홀", "00", "ㅓㅓㅓ", "ㅀㄹ", "ㄹㅇㅇㄹ", 0, "ㄴㅇㅇㄴ", "ㅇㄴㅁㅇㅁㄴ", 0);
-		TsDTO ts2 = new TsDTO("홀s", "001", "ㅓㅓㅓdx", "ㅀㄹsx", "ㄹㅇㅇdㄹ", 0, "ㄴㅇㅇdㄴ", "ㅇㄴㅁㅇㅁㄴ", 0);
-		TsDTO ts3 = new TsDTO("홀d", "002", "ㅓㅓcㅓ", "ㅀㄹd", "ㄹㅇㅇsfdsㄹ", 0, "ㄴefdㅇㅇㄴ", "ㅇㄴㅁㅇㅁㄴ", 0);
-		
 		
 		TsDAO ts = new TsDAO();
 		ArrayList<TsDTO> list = ts.tsAddress();
-		ArrayList<TsDTO> list2 = new ArrayList<TsDTO>();
-		list2.add(ts1);
-		list2.add(ts2);
-		list2.add(ts3);
 
 		// DB에 있는 데이터를 가져왔다! 가정---
 		

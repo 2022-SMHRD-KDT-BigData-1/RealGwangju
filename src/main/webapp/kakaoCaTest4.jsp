@@ -8,8 +8,7 @@
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<!-- 가정 : 웹툰에 대한 정보를 출력하는 프로그램을 만들려고 한다! -->
-<!-- 결국 웹툰에 대한 정보는 DB에 있다는 가정이 들어간다! -->
+
 	<h1>관광지 정보 불러오기</h1>
 	<table border = "1" id="start">
 		<tr>
@@ -25,7 +24,7 @@
 		</tr>
 	</table>
 	
-	<button>웹툰 정보 가져오기</button>
+	<button>관광지 정보 가져오기</button>
 	
 	<script src="jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
@@ -45,15 +44,15 @@
 					// 현재 배열의 원소를 사용가능한 객체로 바꿔준다음에
 					let data = JSON.parse(result[i]);	
 					$("#start").append("<tr>" 
-							+ "<td>" + data.title + "</td>"
-							+ "<td>" + data.tel + "</td>"
-							+ "<td>" + data.tiem + "</td>"
-							+ "<td>" + data.ct + "</td>"
-							+ "<td>" + data.add + "</td>"
-							+ "<td>" + data.loc + "</td>"
-							+ "<td>" + data.img + "</td>"
-							+ "<td>" + data.deatil + "</td>"
-							+ "<td>" + data.view + "</td>"
+							+ "<td>" + data.ts_name + "</td>"
+							+ "<td>" + data.ts_tel + "</td>"
+							+ "<td>" + data.ts_time + "</td>"
+							+ "<td>" + data.ts_ct + "</td>"
+							+ "<td>" + data.ts_add + "</td>"
+							+ "<td>" + data.ts_loc + "</td>"
+							+ "<td>" + data.ts_img + "</td>"
+							+ "<td>" + data.ts_info + "</td>"
+							+ "<td>" + data.ts_views + "</td>"
 							+ "</tr>");	
 				}
 			},
