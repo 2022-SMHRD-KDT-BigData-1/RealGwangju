@@ -17,7 +17,7 @@
 
 	
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services,clusterer,drawing"></script>
 	
 	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -27,116 +27,121 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };  
 // 카카오 33.450701, 126.570667 
 
+
+// 마커 클러스터러를 생성합니다 
+var clusterer = new kakao.maps.MarkerClusterer({
+    map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+    averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+    minLevel: 10 // 클러스터 할 최소 지도 레벨 
+});
+
+
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+var geocoder = new kakao.maps.services.Geocoder();
+<%boolean flag = true;%>
+// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+function removeMarker() {
+    for ( var i = 0; i < markers.length; i++ ) {
+        markers[i].setMap(null);
+    }   
+    markers = [];
+}
 
-var positions = []
-
-<%
-String tempAddress = "";
-String holy = "";
-String resultAddress = "";
-String tempText = "";
-String resultText = "";
-String tempTel = "";
-String resultTel = "";
-String tempTime = "";
-String resultTime = "";
-String tempImg = "";
-String resultImg = "";
-//int cnt = 0;
-%>
-
+var mapBounds = map.getBounds();
 
 <%TsDAO ts = new TsDAO();
 ArrayList<TsDTO> list = ts.tsAddress();
-//ArrayList<TsDAO> temp = new ArrayList<>();
 
 for(int i = 0; i < list.size(); i++) {
 	
-tempAddress = list.get(i).getTs_add();
+String tempAddress = list.get(i).getTs_add();
+String holy = "'";
+String resultAddress = holy+tempAddress+holy;
 
-resultAddress = holy+tempAddress+holy;
+String tempText = list.get(i).getTs_name();
+String resultText = holy+tempText+holy;
 
-tempText = list.get(i).getTs_name();
-resultText = holy+tempText+holy;
+String tempTel = list.get(i).getTs_tel();
+String resultTel = holy+tempTel+holy;
 
-tempTel = list.get(i).getTs_tel();
-resultTel = holy+tempTel+holy;
+String tempTime = list.get(i).getTs_time();
+String resultTime = holy+tempTime+holy;
 
-tempTime = list.get(i).getTs_time();
-resultTime = holy+tempTime+holy;
-
-tempImg = list.get(i).getTs_img();
-resultImg = holy+tempImg+holy;
-
-
-%>
-for(var i = 0; i < )
-positions[0] = [<%=resultAddress%>, <%=resultText%>, <%=resultTel%>, <%=resultTime%>, <%=resultImg%>]
-
-<%
-}
+String tempImg = list.get(i).getTs_img();
+String resultImg = holy+tempImg+holy;
 %>
 
-<%-- <%for(int k = 0; k < list.size(); k++){%>
-	positions[k] = [holy + list.get(i).getTs_add() + holy, holy + list.get(i).getTs_name() + holy]
-	<%System.out.println(list.get(k));%>
-<%}%>
- --%>
 
-
-
-<%-- var positions = [
+var positions = [
 	[<%=resultAddress%>],
 	[<%=resultText%>],
 	[<%=resultTel%>],
 	[<%=resultTime%>],
 	[<%=resultImg%>]
-] --%>
+]
 
-var geocoder = new kakao.maps.services.Geocoder();
-for(var i = 0; i < positions.length; i++){
+
 //주소로 좌표를 검색합니다
-var marker = null;
-var infowindow = null;
 geocoder.addressSearch(positions[0], function(result, status) {
  // 정상적으로 검색이 완료됐으면 
   if (status === kakao.maps.services.Status.OK) {
      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
      // 결과값으로 받은 위치를 마커로 표시합니다
-	 <%if(resultText.contains("광주")){%>
-		 marker = new kakao.maps.Marker({
+	 <%if(resultText.contains("산")){%>
+		 var marker = new kakao.maps.Marker({
 	         map: map,
 	         position: coords
 	     });
+	     kakao.maps.event.addListener(map, 'idle', function() {        
+	    	 if(<%=flag == true %>){
+		    	 mapBounds = map.getBounds();
+		    	 console.log(mapBounds);
+		    	 <%=flag = false %>
+		    	 }
+	    		marker.setMap(null);
+	    		marker = new kakao.maps.Marker({
+	   	         map: map,
+	   	         position: coords
+	   	      
+	   	     });
+	    		(function(marker, infowindow){
+		    	     kakao.maps.event.addListener(marker, 'mouseover' , function(){
+		    	    	 infowindow.open(map, marker);
+		    	    });
+		    	      
+		    	     kakao.maps.event.addListener(marker, 'mouseout' , function(){
+		    	    	 infowindow.close();
+		    	    });
+		    	     })(marker,infowindow);
+	    	});
 	     
-	    	 infowindow = new kakao.maps.InfoWindow({
+	     
+	    	 var infowindow = new kakao.maps.InfoWindow({
 	             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + <%=resultText%>+'<br>'+ '주소 : '+<%=resultAddress%>+'<br>'+'전화번호 : ' + <%=resultTel%>+'<br>'+'영업시간 : ' + <%=resultTime%>+ '</div>'
 	    	 });
+	    	 
+	    	 (function(marker, infowindow){
+	    	     kakao.maps.event.addListener(marker, 'mouseover' , function(){
+	    	    	 infowindow.open(map, marker);
+	    	    });
+	    	      
+	    	     kakao.maps.event.addListener(marker, 'mouseout' , function(){
+	    	    	 infowindow.close();
+	    	    });
+	    	     })(marker,infowindow);
+	    	 
 	 <%}%>
-     
-    	
-   
-     (function(marker, infowindow){
-     kakao.maps.event.addListener(marker, 'mouseover' , function(){
-    	 infowindow.open(map, marker);
-    });
-     
-     kakao.maps.event.addListener(marker, 'mouseout' , function(){
-    	 infowindow.close();
-    });
-     })(marker,infowindow);
-
+	// 지도 영역 변화 이벤트를 등록한다
+		
      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
      
      //map.setCenter(coords);
+	 
  } 
 });    
-
-
-
-
+<%}%>
+console.log(<%=list.size()%>);
 
 </script>
 </body>
