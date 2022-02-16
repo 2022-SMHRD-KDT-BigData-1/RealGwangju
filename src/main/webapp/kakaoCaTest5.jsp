@@ -8,8 +8,7 @@
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<!-- 가정 : 웹툰에 대한 정보를 출력하는 프로그램을 만들려고 한다! -->
-<!-- 결국 웹툰에 대한 정보는 DB에 있다는 가정이 들어간다! -->
+
 
 	<script src="jquery-3.6.0.min.js"></script>
 	<div id="map" style="width: 100%; height: 600px;"></div>
