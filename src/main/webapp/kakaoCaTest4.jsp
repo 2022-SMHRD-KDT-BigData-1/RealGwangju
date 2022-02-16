@@ -25,7 +25,7 @@
 		</tr>
 	</table>
 	
-	<button>웹툰 정보 가져오기</button>
+	<button>관광지 정보 가져오기</button>
 	
 	<script src="jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
