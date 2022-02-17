@@ -584,6 +584,23 @@ ul{
  
    
 }
+.texttitle{
+	margin-left: 10%;
+    width: 80%;
+    height:45px;
+}
+.review_img{
+	width:300px;
+	height: 200px;
+}
+.review_list{
+	text-align: center;
+}
+.review_list_in{
+	width: 20%;
+	height:30%;
+	margin-left:10%;
+}
 
 /* @keyframese down{
     from{

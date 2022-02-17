@@ -169,10 +169,13 @@
                      	<!-- review_in은 리뷰가 있을때 반복문으로 돌리면서 보여주면 되지않을까?
                      	vutton은 아 나중에구현해봄 -->
                             <li class="review_in">
-                                <p class="review_id" style="padding-left: 5%;">아이디</p>
+                                <p class="review_id" style="padding-left: 5%;">
+ 							<p style="padding-left:5%">제목제목제목제목제목제목제목제목제목s</p>
+                               <span style="padding-left: 70% ;position:relative;">날짜 0000-00-00</span>
+                               <span style="padding-left:5%">대충아디가길어</span>
                                 <hr style="color: black;">
                                 <P style="padding-left: 2%;">
-                               
+                               <img src="img/other/like.PNG" class="review_img">
                                 리ddddddd
                                 dddddddddddddddddddddd
                                 ddddddddddddddddddddddddddd뷰</P>
@@ -183,7 +186,10 @@
                                         
                         </li>
                         <li class="review_in">
-                            <p class="review_id" style="padding-left: 5%;">아이디</p>
+                            <p class="review_id" style="padding-left: 5%;">
+                            <span>아이디</span>
+                             <span style="padding-left: 70%">날짜 0000-00-00</span>
+                            </p>
                             <hr style="color: black;">
                             <P style="padding-left: 2%;">
                            
@@ -205,7 +211,9 @@
                             <button class = "textinbtn" disabled="disabled">작성</button>
                         </div>
                         <div class="review_yeslogin">
+                            <textarea class="texttitle" placeholder="제목을 작성해주세요" ></textarea>
                             <textarea class="textin" placeholder="리뷰를 작성해주세요" ></textarea>
+                            
                             <!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
                             <button class = "textinbtn">작성</button>
                         </div>
