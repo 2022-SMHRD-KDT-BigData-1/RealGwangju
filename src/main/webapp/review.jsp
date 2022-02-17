@@ -19,13 +19,37 @@ reviewList = dao.selectAllReview();
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>review</title>
 </head>
 <body>
 	<jsp:include page="topBar.jsp"></jsp:include>
-	<div class="review_list"> 
-		<div class="review_list_in" style="background-color: red;">
-			??
+	<div class="review_list">
+	<!-- div class="review_list_in"을 반복하면됨 -->
+		<div class="review_list_in" >
+			<a href="review_view.jsp"><img src="img/other/noimg.PNG" class="review_list_img"></a>
+			
+			<div style="text-align: left; margin-left: 5%">리뷰제목
+			<hr style="width: auto; padding: 0; margin: 0;"></div>
+		
+			<div>>?>??</div>
+			<div>>?>??</div>
+		</div>
+			<div class="review_list_in" >
+			<img src="img/main/plz3.png" class="review_list_img">
+			<div style="text-align: left; margin-left: 5%">리뷰제목
+			<hr style="width: auto; padding: 0; margin: 0;"></div>
+		
+			<div>>?>??</div>
+			<div>>?>??</div>
+		</div>
+			<div class="review_list_in" >
+			<img src="img/other/noimg.PNG" class="review_list_img">
+			<div style="text-align: left; margin-left: 5%">리뷰제목
+			<hr style="width: auto; padding: 0; margin: 0;"></div>
+		
+			<div>>?>??</div>
+			<div>>?>??</div>
 		</div>
 		
 		

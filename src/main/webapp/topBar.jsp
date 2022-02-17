@@ -24,7 +24,7 @@
 			<div class="col-md-1">
 				<a href="main.jsp">홈</a>
 			</div>
-			<div class="col-md-1">헤헤</div>
+			<div class="col-md-1"></div>
 			<c:choose>
 				<c:when test="${empty member}">
 					<div class="col-md-3" style="text-align: right;">

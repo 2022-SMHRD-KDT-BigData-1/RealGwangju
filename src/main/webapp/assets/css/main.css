@@ -385,7 +385,14 @@ a:hover
     text-align: center;
 }
 .bottom-text{
-    text-align: center;
+	top: max-content;
+    text-align: left;
+    font-family: 'ROKAFSansBold';
+   font-size: 15px;
+   height: max-content;
+}
+.btm-text-can{
+	padding: 15px;
 }
 button{
     border-radius: 50%;
@@ -394,6 +401,11 @@ button{
     color: red;
     border: 2px skyblue;
     opacity: 0.5;
+}
+.jjim{
+	margin-top:50px;
+	margin-left:5%;
+	height: 50vw;
 }
 @keyframes slide_start_right {
     from{
@@ -594,14 +606,35 @@ ul{
 	height: 200px;
 }
 .review_list{
+	margin-left:15%;
 	text-align: center;
+	position: relative;
+	margin-top: 10%
+	
+}
+@media screen and (max-width: 768px){ 
+   .review_list{
+        margin-left:5%;
+        
+    }
+  
+   
 }
 .review_list_in{
-	width: 20%;
-	height:30%;
-	margin-left:10%;
+	margin-left:5%;
+	/* width:30%; */
+/* 	position: absolute; */
+	float:left;	
+	margin-bottom:2%;
+	padding: 0;
+	
+	text-align: center;
 }
-
+.review_list_img{
+	position: relative;
+	width: 500px;
+	height: 500px;
+}
 /* @keyframese down{
     from{
         opacity: 0;
