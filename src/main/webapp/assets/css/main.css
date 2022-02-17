@@ -643,3 +643,39 @@ ul{
         opacity: 1;
     }
 } */
+.review_view{
+
+	text-align: center;
+	margin-top: 100px;
+	justify-content: center;
+	display: flex;
+}
+.review_view_all{
+
+	text-align: center;
+	width: 800px;
+	height: max-content;
+	border: solid black 1px;
+}
+.review_view_img{
+	width: 800px;
+	height: 500px;
+}
+.near_review{
+	text-align: center;
+	margin-top: 50px;
+	justify-content: center;
+	display: flex;	
+}
+.choice_review{
+	margin:0 auto;
+	margin-top: 30px;
+	justify-content: space-between;
+		display: flex;
+		width: 800px;
+
+}
+.near_review_list{
+	width: 350px;
+	height: 200px;	
+}
