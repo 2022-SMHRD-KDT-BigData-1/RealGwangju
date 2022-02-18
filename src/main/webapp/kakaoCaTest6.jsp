@@ -130,6 +130,7 @@ $("#category li .p").click(function(){
     console.log(mapBounds);
     removeMarker();
     posistions = [];
+    pMarker();
 
     
 });
@@ -341,6 +342,59 @@ function accMarker(){
 	});
 
 }
+
+// 주차장 마커
+function pMarker(){
+	
+	$.ajax({
+		url : "mapPCon",
+		dataType : "json", 
+		success:function(result){
+			console.log("주차장 불러오기 성공");
+			for(let i = 0; i<result.length; i++){
+				var data = JSON.parse(result[i]);	
+				posistions.push([data.p_add, data.p_name, data.p_tel]);
+			}
+			for(let i = 0; i<posistions.length; i++){
+			geocoder.addressSearch(posistions[i], function(result, status) {
+				if (status === kakao.maps.services.Status.OK) {
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);
+					
+					// 마커를 지도에 표시합니다.
+					marker.setMap(map);
+					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
+				}
+			});
+			}
+			
+		},
+		error : function(){
+			console.log("주차장 불러오기 실패");
+		}
+	});
+
+}
+
 
 
 //지도 위에 표시되고 있는 마커를 모두 제거합니다
