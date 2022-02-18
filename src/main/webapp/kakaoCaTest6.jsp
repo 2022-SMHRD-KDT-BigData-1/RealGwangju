@@ -160,7 +160,7 @@ function tsMarker(){
 							position: coords,
 						});
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3) + '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
 				    	 });
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -212,7 +212,7 @@ function resMarker(){
 							position: coords,
 						});
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3) + '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
 				    	 });
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -264,7 +264,7 @@ function cfMarker(){
 							position: coords,
 						});
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3)+ '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
 				    	 });
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -315,7 +315,7 @@ function accMarker(){
 							position: coords,
 						});
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3) + '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
 				    	 });
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -366,7 +366,7 @@ function pMarker(){
 							position: coords,
 						});
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3) +'</div>'
 				    	 });
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
