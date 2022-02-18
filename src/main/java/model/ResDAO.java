@@ -55,7 +55,7 @@ public class ResDAO {
 		ArrayList<ResDTO> list = new ArrayList<ResDTO>();
 		connect();
 		
-		sql = "select res_name, res_tel, res_time, res_ct, res_add, res_img, res_info from res";
+		sql = "select res_name, res_tel, res_time, res_ct, res_add, res_img, res_info, res_lat, res_lng from res";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -70,8 +70,10 @@ public class ResDAO {
 				String res_add = rs.getString(5);
 				String res_img = rs.getString(6);
 				String res_info = rs.getString(7);
+				String res_lat = rs.getString(8);
+				String res_lng = rs.getString(9);
 				
-				ResDTO res = new ResDTO(res_name, res_tel, res_time, res_ct, res_add, 0, res_img, res_info, 0);
+				ResDTO res = new ResDTO(res_name, res_tel, res_time, res_ct, res_add, 0, res_img, res_info, 0, res_lat, res_lng);
 				list.add(res);
 				
 			}

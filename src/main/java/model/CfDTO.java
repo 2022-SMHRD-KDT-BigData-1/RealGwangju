@@ -16,8 +16,9 @@ public class CfDTO {
    private String cf_add;
    private int cf_loc;
    private String cf_img;
-   
    private int cf_views;
+   private String cf_lat;
+   private String cf_lng;
    
    CfDTO(String cf_name, String cf_img){
       this.cf_name = cf_name;

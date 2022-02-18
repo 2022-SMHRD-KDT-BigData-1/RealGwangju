@@ -196,41 +196,38 @@ function resMarker(){
 		url : "mapResCon",
 		dataType : "json", 
 		success:function(result){
-			console.log("식당 불러오기 성공");
+			//console.log("식당 불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.res_add, data.res_name, data.res_tel, data.res_time, data.res_img]);
+				posistions.push([data.res_lat, data.res_lng, data.res_add, data.res_name, data.res_tel, data.res_time, data.res_img]);
 			}
 			for(let i = 0; i<posistions.length; i++){
-			geocoder.addressSearch(posistions[i], function(result, status) {
-				if (status === kakao.maps.services.Status.OK) {
-					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
-							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
-						var marker = new kakao.maps.Marker({
-							position: coords,
-						});
-						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3) + '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
-				    	 });
-						(function(marker, infowindow){
-						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-						   	 infowindow.open(map, marker);
-						   });
-						    
-						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-						   	 infowindow.close();
-						   });
-						    })(marker,infowindow);
-					
-					// 마커를 지도에 표시합니다.
-					marker.setMap(map);
-					markers.push(marker);
-					console.log(posistions[i].slice(1,2), coords);
-					}
+				if((mapBounds.ha < posistions[i].slice(1,2) && mapBounds.oa > posistions[i].slice(1,2)) && 
+						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
+					var marker = new kakao.maps.Marker({
+						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+					});
+					var infowindow = new kakao.maps.InfoWindow({
+			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
+			    	 });
+					(function(marker, infowindow){
+					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+					   	 infowindow.open(map, marker);
+					   });
+					    
+					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+					   	 infowindow.close();
+					   });
+					    })(marker,infowindow);
+				
+				// 마커를 지도에 표시합니다.
+				marker.setMap(map);
+				markers.push(marker);
+				//console.log(posistions[i].slice(1,2));
+				console.log("식당 불러오기 성공");
 				}
-			});
+				
+			
 			}
 			
 		},
@@ -248,45 +245,42 @@ function cfMarker(){
 		url : "mapCfCon",
 		dataType : "json", 
 		success:function(result){
-			console.log("불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.cf_add, data.cf_name, data.cf_tel, data.cf_time, data.cf_img]);
+				posistions.push([data.cf_lat, data.cf_lng, data.cf_add, data.cf_name, data.cf_tel, data.cf_time, data.cf_img]);
 			}
 			for(let i = 0; i<posistions.length; i++){
-			geocoder.addressSearch(posistions[i], function(result, status) {
-				if (status === kakao.maps.services.Status.OK) {
-					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
-							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
-						var marker = new kakao.maps.Marker({
-							position: coords,
-						});
-						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(1,2)+'<br>'+ '주소 : ' +posistions[i].slice(0,1)+'<br>'+'전화번호 : ' +posistions[i].slice(2,3)+ '<br>'+'영업시간 : ' +posistions[i].slice(3,4) + '</div>'
-				    	 });
-						(function(marker, infowindow){
-						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-						   	 infowindow.open(map, marker);
-						   });
-						    
-						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-						   	 infowindow.close();
-						   });
-						    })(marker,infowindow);
-					
-					// 마커를 지도에 표시합니다.
-					marker.setMap(map);
-					markers.push(marker);
-					console.log(posistions[i].slice(1,2), coords);
-					}
+				if((mapBounds.ha < posistions[i].slice(1,2) && mapBounds.oa > posistions[i].slice(1,2)) && 
+						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
+					var marker = new kakao.maps.Marker({
+						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+					});
+					var infowindow = new kakao.maps.InfoWindow({
+			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
+			    	 });
+					(function(marker, infowindow){
+					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+					   	 infowindow.open(map, marker);
+					   });
+					    
+					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+					   	 infowindow.close();
+					   });
+					    })(marker,infowindow);
+				
+				// 마커를 지도에 표시합니다.
+				marker.setMap(map);
+				markers.push(marker);
+				//console.log(posistions[i].slice(1,2));
+				console.log("카페 불러오기 성공");
 				}
-			});
+				
+			
 			}
+			
 		},
 		error : function(){
-			console.log("불러오기 실패");
+			console.log("카페 불러오기 실패");
 		}
 	});
 
