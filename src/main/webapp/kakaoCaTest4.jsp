@@ -173,7 +173,8 @@ function tsMarker(){
 					marker.setMap(map);
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
-					$("#start").append("<tr>" 
+					$("#start").append("<tr>"
+							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
@@ -229,6 +230,7 @@ function resMarker(){
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
 					$("#start").append("<tr>" 
+							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
@@ -284,6 +286,7 @@ function cfMarker(){
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
 					$("#start").append("<tr>" 
+							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
@@ -338,6 +341,7 @@ function accMarker(){
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
 					$("#start").append("<tr>" 
+							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
@@ -380,6 +384,7 @@ function setZoomable(zoomable) {
 <h1>위도, 경도 정보 불러오기</h1>
 <table border = "1" id="start">
 	<tr>
+		<td>개수</td>
 		<td>이름</td>
 		<td>위도</td>
 		<td>경도</td>
