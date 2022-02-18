@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리 맵</title>
+<title>Insert title here</title>
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
 <style>
@@ -92,28 +92,32 @@ var markers = [];
 //tsMarker();
 
 $("#category li .ts").click(function(){
-    console.log("관광지 클릭")
+    console.log("관광지 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];   
     tsMarker();
 });
 
 $("#category li .res").click(function(){
-    console.log("식당 클릭")
+    console.log("식당 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
 	
     
 });
 $("#category li .cafe").click(function(){
-    console.log("카페 클릭")
+    console.log("카페 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
     cfMarker();
 
 });
 $("#category li .accom").click(function(){
-    console.log("숙박 클릭")
+    console.log("숙박 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
     accMarker();
@@ -121,7 +125,8 @@ $("#category li .accom").click(function(){
     
 });
 $("#category li .p").click(function(){
-    console.log("주차장 클릭")
+    console.log("주차장 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
 
@@ -146,27 +151,33 @@ function tsMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-					var marker = new kakao.maps.Marker({
-						position: coords,
-					});
-					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-			    	 });
-					(function(marker, infowindow){
-					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-					   	 infowindow.open(map, marker);
-					   });
-					    
-					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-					   	 infowindow.close();
-					   });
-					    })(marker,infowindow);
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
+			
 		},
 		error : function(){
 			console.log("관광 불러오기 실패");
@@ -175,7 +186,7 @@ function tsMarker(){
 
 }
 
-// 카페 마커 (임시로 관광지 데이터 불러오기)
+// 카페 마커
 function cfMarker(){
 	$.ajax({
 		url : "mapCfCon",
@@ -191,25 +202,29 @@ function cfMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-					var marker = new kakao.maps.Marker({
-						position: coords,
-					});
-					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-			    	 });
-					(function(marker, infowindow){
-					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-					   	 infowindow.open(map, marker);
-					   });
-					    
-					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-					   	 infowindow.close();
-					   });
-					    })(marker,infowindow);
-
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);;
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
@@ -238,25 +253,29 @@ function accMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-					var marker = new kakao.maps.Marker({
-						position: coords,
-					});
-					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-			    	 });
-					(function(marker, infowindow){
-					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-					   	 infowindow.open(map, marker);
-					   });
-					    
-					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-					   	 infowindow.close();
-					   });
-					    })(marker,infowindow);
-
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
