@@ -55,7 +55,7 @@ public class AccDAO {
 		ArrayList<AccDTO> list = new ArrayList<AccDTO>();
 		connect();
 		
-		sql = "select accom_name, accom_tel, accom_time, accom_add, accom_img from accom";
+		sql = "select accom_name, accom_tel, accom_time, accom_ct, accom_add, accom_img, accom_info from accom";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -66,10 +66,12 @@ public class AccDAO {
 				String accom_name = rs.getString(1);
 				String accom_tel = rs.getString(2);
 				String accom_time = rs.getString(3);
-				String accom_add = rs.getString(4);
-				String accom_img = rs.getString(5);
+				String accom_ct = rs.getString(4);
+				String accom_add = rs.getString(5);
+				String accom_img = rs.getString(6);
+				String accom_info = rs.getString(7);
 				
-				AccDTO acc = new AccDTO(accom_name, accom_tel, accom_time, null, accom_add, 0, accom_img, null, 0);
+				AccDTO acc = new AccDTO(accom_name, accom_tel, accom_time, accom_ct, accom_add, 0, accom_img, accom_info, 0);
 				list.add(acc);
 				
 			}

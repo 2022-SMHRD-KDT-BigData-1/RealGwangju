@@ -55,7 +55,7 @@ public class ParkDAO {
 		ArrayList<ParkDTO> list = new ArrayList<ParkDTO>();
 		connect();
 		
-		sql = "select p_name, p_tel, p_add from p";
+		sql = "select p_name, p_tel, p_ct, p_add from p";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -65,9 +65,10 @@ public class ParkDAO {
 			while(rs.next()) {
 				String p_name = rs.getString(1);
 				String p_tel = rs.getString(2);
-				String p_add = rs.getString(3);
+				String p_ct = rs.getString(3);
+				String p_add = rs.getString(4);
 				
-				ParkDTO p = new ParkDTO(p_name, p_tel, null, p_add, 0, 0);
+				ParkDTO p = new ParkDTO(p_name, p_tel, p_ct, p_add, 0, 0);
 				list.add(p);
 				
 			}
