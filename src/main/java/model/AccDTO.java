@@ -1,5 +1,4 @@
 package model;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // 모든 필드변수를 초기화하는 생성자 생성
 public class AccDTO {
 	private String acc_name;
-	
 	private String acc_tel;
 	private String acc_time;
 	private String acc_ct;

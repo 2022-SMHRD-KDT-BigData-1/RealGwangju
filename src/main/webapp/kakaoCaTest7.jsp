@@ -85,7 +85,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 
 var mapBounds = map.getBounds();
-
+var info = [];
 var Posistions = [];
 var markers = [];
 
@@ -130,6 +130,7 @@ $("#category li .p").click(function(){
     console.log(mapBounds);
     removeMarker();
     posistions = [];
+    pMarker();
 
     
 });
@@ -146,7 +147,8 @@ function tsMarker(){
 			console.log("관광 불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.ts_add, data.ts_name, data.ts_tel, data.ts_time, data.ts_img]);
+				posistions.push([data.ts_add, data.ts_name, data.ts_tel, data.ts_time, data.ts_img, data.ts_ct, data.ts_loc, data.ts_views]);
+				info.push([data.ts_info]);
 			}
 			for(let i = 0; i<posistions.length; i++){
 			geocoder.addressSearch(posistions[i], function(result, status) {
@@ -176,8 +178,16 @@ function tsMarker(){
 					$("#start").append("<tr>"
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
+							+ "<td>" + posistions[i].slice(2,3) + "</td>"
+							+ "<td>" + posistions[i].slice(3,4) + "</td>"
+							+ "<td>" + posistions[i].slice(5,6) + "</td>"
+							+ "<td>" + posistions[i].slice(0,1) + "</td>"
+							+ "<td>" + posistions[i].slice(6,7) + "</td>"
+							+ "<td>" + posistions[i].slice(4,5) + "</td>"
+							+ "<td>" + posistions[i].slice(7,8) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + info[i].slice(0,1) + "</td>"
 							+ "</tr>");
 					
 				}
@@ -202,7 +212,8 @@ function resMarker(){
 			console.log("식당 불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.res_add, data.res_name, data.res_tel, data.res_time, data.res_img]);
+				posistions.push([data.res_add, data.res_name, data.res_tel, data.res_time, data.res_img, data.res_ct, data.res_loc, data.res_views]);
+				info.push([data.res_info]);
 			}
 			for(let i = 0; i<posistions.length; i++){
 			geocoder.addressSearch(posistions[i], function(result, status) {
@@ -228,12 +239,20 @@ function resMarker(){
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
-					console.log(posistions[i].slice(1,2), coords);
-					$("#start").append("<tr>" 
+					console.log(data.res_name, coords);
+					$("#start").append("<tr>"
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
+							+ "<td>" + posistions[i].slice(2,3) + "</td>"
+							+ "<td>" + posistions[i].slice(3,4) + "</td>"
+							+ "<td>" + posistions[i].slice(5,6) + "</td>"
+							+ "<td>" + posistions[i].slice(0,1) + "</td>"
+							+ "<td>" + posistions[i].slice(6,7) + "</td>"
+							+ "<td>" + posistions[i].slice(4,5) + "</td>"
+							+ "<td>" + posistions[i].slice(7,8) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" +  + "</td>"
 							+ "</tr>");
 					
 				}
@@ -258,7 +277,7 @@ function cfMarker(){
 			console.log("불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.cf_add, data.cf_name, data.cf_tel, data.cf_time, data.cf_img]);
+				posistions.push([data.cf_add, data.cf_name, data.cf_tel, data.cf_time, data.cf_img, data.cf_ct, data.cf_loc, data.cf_views]);
 			}
 			for(let i = 0; i<posistions.length; i++){
 			geocoder.addressSearch(posistions[i], function(result, status) {
@@ -288,6 +307,13 @@ function cfMarker(){
 					$("#start").append("<tr>" 
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
+							+ "<td>" + posistions[i].slice(2,3) + "</td>"
+							+ "<td>" + posistions[i].slice(3,4) + "</td>"
+							+ "<td>" + posistions[i].slice(5,6) + "</td>"
+							+ "<td>" + posistions[i].slice(0,1) + "</td>"
+							+ "<td>" + posistions[i].slice(6,7) + "</td>"
+							+ "<td>" + posistions[i].slice(4,5) + "</td>"
+							+ "<td>" + posistions[i].slice(7,8) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
 							+ "</tr>");
@@ -314,7 +340,8 @@ function accMarker(){
 			console.log("숙박 불러오기 성공");
 			for(let i = 0; i<result.length; i++){
 				var data = JSON.parse(result[i]);	
-				posistions.push([data.acc_add, data.acc_name, data.acc_tel, data.acc_time, data.acc_img]);
+				posistions.push([data.acc_add, data.acc_name, data.acc_tel, data.acc_time, data.acc_img, data.acc_ct, data.acc_loc, data.acc_views]);
+				info.push([data.acc_info]);
 			}
 			for(let i = 0; i<posistions.length; i++){
 			geocoder.addressSearch(posistions[i], function(result, status) {
@@ -340,11 +367,81 @@ function accMarker(){
 					marker.setMap(map);
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
-					$("#start").append("<tr>" 
+					$("#start").append("<tr>"
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
+							+ "<td>" + posistions[i].slice(2,3) + "</td>"
+							+ "<td>" + posistions[i].slice(3,4) + "</td>"
+							+ "<td>" + posistions[i].slice(5,6) + "</td>"
+							+ "<td>" + posistions[i].slice(0,1) + "</td>"
+							+ "<td>" + posistions[i].slice(6,7) + "</td>"
+							+ "<td>" + posistions[i].slice(4,5) + "</td>"
+							+ "<td>" + posistions[i].slice(7,8) + "</td>"
 							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + info[i].slice(0,1) + "</td>"
+							+ "</tr>");
+					
+				}
+			});
+			}
+		},
+		error : function(){
+			console.log("숙박 불러오기 실패");
+		}
+	});
+
+}
+
+//주차장 마커
+function pMarker(){
+	$.ajax({
+		url : "mapPCon",
+		dataType : "json", 
+		success:function(result){
+			console.log("주차장 불러오기 성공");
+			for(let i = 0; i<result.length; i++){
+				var data = JSON.parse(result[i]);	
+				posistions.push([data.p_add, data.p_name, data.p_tel, data.p_ct, data.p_views]);
+				info.push([data.acc_info]);
+			}
+			for(let i = 0; i<posistions.length; i++){
+			geocoder.addressSearch(posistions[i], function(result, status) {
+				if (status === kakao.maps.services.Status.OK) {
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);
+					
+					// 마커를 지도에 표시합니다.
+					marker.setMap(map);
+					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					$("#start").append("<tr>"
+							+ "<td>" + i + "</td>"
+							+ "<td>" + posistions[i].slice(1,2) + "</td>"
+							+ "<td>" + posistions[i].slice(2,3) + "</td>"
+							+ "<td>" + posistions[i].slice(3,4) + "</td>"
+							+ "<td>" + posistions[i].slice(5,6) + "</td>"
+							+ "<td>" + posistions[i].slice(0,1) + "</td>"
+							+ "<td>" + posistions[i].slice(6,7) + "</td>"
+							+ "<td>" + posistions[i].slice(4,5) + "</td>"
+							+ "<td>" + posistions[i].slice(7,8) + "</td>"
+							+ "<td>" + coords.La + "</td>"
+							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + info[i].slice(0,1) + "</td>"
 							+ "</tr>");
 					
 				}
@@ -386,8 +483,17 @@ function setZoomable(zoomable) {
 	<tr>
 		<td>개수</td>
 		<td>이름</td>
+		<td>전화번호</td>
+		<td>영업시간</td>
+		<td>분야</td>
+		<td>주소</td>
+		<td>지역</td>
+		<td>이미지 주소</td>
+		<td>조회수</td>
 		<td>위도</td>
 		<td>경도</td>
+		<td>설명</td>
+		
 	</tr>
 </table>	
 	
