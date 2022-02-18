@@ -92,28 +92,32 @@ var markers = [];
 //tsMarker();
 
 $("#category li .ts").click(function(){
-    console.log("관광지 클릭")
+    console.log("관광지 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];   
     tsMarker();
 });
 
 $("#category li .res").click(function(){
-    console.log("식당 클릭")
+    console.log("식당 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
 	
     
 });
 $("#category li .cafe").click(function(){
-    console.log("카페 클릭")
+    console.log("카페 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
     cfMarker();
 
 });
 $("#category li .accom").click(function(){
-    console.log("숙박 클릭")
+    console.log("숙박 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
     accMarker();
@@ -121,7 +125,8 @@ $("#category li .accom").click(function(){
     
 });
 $("#category li .p").click(function(){
-    console.log("주차장 클릭")
+    console.log("주차장 클릭");
+    console.log(mapBounds);
     removeMarker();
     posistions = [];
 
@@ -146,17 +151,22 @@ function tsMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
 					var marker = new kakao.maps.Marker({
 						position: coords,
 						clickable: true
 					});
-
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
+			
 		},
 		error : function(){
 			console.log("관광 불러오기 실패");
@@ -181,15 +191,18 @@ function cfMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
 					var marker = new kakao.maps.Marker({
 						position: coords,
 						clickable: true
 					});
-
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
 					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
@@ -218,14 +231,18 @@ function accMarker(){
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
 					var marker = new kakao.maps.Marker({
 						position: coords,
 						clickable: true
 					});
-
+					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
 				}
 			});
 			}
