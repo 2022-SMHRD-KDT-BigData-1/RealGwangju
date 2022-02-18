@@ -152,7 +152,7 @@ function tsMarker(){
 			geocoder.addressSearch(posistions[i], function(result, status) {
 				if (status === kakao.maps.services.Status.OK) {
 					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+					console.log(coords);
 					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
 							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
 						var marker = new kakao.maps.Marker({
@@ -174,7 +174,6 @@ function tsMarker(){
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
 					markers.push(marker);
-					console.log(posistions[i].slice(1,2), coords);
 					}
 				}
 			});
