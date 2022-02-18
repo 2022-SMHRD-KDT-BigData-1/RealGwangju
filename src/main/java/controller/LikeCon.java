@@ -33,6 +33,7 @@ public class LikeCon implements iCommand {
 
 		String id = member.getMem_id();
 		String ts_name = request.getParameter("ts_name");
+//		String kind = request.getParameter("kind");
 		LikeDAO dao = new LikeDAO();
 		int likeIsDuplicate = dao.like_duplicate_check(id, ts_name);
 		if (likeIsDuplicate > 0) {

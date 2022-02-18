@@ -115,4 +115,21 @@ public class ReviewDAO {
 		}
 		return reviewList;
 	}
+	public ArrayList<ReviewDTO> selectAllReview() {
+		connect();
+		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		sql = "select visit_name, mem_nick, re_title, re_content, re_date from review";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				reviewList.add(new ReviewDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return reviewList;
+	}
 }

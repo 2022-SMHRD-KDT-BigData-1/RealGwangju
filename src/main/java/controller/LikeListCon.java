@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.LikeDAO;
 import model.MemberDTO;
+import model.ResDTO;
 import model.TsDTO;
 import model.VisitDAO;
 
@@ -39,13 +40,12 @@ public class LikeListCon implements iCommand {
 		LikeDAO dao = new LikeDAO();
 		ArrayList<String> likeNameList = dao.selectLikeList(id);
 		VisitDAO visitDao = new VisitDAO();
+		
 		ArrayList<TsDTO> likeList = new ArrayList<TsDTO>();
 		for(int i = 0 ; i<likeNameList.size(); i++) {
-			likeList.add(visitDao.selectTsInfo(likeNameList.get(i)));
+			likeList.add(visitDao.selectAllInfo(likeNameList.get(i)));
 		}
-		
-		
-		
+
 //		if(likeList ==null) {
 //			System.out.println("찜목록 비어있음");
 //		}

@@ -42,7 +42,7 @@
 	<!-- 사진3개만가능 -->
 	<script type="text/javascript">
 		$('.gbtn').click(function(){
-			location.href = 'LikeCon.do?res_name=${resInfo.res_name}';
+			location.href = 'LikeCon.do?ts_name=${resInfo.res_name}';
 		});
 		// 조정버튼
 		let a = 1;

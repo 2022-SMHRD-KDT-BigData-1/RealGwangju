@@ -63,7 +63,7 @@
 				<A href="ts_view.html">추천</A>
 			</div>
 			<div class="col-md-2 b">
-			<a href="review.jsp">리뷰</a></div>
+			<a href="ReviewCon.do">리뷰</a></div>
 			<!-- <div class="col-md-1 b">메뉴</div> -->
 
 		</div>
