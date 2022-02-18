@@ -32,7 +32,9 @@
    var holy = new Array();
    var listData = [ ['광주광역시 북구 무등로 1514-35','ㄱㅇㅇㄴ'], ['광주광역시 광산구 하남대로248-10','ㅇㅅㅈ']];
    
-      
+  
+var markers = [];
+
    $.ajax({
       url : "mapCon",
       dataType : "json", // dataType 넘겨받을 때의 데이터 타입을 약속
@@ -42,6 +44,8 @@
          //alert("성공");
          console.log("불러오기 성공");
          // 받아온 데이터를 테이블에 추가해주세요!
+         
+
          for(let i = 0; i<result.length; i++){
             // 현재 배열의 원소를 사용가능한 객체로 바꿔준다음에
             var data = JSON.parse(result[i]);   
@@ -54,13 +58,22 @@
          geocoder.addressSearch(positions[i], function(result, status) {
             if (status === kakao.maps.services.Status.OK) {
                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					
+					for (var key in MARKER_SPRITE_POSITION) {
 
-               var marker = new kakao.maps.Marker({
-                  position: coords,
-               });
-
-               // 마커를 지도에 표시합니다.
-               marker.setMap(map);
+					    var position = new kakao.maps.LatLng(
+					        southWest.lat() + latSpan * Math.random(),
+					        southWest.lng() + lngSpan * Math.random());
+					    
+					    var marker = new kakao.maps.Marker({
+			                  position: coords,
+			                  title: key
+			               });
+			               markers.push(marker);
+			               // 마커를 지도에 표시합니다.
+			               marker.setMap(map);
+					};
+               
 
                // 인포윈도우를 생성합니다
                var infowindow = new kakao.maps.InfoWindow({
@@ -79,17 +92,23 @@
             }
          });
          }
+         setZoomable(false);
       },
       error : function(){
          console.log("불러오기 실패");
       }
    });
 
-      console.log(positions[0]);
    
+   function setDraggable(draggable) {
+	    // 마우스 드래그로 지도 이동 가능여부를 설정합니다
+	    map.setDraggable(false);    
+	}
    
-   
-   
+   function setZoomable(zoomable) {
+	    // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+	    map.setZoomable(false);    
+	}
       // 주소로 좌표를 검색합니다
    // foreach loop
    //positions.forEach(function(addr) {
