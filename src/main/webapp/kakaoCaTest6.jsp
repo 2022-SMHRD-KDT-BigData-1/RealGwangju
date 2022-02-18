@@ -104,6 +104,7 @@ $("#category li .res").click(function(){
     console.log(mapBounds);
     removeMarker();
     posistions = [];
+    resMarker();
 	
     
 });
@@ -174,6 +175,48 @@ function tsMarker(){
 	});
 
 }
+
+// 식당 마커
+function resMarker(){
+	
+	$.ajax({
+		url : "mapResCon",
+		dataType : "json", 
+		success:function(result){
+			console.log("식당 불러오기 성공");
+			for(let i = 0; i<result.length; i++){
+				var data = JSON.parse(result[i]);	
+				posistions.push([data.res_add, data.res_name, data.res_tel, data.res_time, data.res_img]);
+			}
+			for(let i = 0; i<posistions.length; i++){
+			geocoder.addressSearch(posistions[i], function(result, status) {
+				if (status === kakao.maps.services.Status.OK) {
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
+							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
+					var marker = new kakao.maps.Marker({
+						position: coords,
+						clickable: true
+					});
+					
+					// 마커를 지도에 표시합니다.
+					marker.setMap(map);
+					markers.push(marker);
+					console.log(posistions[i].slice(1,2), coords);
+					}
+				}
+			});
+			}
+			
+		},
+		error : function(){
+			console.log("식당 불러오기 실패");
+		}
+	});
+	
+}
+
 
 // 카페 마커
 function cfMarker(){
