@@ -74,7 +74,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = {
        center: new kakao.maps.LatLng(35.14991, 126.91984), // 지도의 중심좌표
-       level: 5 // 지도의 확대 레벨
+       level: 3 // 지도의 확대 레벨
    };
 
 // 지도를 생성합니다    
@@ -134,7 +134,8 @@ $("#category li .p").click(function(){
     
 });
 
-	
+setDraggable(false);
+setZoomable(false);
 // 관광지 마커
 function tsMarker(){
 	
@@ -195,10 +196,21 @@ function resMarker(){
 
 					if((mapBounds.ha < coords.La && mapBounds.oa > coords.La) && 
 							(mapBounds.qa < coords.Ma && mapBounds.pa > coords.Ma)){
-					var marker = new kakao.maps.Marker({
-						position: coords,
-						clickable: true
-					});
+						var marker = new kakao.maps.Marker({
+							position: coords,
+						});
+						var infowindow = new kakao.maps.InfoWindow({
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				    	 });
+						(function(marker, infowindow){
+						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
+						   	 infowindow.open(map, marker);
+						   });
+						    
+						    kakao.maps.event.addListener(marker, 'mouseout' , function(){
+						   	 infowindow.close();
+						   });
+						    })(marker,infowindow);
 					
 					// 마커를 지도에 표시합니다.
 					marker.setMap(map);
@@ -306,7 +318,15 @@ function removeMarker() {
     markers = [];
 }
 
+function setDraggable(draggable) {
+    // 마우스 드래그로 지도 이동 가능여부를 설정합니다
+    map.setDraggable(false);    
+}
 
+function setZoomable(zoomable) {
+    // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+    map.setZoomable(false);    
+}
 
 
 
