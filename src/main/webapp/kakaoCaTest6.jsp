@@ -175,7 +175,7 @@ function tsMarker(){
 
 }
 
-// 카페 마커 (임시로 관광지 데이터 불러오기)
+// 카페 마커
 function cfMarker(){
 	$.ajax({
 		url : "mapCfCon",
