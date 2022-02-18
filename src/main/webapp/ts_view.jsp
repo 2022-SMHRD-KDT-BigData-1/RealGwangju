@@ -155,7 +155,7 @@
 									</p>
 									<P class="deleteandrebuild">
 										<button class="modify" type="submit">수정</button>
-										<button class="delete">x</button>
+										<button onclick="delete()" class="delete">x</button>
 									</P>
 								</li>
 							</ul>
@@ -196,10 +196,10 @@
 	</div>
 <script>
 	$('.modify').click(function(){
-		location.href = 'ModifyReviewCon.do?ts_name=${tsInfo.ts_name}';
+		location.href = 'ModifyReviewCon.do?visit_name=${tsInfo.ts_name}';
 	});
 	$('.delete').click(function(){
-		location.href = 'DeleteReviewCon.do?ts_name=${tsInfo.ts_name}';
+		location.href = 'DeleteReviewCon.do?visit_name=${tsInfo.ts_name}';
 	});
 </script>
 </body>

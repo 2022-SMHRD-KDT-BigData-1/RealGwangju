@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,15 +27,18 @@ public class Ts_viewCon implements iCommand {
 		String ts_name = request.getParameter("visit_name");
 		VisitDAO dao = new VisitDAO();
 		TsDTO tsInfo = dao.selectTsInfo(ts_name);
-		ReviewDAO reviewDao = new ReviewDAO();
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		
-		ReviewDTO review = new ReviewDTO();
-		review = reviewDao.selectReview(member.getMem_nick(), ts_name);
-
 		if (tsInfo != null) {
 			request.setAttribute("tsInfo", tsInfo);
-			request.setAttribute("review", review);
+			ReviewDAO reviewDao = new ReviewDAO();
+			MemberDTO member = (MemberDTO)session.getAttribute("member");
+			ArrayList<ReviewDTO> allReview =  reviewDao.selectAllReview(ts_name);
+			request.setAttribute("allReview", allReview);
+			if (member != null) {
+				ReviewDTO myReview = new ReviewDTO();
+				myReview = reviewDao.selectMyReview(member.getMem_nick(), ts_name);
+				request.setAttribute("myReview", myReview);
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ts_view.jsp");
 			dispatcher.forward(request, response);
 //			response.sendRedirect("ts_view.jsp");
