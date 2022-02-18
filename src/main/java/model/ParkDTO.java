@@ -7,5 +7,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 기본생성자 생성
 @AllArgsConstructor // 모든 필드변수를 초기화하는 생성자 생성
 public class ParkDTO {
-	private String park_name;
+	private String p_name;
+	private String p_tel;
+	private String p_ct;
+	private String p_add;
+	private int p_loc;
+	private int p_views;
+	
+	ParkDTO(String p_name){
+		this.p_name = p_name;
+	}
 }
