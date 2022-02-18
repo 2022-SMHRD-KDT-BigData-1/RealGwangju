@@ -15,13 +15,9 @@
 <title>검색창</title>
 <!-- <link rel="stylesheet" type="text/css" href="sub.css"> -->
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-<style>
-.dbdb {
-	border: 3px solid black;
-}
-</style>
+
 </head>
-<body>
+<body id="all-content">
 	<jsp:include page="topBar.jsp"></jsp:include>
 	<!-- 검색창 -->
 	<div class="cointainer" style="text-align: center;">
@@ -133,11 +129,14 @@
 	<div class="search_result">
 		<c:choose>
 			<c:when test="${!empty searchedTsList}">
-				<div class="dbdb">
-					<span style="text-align: left; margin-left: 200px;">관광지</span> <a
-						href="#"> <span style="text-align: left; margin-left: 200px;">+더보기</span>
-					</a>
-				</div>
+		
+				<p class="dbdb">
+					<span style="text-align: left; margin-left: 5%;">관광지</span>
+					 <span style="margin-right: 5%"><a href="#"> + 더보기</a></span>
+					
+				</p>
+				
+				<div class="gong">
 				<ul class="result_box">
 					<!-- 한칸을 area div로 묶음 -->
 					<c:forEach items="${searchedTsList}" var="ts" end="5">
@@ -154,16 +153,19 @@
 					</c:forEach>
 					<!-- 여기까지 1칸 -->
 				</ul>
-				<p>
+				</div>
+			
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${!empty searchedResList}">
-				<div class="dbdb">
-					<span style="text-align: left; margin-left: 200px;">음식점</span> <a
-						href="#"> <span style="text-align: left; margin-left: 200px;">+더보기</span>
-					</a>
-				</div>
+			
+				<p class="dbdb">
+					<span style="text-align: left; margin-left: 5%;">음식점</span>
+					 <span style="margin-right: 5%"><a href="#"> + 더보기</a></span>
+					
+				</p>
+				<div class="gong">
 				<ul class="result_box">
 					<!-- 한칸을 area div로 묶음 -->
 					<c:forEach items="${searchedResList}" var="res" end="5">
@@ -173,15 +175,17 @@
 								class="result_link"> <span> <img src="${res.res_img}"
 										class="inimg">
 								</span> <span class="intext"> <span>${res.res_name}</span> <!--  <span>설명이나
-											주소</span -->> <!-- 3칸까지 성공 --> <!-- <span>줄바꿈</span> -->
+											주소</span --> <!-- 3칸까지 성공 --> <!-- <span>줄바꿈</span> -->
 								</span>
 							</a></li>
 						</div>
 					</c:forEach>
 					<!-- 여기까지 1칸 -->
 				</ul>
-				<p>
+				
+			</div>
 			</c:when>
+			
 		</c:choose>
 		<c:choose>
 			<c:when test="${!empty searchedCfList}">
@@ -220,12 +224,12 @@
 
 
 		<!-- 검색탭 묶어서 -->
-
+<!-- 
 		<div class="search
 		_result2">
 			<button>1</button>
-			</p>
-		</div>
+			
+		</div> -->
 
 
 		<!-- 검샋 1 -->
