@@ -16,6 +16,8 @@ public class AccDTO {
 	private String acc_img;
 	private String acc_info;
 	private int acc_views;
+	private String acc_lat;
+	private String acc_lng;
 	
 	AccDTO(String acc_name, String acc_img){
 		this.acc_name = acc_name;
