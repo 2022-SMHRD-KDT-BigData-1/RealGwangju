@@ -73,6 +73,8 @@ create table ts(
     ts_img clob,
     ts_info clob,
     ts_views number(10) default 0,
+    ts_lat number(10),
+    ts_lng number(10),
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
