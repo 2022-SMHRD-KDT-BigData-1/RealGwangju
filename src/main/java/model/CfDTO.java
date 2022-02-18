@@ -1,3 +1,5 @@
+package model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ public class CfDTO {
    private String cf_add;
    private int cf_loc;
    private String cf_img;
-   private String cf_info;
+   
    private int cf_views;
    
    CfDTO(String cf_name, String cf_img){

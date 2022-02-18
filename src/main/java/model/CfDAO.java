@@ -50,29 +50,29 @@ public class CfDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public ArrayList<CfDTO> cfAddress(){
+
+	public ArrayList<CfDTO> cfAddress() {
 		ArrayList<CfDTO> list = new ArrayList<CfDTO>();
 		connect();
-		
+
 		sql = "select cf_name, cf_tel, cf_time, cf_ct, cf_add, cf_img from cf";
-		
+
 		try {
 			psmt = conn.prepareStatement(sql);
-			
+
 			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				String cf_name = rs.getString(1);
 				String cf_tel = rs.getString(2);
 				String cf_time = rs.getString(3);
 				String cf_ct = rs.getString(4);
 				String cf_add = rs.getString(5);
 				String cf_img = rs.getString(6);
-				
+
 				CfDTO cf = new CfDTO(cf_name, cf_tel, cf_time, cf_ct, cf_add, 0, cf_img, 0);
 				list.add(cf);
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,5 +81,5 @@ public class CfDAO {
 		}
 		return list;
 	}
-	
+
 }
