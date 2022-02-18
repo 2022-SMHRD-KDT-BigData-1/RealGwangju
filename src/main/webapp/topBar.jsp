@@ -24,7 +24,7 @@
 			<div class="col-md-1">
 				<a href="main.jsp">홈</a>
 			</div>
-			<div class="col-md-1">헤헤</div>
+			<div class="col-md-1"></div>
 			<c:choose>
 				<c:when test="${empty member}">
 					<div class="col-md-3" style="text-align: right;">
@@ -35,7 +35,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div class="col-md-1" style="text-align: left;">
+					<div class="col-md-3" style="text-align: right;">
 						<a href="logout.jsp">로그아웃</a>
 					</div>
 				</c:otherwise>
@@ -62,8 +62,9 @@
 			<div class="col-md-1 b">
 				<A href="ts_view.html">추천</A>
 			</div>
-			<div class="col-md-1 b">메뉴</div>
-			<div class="col-md-1 b">메뉴</div>
+			<div class="col-md-2 b">
+			<a href="review.jsp">리뷰</a></div>
+			<!-- <div class="col-md-1 b">메뉴</div> -->
 
 		</div>
 		  <!-- 줄였을때 네비게이션바 -->

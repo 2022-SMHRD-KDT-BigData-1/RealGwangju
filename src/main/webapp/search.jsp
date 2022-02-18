@@ -87,7 +87,7 @@
             </div>
          
         </div>
-      
+
             <div class="none">
                 <img src="img/other/dot.png" style="height: 200px; width: 200px;">
                 <h1>검색을 해주세요</h1>
@@ -122,21 +122,32 @@
                     <!-- 여기까지 1칸 -->
                   <%} %>      
                    </ul>
-                   <div>
-                      <button>1</button>
-                   </div>
-                
+                   <p>
+						<button>1</button>
+                   </p>
                 </div>
+                
+                
                	<!-- 검샋 1 -->
             </div>     
       
         <script>
-           
-
+    
+		/* let a= "v"; */
             $('button.search_button').click(function(){
+            	 let a = $('input[name=search]').val() ;
+            	alert(a);
                 $('.none').css('opacity',0);
-                $('.search_result2').css('opacity',1);
-                $('.area').css('pointer-events','auto');
+                if(a=="v"){
+                	$('.search_result2').css('opacity',1);
+                	/* 이걸 투명도 */
+                    $('.area').css('pointer-events','auto');
+                }
+                else{
+                	$('.search_result1').css('opacity',1);
+                    $('.area').css('pointer-events','auto');
+                }
+                
             })
         </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/

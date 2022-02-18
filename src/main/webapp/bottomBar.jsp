@@ -15,12 +15,27 @@
 </head>
 <body>
 			<div class="container3 bottom-text">
-				<div class="col-md-2"></div>
-				<div class="col-md-8" style="text-align: center;">전화번호?</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-				<div class="col-md-8" style="font-size: 20px;">010-1111-1111</div>
-				<div class="col-md-2"></div>
+			
+				<div class="row btm-text-can">
+					<div class="col-md-12"></div>
+					<!--  1wnf-->
+					<div class="col-md-2"></div>
+						<div class="col-md-2"> 전화번호</div>
+						<div class="col-md-8"> </div>
+				<!--  1wnf-->
+					<div class="col-md-2"></div>
+						<div class="col-md-2"> 010-0000-1111</div>
+						<div class="col-md-8"> </div>
+							<!--  1wnf-->
+					<div class="col-md-2"></div>
+						<div class="col-md-2"><a href="https://www.smhrd.or.kr"> 스마트인재개발원</a> </div>
+						<div class="col-md-8"> </div>
+				<!--  1wnf-->
+					<div class="col-md-2"></div>
+						<div class="col-md-2"><a href="https://www.smhrd.or.kr"> https://www.smhrd.or.kr</a></div>
+						<div class="col-md-8"> </div>
+					
+				</div>
 			</div>
 </body>
 </html>
