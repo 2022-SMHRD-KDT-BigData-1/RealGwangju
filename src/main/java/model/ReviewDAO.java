@@ -47,7 +47,7 @@ public class ReviewDAO {
 	public int writeReview(String visit_name, String nick, String title, String content) {
 		connect();
 		try {
-			sql = "insert into review values(review_re_num_seq.nextval,?,?,?,?)";
+			sql = "insert into review(re_num, visit_name, mem_nick, re_title, re_content) values(review_re_num_seq.nextval,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, visit_name);
 			psmt.setString(2, nick);
@@ -61,10 +61,25 @@ public class ReviewDAO {
 		}
 		return cnt;
 	}
-
-	public ReviewDTO selectReview(String visit_name, String mem_nick) {
+	public int deleteReview(String visit_name, String mem_nick) {
 		connect();
-		ReviewDTO review = null;
+		try {
+			sql = "delete from review where visit_name=? and mem_nick=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, visit_name);
+			psmt.setString(2, mem_nick);
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
+	public ReviewDTO selectMyReview(String visit_name, String mem_nick) {
+		connect();
+		ReviewDTO myReview = null;
 		sql = "select re_title, re_content, re_date from review where mem_nick=? and visit_name=?";
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -72,36 +87,26 @@ public class ReviewDAO {
 			psmt.setString(2, mem_nick);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				review = new ReviewDTO(
-						visit_name,
-						mem_nick,
-						rs.getString(1),
-						rs.getString(2),
-						rs.getString(3)
-						);
+				myReview = new ReviewDTO(visit_name, mem_nick, rs.getString(1), rs.getString(2), rs.getString(3));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return review;
+		return myReview;
 	}
-	public ArrayList<ReviewDTO> selectAllReview() {
+
+	public ArrayList<ReviewDTO> selectAllReview(String visit_name) {
 		connect();
-		ArrayList<ReviewDTO> reviewList = null;
-		sql = "select visit_name, mem_nick, re_title, re_content, re_date from review";
+		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+		sql = "select mem_nick, re_title, re_content, re_date from review where visit_name=?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, visit_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				reviewList.add(new ReviewDTO(
-						rs.getString(1),
-						rs.getString(2),
-						rs.getString(3),
-						rs.getString(4),
-						rs.getString(5)
-						));
+				reviewList.add(new ReviewDTO(visit_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

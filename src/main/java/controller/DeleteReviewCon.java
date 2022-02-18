@@ -11,32 +11,30 @@ import javax.servlet.http.HttpSession;
 import model.MemberDTO;
 import model.ReviewDAO;
 
-public class WriteReviewCon implements iCommand {
+public class DeleteReviewCon implements iCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		//아이디는 받아와서 저장해야지 날짜는 안넣어도 저장되나?
 		HttpSession session = request.getSession();
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		String visit_name = request.getParameter("visit_name");
 		String mem_nick = member.getMem_nick();
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		
-		ReviewDAO dao = new ReviewDAO();
-		int cnt = dao.writeReview(visit_name, mem_nick, title, content);
 
+		ReviewDAO dao = new ReviewDAO();
+		int cnt = dao.deleteReview(visit_name, mem_nick);
+		System.out.println(cnt);
 		if (cnt > 0) {
 			out.print("<script>");
-			out.print("alert('리뷰 작성 완료!');");
+			out.print("alert('리뷰 삭제 완료!');");
 			out.print("location.href = document.referrer;");
+//			out.print("history.back();");
 //			out.print("location.reload();");
 			out.print("</script>");
 //			response.sendRedirect("main.jsp");
 		} else {
 			out.print("<script>");
-			out.print("alert('리뷰 작성 실패');");
+			out.print("alert('리뷰 삭제 실패');");
 			out.print("history.back();");
 			out.print("</script>");
 		}

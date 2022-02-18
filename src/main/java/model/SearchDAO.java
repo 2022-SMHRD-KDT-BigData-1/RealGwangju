@@ -45,19 +45,17 @@ public class SearchDAO {
 	}
 
 	public ArrayList<TsDTO> search_ts(String search_word) {
-		
+
 		connect();
 		ArrayList<TsDTO> searchedTsList = new ArrayList<TsDTO>();
 		try {
 			sql = "select ts_name, ts_img from ts where ts_name like ? or ts_info like ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%"+search_word+"%");
-			psmt.setString(2, "%"+search_word+"%");
+			psmt.setString(1, "%" + search_word + "%");
+			psmt.setString(2, "%" + search_word + "%");
 			rs = psmt.executeQuery();
-			while(rs.next()) {
-				searchedTsList.add(
-						new TsDTO(rs.getString("ts_name"), rs.getString("ts_img"))
-						);
+			while (rs.next()) {
+				searchedTsList.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,20 +64,19 @@ public class SearchDAO {
 		}
 		return searchedTsList;
 	}
+
 	public ArrayList<ResDTO> search_res(String search_word) {
-		
+
 		connect();
 		ArrayList<ResDTO> searchedResList = new ArrayList<ResDTO>();
 		try {
 			sql = "select res_name, res_img from res where res_name like ? or res_info like ?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%"+search_word+"%");
-			psmt.setString(2, "%"+search_word+"%");
+			psmt.setString(1, "%" + search_word + "%");
+			psmt.setString(2, "%" + search_word + "%");
 			rs = psmt.executeQuery();
-			while(rs.next()) {
-				searchedResList.add(
-						new ResDTO(rs.getString("res_name"), rs.getString("res_img"))
-						);
+			while (rs.next()) {
+				searchedResList.add(new ResDTO(rs.getString("res_name"), rs.getString("res_img")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,5 +84,25 @@ public class SearchDAO {
 			close();
 		}
 		return searchedResList;
+	}
+
+	public ArrayList<CfDTO> search_cf(String search_word) {
+
+		connect();
+		ArrayList<CfDTO> searchedCfList = new ArrayList<CfDTO>();
+		try {
+			sql = "select cf_name, cf_img from cf where cf_name like ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%" + search_word + "%");
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				searchedCfList.add(new CfDTO(rs.getString("cf_name"), rs.getString("cf_img")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return searchedCfList;
 	}
 }

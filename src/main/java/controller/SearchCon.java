@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CfDTO;
 import model.ResDTO;
 import model.SearchDAO;
 import model.TsDTO;
@@ -21,10 +22,12 @@ public class SearchCon implements iCommand {
 		SearchDAO dao = new SearchDAO();
 		ArrayList<TsDTO> searchedTsList = dao.search_ts(search_word);
 		ArrayList<ResDTO> searchedResList = dao.search_res(search_word);
+		ArrayList<CfDTO> searchedCfList = dao.search_cf(search_word);
 		
 //			세션에 넣는것보다 포워드로 일회용으로 보여주는게 좋을듯
 			request.setAttribute("searchedTsList", searchedTsList);
 			request.setAttribute("searchedResList", searchedResList);
+			request.setAttribute("searchedCfList", searchedCfList);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 			dispatcher.forward(request, response);
 			

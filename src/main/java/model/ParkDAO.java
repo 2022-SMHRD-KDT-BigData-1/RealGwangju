@@ -55,7 +55,7 @@ public class ParkDAO {
 		ArrayList<ParkDTO> list = new ArrayList<ParkDTO>();
 		connect();
 		
-		sql = "select p_name, p_tel, p_add, from p";
+		sql = "select p_name, p_tel, p_add from p";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
