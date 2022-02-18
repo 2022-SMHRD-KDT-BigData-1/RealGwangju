@@ -58,8 +58,7 @@ public class VisitDAO {
 				psmt.setString(1, ts_name);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-							rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
 				}
 			}
 
@@ -85,18 +84,82 @@ public class VisitDAO {
 				psmt.setString(1, res_name);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					res = new ResDTO(res_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-							rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+					res = new ResDTO(res_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
 				}
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		
+
 		return res;
+	}
+	public CfDTO selectCfInfo(String cf_name) {
+		connect();
+		CfDTO cf = null;
+		try {
+			String plusViewsSql = "update cf set cf_views = cf_views+1 where cf_name=?";
+			psmt = conn.prepareStatement(plusViewsSql);
+			psmt.setString(1, cf_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				String getCfInfoSql = "select cf_tel, cf_time, cf_ct, cf_add, cf_loc, cf_img, cf_views from cf where cf_name=?";
+				psmt = conn.prepareStatement(getCfInfoSql);
+				psmt.setString(1, cf_name);
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					cf = new CfDTO(cf_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return cf;
+	}
+
+	public TsDTO selectAllInfo(String ts_name) {
+		connect();
+		TsDTO ts = null;
+		try {
+			String getTsInfoSql = "select ts_img, ts_info from ts where ts_name=?";
+			psmt = conn.prepareStatement(getTsInfoSql);
+			psmt.setString(1, ts_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2));
+			} else {
+				String getResInfoSql = "select res_img, res_info from res where res_name=?";
+				psmt = conn.prepareStatement(getResInfoSql);
+				psmt.setString(1, ts_name);
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2));
+				} else {
+					String getCfInfoSql = "select cf_img, cf_ct from cf where cf_name=?";
+					psmt = conn.prepareStatement(getCfInfoSql);
+					psmt.setString(1, ts_name);
+					rs = psmt.executeQuery();
+					if (rs.next()) {
+						ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2));
+					} else {
+
+					}
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return ts;
 	}
 
 	public ArrayList<TsDTO> selectRank10() {
@@ -104,13 +167,11 @@ public class VisitDAO {
 		ArrayList<TsDTO> tsRank10 = new ArrayList<TsDTO>();
 		try {
 			String getTsInfoSql = "select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10";
-			
+
 			psmt = conn.prepareStatement(getTsInfoSql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				tsRank10.add(
-						new TsDTO(rs.getString("ts_name"), rs.getString("ts_img"))
-						);
+				tsRank10.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
 			}
 
 		} catch (SQLException e) {
@@ -121,6 +182,5 @@ public class VisitDAO {
 
 		return tsRank10;
 	}
-
 
 }

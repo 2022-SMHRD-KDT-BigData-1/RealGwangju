@@ -22,5 +22,10 @@ public class TsDTO {
 			this.ts_name = ts_name;
 			this.ts_img = ts_img;
 		}
+		TsDTO(String ts_name, String ts_img, String ts_info){
+			this.ts_name = ts_name;
+			this.ts_img = ts_img;
+			this.ts_info= ts_info;
+		}
 		
 	}

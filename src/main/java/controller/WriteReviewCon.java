@@ -24,6 +24,7 @@ public class WriteReviewCon implements iCommand {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		
 		ReviewDAO dao = new ReviewDAO();
 		int cnt = dao.writeReview(visit_name, mem_nick, title, content);
 

@@ -42,7 +42,7 @@
 	<!-- 사진3개만가능 -->
 	<script type="text/javascript">
 		$('.gbtn').click(function(){
-			location.href = 'LikeCon.do?ts_name=${tsInfo.ts_name}';
+			location.href = 'LikeCon.do?ts_name=${tsInfo.ts_name}&kind=?ts';
 		});
 		// 조정버튼
 		let a = 1;
@@ -134,8 +134,9 @@
 								<form action="WriteReviewCon.do?visit_name=${tsInfo.ts_name}" method="post">
 									<textarea class="texttitle" name="title" placeholder="제목을 작성해주세요"></textarea>
 									<textarea class="textin" name ="content" placeholder="리뷰를 작성해주세요"></textarea>
+									<input type="file" name="fileName" value="이미지 첨부" style="width: 75%; margin-left: 10%;">
 									<!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
-									<button class="textinbtn" type="submit">작성</button>
+									<button class="textinbtn" type="submit" style="height: 60px; width: 75px; font-size: 30px;">작성</button>
 								</form>
 							</div>
 						</c:when>

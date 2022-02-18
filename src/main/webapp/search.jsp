@@ -132,7 +132,7 @@
 		
 				<p class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">관광지</span>
-					 <span style="margin-right: 5%"><a href="#"> + 더보기</a></span>
+					 <span style="margin-right: 5%"><a href="#" class="">(${searchedTsList.size()})　+더보기</a></span>
 					
 				</p>
 				
@@ -162,7 +162,7 @@
 			
 				<p class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">음식점</span>
-					 <span style="margin-right: 5%"><a href="#"> + 더보기</a></span>
+					 <span style="margin-right: 5%"><a href="#">(${searchedResList.size()})　+더보기</a></span>
 					
 				</p>
 				<div class="gong">
@@ -191,7 +191,7 @@
 			<c:when test="${!empty searchedCfList}">
 				<div class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">카페</span> <a
-						href="#"> <span style="text-align: left; margin-left: 200px;">+더보기</span>
+						href="#"> <span style="text-align: left; margin-left: 200px;">(${searchedCfList.size()})　+더보기　</span>
 					</a>
 				</div>
 				<ul class="result_box">
@@ -199,7 +199,7 @@
 					<c:forEach items="${searchedCfList}" var="cf" end="5">
 						<div class="area">
 							<li class="result_boxin"><a
-								href="Ts_viewCon.do?visit_name=${cf.cf_name}"
+								href="Cf_viewCon.do?visit_name=${cf.cf_name}"
 								class="result_link"> <span> <img src="${cf.cf_img}"
 										class="inimg">
 								</span> <span class="intext"> <span>${cf.cf_name}</span> <!-- <span>설명이나
@@ -221,37 +221,19 @@
 				</div>
 			</c:when>
 		</c:choose>
-
-
 		<!-- 검색탭 묶어서 -->
 <!-- 
 		<div class="search
 		_result2">
 			<button>1</button>
-			
 		</div> -->
-
-
 		<!-- 검샋 1 -->
 	</div>
 
-	<!-- 	<script>
-		/* let a= "v"; */
-		$('button.search_button').click(function() {
-			let a = $('input[name=search]').val();
-			alert(a);
-			$('.none').css('opacity', 0);
-			if (a == "v") {
-				$('.search_result2').css('opacity', 1);
-				/* 이걸 투명도 */
-				$('.area').css('pointer-events', 'auto');
-			} else {
-				$('.search_result1').css('opacity', 1);
-				$('.area').css('pointer-events', 'auto');
-			}
-
-		})
-	</script> -->
+	<script>
+		$('.the').click(function(){
+		});
+	</script> 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/
     bootstrap.bundle.min.js"></script>

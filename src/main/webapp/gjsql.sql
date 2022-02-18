@@ -172,8 +172,9 @@ create table review(
       re_num number(10),
       visit_name varchar2(400) not null,
       mem_nick varchar2(20) not null,
-      re_title varchar2(150) not null,
+      re_title varchar2(100) not null,
       re_content varchar2(1100) not null,
+      re_img blob,
       re_date date default sysdate,
       constraint review_re_num_pk primary key(re_num)
 )
