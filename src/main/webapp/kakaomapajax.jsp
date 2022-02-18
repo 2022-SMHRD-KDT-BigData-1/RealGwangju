@@ -158,9 +158,19 @@ function tsMarker(){
 						var marker = new kakao.maps.Marker({
 							position: coords,
 						});
+						if(posistions[i][2] == undefined){
 						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
 				    	 });
+						} else if(posistions[i][3] == undefined){
+							var infowindow = new kakao.maps.InfoWindow({
+					             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '  + '</div>'
+					    	 });
+						} else {
+							var infowindow = new kakao.maps.InfoWindow({
+					             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '+posistions[i][3]  + '</div>'
+					    	 });
+						}
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
 						   	 infowindow.open(map, marker);
@@ -209,9 +219,19 @@ function resMarker(){
 						var marker = new kakao.maps.Marker({
 							position: coords,
 						});
-						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-				    	 });
+						if(posistions[i][2] == undefined){
+							var infowindow = new kakao.maps.InfoWindow({
+					             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+					    	 });
+							} else if(posistions[i][3] == undefined){
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '  + '</div>'
+						    	 });
+							} else {
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '+posistions[i][3]  + '</div>'
+						    	 });
+							}
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
 						   	 infowindow.open(map, marker);
@@ -261,9 +281,19 @@ function cfMarker(){
 						var marker = new kakao.maps.Marker({
 							position: coords,
 						});
-						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-				    	 });
+						if(posistions[i][2] == null){
+							var infowindow = new kakao.maps.InfoWindow({
+					             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' + "-" +'<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+					    	 });
+							} else if(posistions[i][3] == null){
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' + "-" + '</div>'
+						    	 });
+							} else {
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '+posistions[i][3]  + '</div>'
+						    	 });
+							}
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
 						   	 infowindow.open(map, marker);
@@ -312,9 +342,19 @@ function accMarker(){
 						var marker = new kakao.maps.Marker({
 							position: coords,
 						});
-						var infowindow = new kakao.maps.InfoWindow({
-				             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
-				    	 });
+						if(posistions[i][2] == undefined){
+							var infowindow = new kakao.maps.InfoWindow({
+					             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' + '<br>'+'영업시간 : ' +posistions[i][3] + '</div>'
+					    	 });
+							} else if(posistions[i][3] == undefined){
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '  + '</div>'
+						    	 });
+							} else {
+								var infowindow = new kakao.maps.InfoWindow({
+						             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i][1]+'<br>'+ '주소 : ' +posistions[i][0]+'<br>'+'전화번호 : ' +posistions[i][2] + '<br>'+'영업시간 : '+posistions[i][3]  + '</div>'
+						    	 });
+							}
 						(function(marker, infowindow){
 						    kakao.maps.event.addListener(marker, 'mouseover' , function(){
 						   	 infowindow.open(map, marker);
