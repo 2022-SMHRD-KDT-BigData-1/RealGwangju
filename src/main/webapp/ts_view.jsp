@@ -154,8 +154,8 @@
 										 ${myReview.re_content}
 									</p>
 									<P class="deleteandrebuild">
-										<button class="modify" type="submit">수정</button>
-										<button onclick="delete()" class="delete">x</button>
+										<!-- <button class="modify" type="submit">수정</button> -->
+										<button type="button" class="delete">x</button>
 									</P>
 								</li>
 							</ul>

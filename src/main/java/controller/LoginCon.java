@@ -29,7 +29,8 @@ public class LoginCon implements iCommand {
 			session.setAttribute("member", member);
 			out.print("<script>");
 			out.print("alert('로그인 성공..!');");
-//			out.print("history.back(-5);");
+//			out.print("history.back();");
+//			out.print("history.back();");
 //			out.print("location.reload();");
 			out.print("location.href='main.jsp';");
 			out.print("</script>");

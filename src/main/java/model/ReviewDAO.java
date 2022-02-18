@@ -64,7 +64,7 @@ public class ReviewDAO {
 	public int deleteReview(String visit_name, String mem_nick) {
 		connect();
 		try {
-			sql = "delete from review where visit_name=?, mem_nick=?";
+			sql = "delete from review where visit_name=? and mem_nick=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, visit_name);
 			psmt.setString(2, mem_nick);

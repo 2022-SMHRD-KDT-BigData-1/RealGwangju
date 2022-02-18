@@ -23,11 +23,12 @@ public class DeleteReviewCon implements iCommand {
 
 		ReviewDAO dao = new ReviewDAO();
 		int cnt = dao.deleteReview(visit_name, mem_nick);
-
+		System.out.println(cnt);
 		if (cnt > 0) {
 			out.print("<script>");
 			out.print("alert('리뷰 삭제 완료!');");
 			out.print("location.href = document.referrer;");
+//			out.print("history.back();");
 //			out.print("location.reload();");
 			out.print("</script>");
 //			response.sendRedirect("main.jsp");

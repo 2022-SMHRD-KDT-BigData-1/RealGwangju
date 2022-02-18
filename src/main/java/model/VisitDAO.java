@@ -80,7 +80,7 @@ public class VisitDAO {
 			psmt.setString(1, res_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views from ts where res_name=?";
+				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views from res where res_name=?";
 				psmt = conn.prepareStatement(getResInfoSql);
 				psmt.setString(1, res_name);
 				rs = psmt.executeQuery();

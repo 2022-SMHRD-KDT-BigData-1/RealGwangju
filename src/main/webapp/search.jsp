@@ -190,7 +190,7 @@
 		<c:choose>
 			<c:when test="${!empty searchedCfList}">
 				<div class="dbdb">
-					<span style="text-align: left; margin-left: 200px;">관광지</span> <a
+					<span style="text-align: left; margin-left: 5%;">카페</span> <a
 						href="#"> <span style="text-align: left; margin-left: 200px;">+더보기</span>
 					</a>
 				</div>
