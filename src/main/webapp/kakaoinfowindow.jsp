@@ -174,13 +174,13 @@ function tsMarker(){
 					});
 					
 					var infowindow = new kakao.maps.InfoWindow({
-						content: "<div style='font-family: dotum, arial, sans-serif;font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
+						content: "<div style='font-family: arial, dotum, sans-serif; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
 			             "<table style='border-spacing: 2px; border: 1px; '><tbody><tr>" +
-			             "<td style='width: 60px; color:#767676;padding-right:6px; word-break:break-all;'>주소</td>" +
-			             "<td width: 120px><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
-			             "<tr><td style='color:#767676;padding-right:6px'>전화번호</td>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px'>주소</td>" +
+			             "<td ><span class = 'info-title' style = 'width: max-content'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
 			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
-			             "<tr><td style='color:#767676;padding-right:6px'>영업시간</td>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>영업시간</td>" +
 			             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
 			             "</tbody></table>"
 			    	 });
