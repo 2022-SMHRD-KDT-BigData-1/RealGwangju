@@ -23,6 +23,10 @@ public class Ts_viewCon implements iCommand {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
+		
+		
+		
+		
 
 		String ts_name = request.getParameter("visit_name");
 		VisitDAO dao = new VisitDAO();

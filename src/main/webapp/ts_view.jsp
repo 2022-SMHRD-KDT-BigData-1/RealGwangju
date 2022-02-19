@@ -131,7 +131,7 @@
 					<c:choose>
 						<c:when test="${empty myReview}">
 							<div class="review_yeslogin">
-								<form action="WriteReviewCon.do?visit_name=${tsInfo.ts_name}" method="post">
+								<form action="WriteReviewCon.do?visit_name=${tsInfo.ts_name}" method="post" enctype="multipart/form-data">
 									<textarea class="texttitle" name="title" placeholder="제목을 작성해주세요"></textarea>
 									<textarea class="textin" name ="content" placeholder="리뷰를 작성해주세요"></textarea>
 									<input type="file" name="fileName" value="이미지 첨부" style="width: 75%; margin-left: 10%;">
