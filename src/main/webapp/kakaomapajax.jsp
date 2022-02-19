@@ -74,7 +74,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = {
        center: new kakao.maps.LatLng(35.14991, 126.91984), // 지도의 중심좌표
-       level: 3 // 지도의 확대 레벨
+       level: 4 // 지도의 확대 레벨
    };
 
 var imageSrc = './images/marker.png', // 마커이미지의 주소입니다    
