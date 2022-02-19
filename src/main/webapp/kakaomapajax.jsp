@@ -34,6 +34,12 @@
 	.placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
 	.placeinfo .tel {color:#0f7833;}
 	.placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
+	
+	.label {margin-bottom: 96px;}
+	.label * {display: inline-block;vertical-align: top;}
+	.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+	.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+	.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
 </style>
 </head>
 <body>
@@ -161,28 +167,30 @@ function tsMarker(){
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
 						image: markerImage // 마커이미지 설정
 					});
-					var infowindow = new kakao.maps.InfoWindow({
-						content: "<div style='font-family: dotum, arial, sans-serif;font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
-			             "<table style='border-spacing: 2px; border: 0px'><tbody><tr>" +
-			             "<td style='width: 40px; color:#767676;padding-right:12px'>주소</td>" +
-			             "<td>" + posistions[i].slice(2,3)+ "</td></tr>" +
-			             "<tr><td style='color:#767676;padding-right:12px'>전화번호</td>" +
-			             "<td><span>"+posistions[i].slice(4,5) +"</span></td></tr>" +
-			             "<tr><td style='color:#767676;padding-right:12px'>영업시간</td>" +
-			             "<td style=''><span>"+posistions[i].slice(5,6) +"</span></td></tr>" +
-			             "</tbody></table>"
+					var content = "<div style='font-family: dotum, arial, sans-serif;font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
+		             "<table style='border-spacing: 2px; border: 1px; '><tbody><tr>" +
+		             "<td style='width: 60px; color:#767676;padding-right:12px; word-break:break-all;'>주소</td>" +
+		             "<td><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+		             "<tr><td style='color:#767676;padding-right:6px'>전화번호</td>" +
+		             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
+		             "<tr><td style='color:#767676;padding-right:6px'>영업시간</td>" +
+		             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
+		             "</tbody></table>"
+					var customOverlay = new kakao.maps.CustomOverlay({
+						content: content
 			    	 });
-					(function(marker, infowindow){
+					(function(marker, customOverlay){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-					   	 infowindow.open(map, marker);
+					    	customOverlay.open(map, marker);
 					   });
 					    
 					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-					   	 infowindow.close();
+					    	customOverlay.close();
 					   });
-					    })(marker,infowindow);
+					    })(marker,customOverlay);
 				
 				// 마커를 지도에 표시합니다.
+				customOverlay.setMap(map);
 				marker.setMap(map);
 				markers.push(marker);
 				//console.log(posistions[i].slice(1,2));
