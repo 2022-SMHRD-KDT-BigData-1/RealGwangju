@@ -16,6 +16,8 @@ public class ResDTO {
 	private String res_img;
 	private String res_info;
 	private int res_views;
+	private String res_lat;
+	private String res_lng;
 
 	ResDTO(String res_name, String res_img){
 		this.res_name = res_name;

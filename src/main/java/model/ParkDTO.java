@@ -13,6 +13,8 @@ public class ParkDTO {
 	private String p_add;
 	private int p_loc;
 	private int p_views;
+	private String p_lat;
+	private String p_lng;
 	
 	ParkDTO(String p_name){
 		this.p_name = p_name;
