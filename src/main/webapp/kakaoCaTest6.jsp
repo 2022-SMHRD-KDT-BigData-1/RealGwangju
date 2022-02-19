@@ -44,6 +44,7 @@
    line-height:22px;
    border-radius:4px;
    padding:0px 10px;
+   margin : 1px;
 /* width:max-content; */
  	clear :both;
  	height: max-content;
