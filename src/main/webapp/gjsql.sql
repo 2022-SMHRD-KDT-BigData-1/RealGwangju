@@ -73,8 +73,8 @@ create table ts(
     ts_img clob,
     ts_info clob,
     ts_views number(10) default 0,
-    ts_lat number(10),
-    ts_lng number(10),
+    ts_lat varchar2(20),
+    ts_lng varchar2(20),
     constraint ts_ts_num_pk primary key(ts_num),
 	constraint ts_fk foreign key(ts_loc) references location(loc)
 );
@@ -99,6 +99,8 @@ create table p(
        p_ct varchar2(200),
        p_add varchar2(100) not null,
        p_loc number(5),
+       p_lat varchar2(20),
+       p_lng varchar2(20),
        constraint p_p_num_pk primary key(p_num),
        constraint p_fk foreign key(p_loc) references location(loc)       
 );
@@ -119,6 +121,8 @@ create table res(
        res_loc number(5),
        res_img clob,
        res_info clob,
+       res_lat varchar2(20),
+       res_lng varchar2(20),
        constraint res_res_num_pk primary key(res_num),
        constraint res_fk foreign key(res_loc) references location(loc)       
 );
@@ -138,6 +142,8 @@ create table cf(
        cf_add varchar2(100) not null,
        cf_loc number(5),
        cf_img clob,
+       cf_lat varchar2(20),
+       cf_lng varchar2(20),
        constraint cf_cf_num_pk primary key(cf_num),
        constraint cf_fk foreign key(cf_loc) references location(loc)       
 );

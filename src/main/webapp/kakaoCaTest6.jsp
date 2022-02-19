@@ -135,8 +135,6 @@ $("#category li .p").click(function(){
     
 });
 
-setDraggable(false);
-setZoomable(false);
 // 관광지 마커
 function tsMarker(){
 	
