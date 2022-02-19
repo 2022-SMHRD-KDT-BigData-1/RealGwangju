@@ -257,7 +257,17 @@ function resMarker(){
 						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
+						content: "<div class='allin'style='height:auto; background-color:white;'>"
+						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
+						 + posistions[i].slice(3,4) + "</div>" +
+			             "<table><tbody><tr>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px;'>주소</td>" +
+			             "<td ><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px;'>영업시간</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
+			             "</tbody></table></div>"
 			    	 });
 					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -268,6 +278,19 @@ function resMarker(){
 					   	 infowindow.close();
 					   });
 					    })(marker,infowindow);
+					
+					var infoTitle = document.querySelectorAll('.info-title');
+					infoTitle.forEach(function(e) {
+					    var w = e.offsetWidth + 10;
+					    var ml = w/2;
+					    e.parentElement.style.top = "82px";
+					    e.parentElement.style.left = "50%";
+					    e.parentElement.style.marginLeft = -ml+"px";
+					    e.parentElement.style.width = w+"px";
+					    e.parentElement.previousSibling.style.display = "none";
+					    e.parentElement.parentElement.style.border = "0px";
+					    e.parentElement.parentElement.style.background = "unset";
+					});
 				
 				// 마커를 지도에 표시합니다.
 				marker.setMap(map);
@@ -306,7 +329,17 @@ function cfMarker(){
 						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
+						content: "<div class='allin'style='height:auto; background-color:white;'>"
+						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
+						 + posistions[i].slice(3,4) + "</div>" +
+			             "<table><tbody><tr>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px;'>주소</td>" +
+			             "<td ><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px;'>영업시간</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
+			             "</tbody></table></div>"
 			    	 });
 					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -317,6 +350,19 @@ function cfMarker(){
 					   	 infowindow.close();
 					   });
 					    })(marker,infowindow);
+					
+					var infoTitle = document.querySelectorAll('.info-title');
+					infoTitle.forEach(function(e) {
+					    var w = e.offsetWidth + 10;
+					    var ml = w/2;
+					    e.parentElement.style.top = "82px";
+					    e.parentElement.style.left = "50%";
+					    e.parentElement.style.marginLeft = -ml+"px";
+					    e.parentElement.style.width = w+"px";
+					    e.parentElement.previousSibling.style.display = "none";
+					    e.parentElement.parentElement.style.border = "0px";
+					    e.parentElement.parentElement.style.background = "unset";
+					});
 				
 				// 마커를 지도에 표시합니다.
 				marker.setMap(map);
@@ -355,7 +401,17 @@ function accMarker(){
 						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
+						content: "<div class='allin'style='height:auto; background-color:white;'>"
+						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
+						 + posistions[i].slice(3,4) + "</div>" +
+			             "<table><tbody><tr>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px;'>주소</td>" +
+			             "<td ><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px;'>영업시간</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
+			             "</tbody></table></div>"
 			    	 });
 					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -366,6 +422,19 @@ function accMarker(){
 					   	 infowindow.close();
 					   });
 					    })(marker,infowindow);
+					
+					var infoTitle = document.querySelectorAll('.info-title');
+					infoTitle.forEach(function(e) {
+					    var w = e.offsetWidth + 10;
+					    var ml = w/2;
+					    e.parentElement.style.top = "82px";
+					    e.parentElement.style.left = "50%";
+					    e.parentElement.style.marginLeft = -ml+"px";
+					    e.parentElement.style.width = w+"px";
+					    e.parentElement.previousSibling.style.display = "none";
+					    e.parentElement.parentElement.style.border = "0px";
+					    e.parentElement.parentElement.style.background = "unset";
+					});
 				
 				// 마커를 지도에 표시합니다.
 				marker.setMap(map);
@@ -405,7 +474,15 @@ function pMarker(){
 						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
-			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '</div>'
+						content: "<div class='allin'style='height:auto; background-color:white;'>"
+						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
+						 + posistions[i].slice(3,4) + "</div>" +
+			             "<table><tbody><tr>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px;'>주소</td>" +
+			             "<td ><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
+			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
+			             "</tbody></table></div>"
 			    	 });
 					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
@@ -416,6 +493,19 @@ function pMarker(){
 					   	 infowindow.close();
 					   });
 					    })(marker,infowindow);
+					
+					var infoTitle = document.querySelectorAll('.info-title');
+					infoTitle.forEach(function(e) {
+					    var w = e.offsetWidth + 10;
+					    var ml = w/2;
+					    e.parentElement.style.top = "82px";
+					    e.parentElement.style.left = "50%";
+					    e.parentElement.style.marginLeft = -ml+"px";
+					    e.parentElement.style.width = w+"px";
+					    e.parentElement.previousSibling.style.display = "none";
+					    e.parentElement.parentElement.style.border = "0px";
+					    e.parentElement.parentElement.style.background = "unset";
+					});
 				
 				// 마커를 지도에 표시합니다.
 				marker.setMap(map);
