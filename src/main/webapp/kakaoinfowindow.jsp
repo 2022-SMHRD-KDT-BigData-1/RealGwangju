@@ -47,6 +47,11 @@
 	/* width:max-content; */
   	clear :both;
   	height: max-content;
+  
+}
+.allin{
+	border: solid rgba(0,0,128,.5) 3px;
+ 
 }
 </style>
 </head>
@@ -177,7 +182,7 @@ function tsMarker(){
 					});
 					
 					var infowindow = new kakao.maps.InfoWindow({
-						content: "<div style='border-spacing: 2px; border: solid balck 1px; height:auto; background-color:white;'>"
+						content: "<div class='allin'style='height:auto; background-color:white;'>"
 						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
 						 + posistions[i].slice(3,4) + "</div>" +
 			             "<table><tbody><tr>" +
