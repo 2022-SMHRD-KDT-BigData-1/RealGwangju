@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
+	<c:set var="visit_lat" value="${tsInfo.ts_lat}" scope="request"></c:set>
+	<c:set var="visit_lng" value="${tsInfo.ts_lng}" scope="request"></c:set>
 	<jsp:include page="topBar.jsp"></jsp:include>
 	<div class="container r_view">
 		<div class="top_view_img">
