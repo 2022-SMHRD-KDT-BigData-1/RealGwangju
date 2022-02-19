@@ -40,10 +40,13 @@
     background: #50627F;
     color: #fff;
     text-align: center;
-    height: 24px;
+    height: max-content;
     line-height:22px;
     border-radius:4px;
     padding:0px 10px;
+	/* width:max-content; */
+  	clear :both;
+  	height: max-content;
 }
 </style>
 </head>
@@ -174,15 +177,17 @@ function tsMarker(){
 					});
 					
 					var infowindow = new kakao.maps.InfoWindow({
-						content: "<div style='font-family: arial, dotum, sans-serif; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
-			             "<table style='border-spacing: 2px; border: 1px; '><tbody><tr>" +
-			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px'>주소</td>" +
-			             "<td ><span class = 'info-title' style = 'width: max-content'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
+						content: "<div style='border-spacing: 2px; border: solid balck 1px; height:auto; background-color:white;'>"
+						+"<div style='font-family: arial, dotum, sans-serif; margin-left:auto; margin-right:auto; width:max-content; font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px; margin-top: 5px;'>"
+						 + posistions[i].slice(3,4) + "</div>" +
+			             "<table><tbody><tr>" +
+			             "<td style='width: 60px; font-weight: bold; color:#767676;padding-right:6px;'>주소</td>" +
+			             "<td ><span class = 'info-title'>" + posistions[i].slice(2,3)+ "</span></td></tr>" +
 			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>전화번호</td>" +
 			             "<td><span class = 'info-title'>"+posistions[i].slice(4,5) +"</span></td></tr>" +
-			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px'>영업시간</td>" +
+			             "<tr><td style='font-weight: bold; color:#767676;padding-right:6px;'>영업시간</td>" +
 			             "<td><span class = 'info-title'>"+posistions[i].slice(5,6) +"</span></td></tr>" +
-			             "</tbody></table>"
+			             "</tbody></table></div>"
 			    	 });
 					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
