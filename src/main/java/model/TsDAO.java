@@ -55,7 +55,7 @@ public class TsDAO {
 		ArrayList<TsDTO> list = new ArrayList<TsDTO>();
 		connect();
 		
-		sql = "select ts_name, ts_tel, ts_time, ts_ct, ts_add, ts_img, ts_info from ts";
+		sql = "select ts_name, ts_tel, ts_time, ts_ct, ts_add, ts_img, ts_info, ts_lat, ts_lng from ts";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -70,9 +70,11 @@ public class TsDAO {
 				String ts_add = rs.getString(5);
 				String ts_img = rs.getString(6);
 				String ts_info = rs.getString(7);
+				String ts_lat = rs.getString(8);
+				String ts_lng = rs.getString(9);
 				
 				
-				TsDTO ts = new TsDTO(ts_name, ts_tel, ts_time, ts_ct, ts_add, 0, ts_img, ts_info, 0);
+				TsDTO ts = new TsDTO(ts_name, ts_tel, ts_time, ts_ct, ts_add, 0, ts_img, ts_info, 0, ts_lat, ts_lng);
 				list.add(ts);
 				
 			}

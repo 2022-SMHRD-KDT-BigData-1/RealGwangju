@@ -17,6 +17,8 @@ public class TsDTO {
 		private String ts_img;
 		private String ts_info;
 		private int ts_views;
+		private String ts_lat;
+		private String ts_lng;
 		
 		TsDTO(String ts_name, String ts_img){
 			this.ts_name = ts_name;
