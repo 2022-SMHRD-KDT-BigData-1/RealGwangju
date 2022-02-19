@@ -53,12 +53,12 @@ public class VisitDAO {
 			psmt.setString(1, ts_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				String getTsInfoSql = "select ts_tel, ts_time, ts_ct, ts_add, ts_loc, ts_img, ts_info, ts_views from ts where ts_name=?";
+				String getTsInfoSql = "select ts_tel, ts_time, ts_ct, ts_add, ts_loc, ts_img, ts_info, ts_views, ts_lat, ts_lng from ts where ts_name=?";
 				psmt = conn.prepareStatement(getTsInfoSql);
 				psmt.setString(1, ts_name);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+					ts = new TsDTO(ts_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
 				}
 			}
 
@@ -79,12 +79,12 @@ public class VisitDAO {
 			psmt.setString(1, res_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views from res where res_name=?";
+				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views, res_lat, res,lng from res where res_name=?";
 				psmt = conn.prepareStatement(getResInfoSql);
 				psmt.setString(1, res_name);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					res = new ResDTO(res_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+					res = new ResDTO(res_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
 				}
 			}
 
@@ -105,12 +105,12 @@ public class VisitDAO {
 			psmt.setString(1, cf_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				String getCfInfoSql = "select cf_tel, cf_time, cf_ct, cf_add, cf_loc, cf_img, cf_views from cf where cf_name=?";
+				String getCfInfoSql = "select cf_tel, cf_time, cf_ct, cf_add, cf_loc, cf_img, cf_views, cf_lat, cf_lng from cf where cf_name=?";
 				psmt = conn.prepareStatement(getCfInfoSql);
 				psmt.setString(1, cf_name);
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					cf = new CfDTO(cf_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+					cf = new CfDTO(cf_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9));
 				}
 			}
 
