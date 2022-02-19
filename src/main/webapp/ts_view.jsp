@@ -115,9 +115,9 @@
 		<!-- 설명 -->
 		<div class="view_sul">${tsInfo.ts_info}</div>
 		<div class="view_map">
-			<!-- 지도 -->
-			지도가 들어갑ㄴ디ㅏ
+		<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
 		</div>
+		
 		<div class="view_riew">
 			<c:choose>
 				<c:when test="${empty member}">
