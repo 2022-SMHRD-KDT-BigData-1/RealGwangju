@@ -67,6 +67,9 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
 <script type="text/javascript">
+
+
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = {
        center: new kakao.maps.LatLng(${visit_lat}, ${visit_lng}), // 지도의 중심좌표
@@ -74,31 +77,12 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
        //35.14991, 126.91984
    };
 
+
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 <%boolean flag = true;%>
-
-var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-
-
-var markerPosition  = new kakao.maps.LatLng(${visit_lat}, ${visit_lng}); 
-//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-
-// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-    markerPosition = new kakao.maps.LatLng(${visit_lat}, ${visit_lng}); // 마커가 표시될 위치입니다
-
-var viewMarker = new kakao.maps.Marker({
-    position: markerPosition
-    //image: markerImage // 마커이미지 설정
-});
-// 뷰 마커가 지도 위에 표시되도록 설정합니다
-viewMarker.setMap(map);
 
 var mapBounds = map.getBounds();
 
@@ -150,6 +134,14 @@ $("#category li .p").click(function(){
 
     
 });
+var imageSrc = './images/marker.png', // 마커이미지의 주소입니다    
+imageSize = new kakao.maps.Size(58, 61), // 마커이미지의 크기입니다
+imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+  
+//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+markerPosition = new kakao.maps.LatLng(${visit_lat}, ${visit_lng}); // 마커가 표시될 위치입니다
+
 
 // 관광지 마커
 function tsMarker(){
@@ -167,6 +159,7 @@ function tsMarker(){
 						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
 					var marker = new kakao.maps.Marker({
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
 			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
@@ -216,6 +209,7 @@ function resMarker(){
 						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
 					var marker = new kakao.maps.Marker({
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
 			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
@@ -264,6 +258,7 @@ function cfMarker(){
 						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
 					var marker = new kakao.maps.Marker({
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
 			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
@@ -312,6 +307,7 @@ function accMarker(){
 						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
 					var marker = new kakao.maps.Marker({
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
 			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '<br>'+'영업시간 : ' +posistions[i].slice(5,6) + '</div>'
@@ -361,6 +357,7 @@ function pMarker(){
 						(mapBounds.qa < posistions[i].slice(0,1) && mapBounds.pa > posistions[i].slice(0,1))){
 					var marker = new kakao.maps.Marker({
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
+						image: markerImage // 마커이미지 설정
 					});
 					var infowindow = new kakao.maps.InfoWindow({
 			             content: '<div style="width:250px;text-align:center;padding:6px 0;">'+'이름 : ' + posistions[i].slice(3,4)+'<br>'+ '주소 : ' +posistions[i].slice(2,3)+'<br>'+'전화번호 : ' +posistions[i].slice(4,5) + '</div>'
@@ -393,7 +390,12 @@ function pMarker(){
 
 }
 
-
+var viewMarker = new kakao.maps.Marker({
+  position: markerPosition
+  //image: markerImage // 마커이미지 설정
+});
+//뷰 마커가 지도 위에 표시되도록 설정합니다
+viewMarker.setMap(map);
 
 //지도 위에 표시되고 있는 마커를 모두 제거합니다
 function removeMarker() {

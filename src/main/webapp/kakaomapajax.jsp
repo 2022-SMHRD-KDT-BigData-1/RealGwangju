@@ -161,8 +161,8 @@ function tsMarker(){
 						position: new kakao.maps.LatLng(posistions[i].slice(0,1), posistions[i].slice(1,2)),
 						image: markerImage // 마커이미지 설정
 					});
-					var customOverlay = new kakao.maps.CustomOverlay({
-			             content: "<div style='font-family: dotum, arial, sans-serif;font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
+					var infowindow = new kakao.maps.InfoWindow({
+						content: "<div style='font-family: dotum, arial, sans-serif;font-size: 18px;text-align: center; font-weight: bold;margin-bottom: 5px;'>" + posistions[i].slice(3,4) + "</div>" +
 			             "<table style='border-spacing: 2px; border: 0px'><tbody><tr>" +
 			             "<td style='width: 40px; color:#767676;padding-right:12px'>주소</td>" +
 			             "<td>" + posistions[i].slice(2,3)+ "</td></tr>" +
@@ -172,15 +172,15 @@ function tsMarker(){
 			             "<td style=''><span>"+posistions[i].slice(5,6) +"</span></td></tr>" +
 			             "</tbody></table>"
 			    	 });
-					(function(marker, customOverlay){
+					(function(marker, infowindow){
 					    kakao.maps.event.addListener(marker, 'mouseover' , function(){
-					    	customOverlay.open(map, marker);
+					   	 infowindow.open(map, marker);
 					   });
 					    
 					    kakao.maps.event.addListener(marker, 'mouseout' , function(){
-					    	customOverlay.close();
+					   	 infowindow.close();
 					   });
-					    })(marker,customOverlay);
+					    })(marker,infowindow);
 				
 				// 마커를 지도에 표시합니다.
 				marker.setMap(map);
