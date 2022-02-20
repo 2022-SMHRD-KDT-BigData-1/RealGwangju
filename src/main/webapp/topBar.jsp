@@ -60,7 +60,7 @@
 				<a href="search.jsp">검색</a>
 			</div>
 			<div class="col-md-1 b">
-				<A href="ts_view.html">추천</A>
+				<A href="recommend.jsp">추천</A>
 			</div>
 			<div class="col-md-2 b">
 			<a href="ReviewCon.do">리뷰</a></div>
