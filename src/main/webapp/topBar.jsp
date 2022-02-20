@@ -62,9 +62,9 @@
 			<div class="col-md-1 b">
 				<A href="recommend.jsp">추천</A>
 			</div>
-			<div class="col-md-2 b">
+			<div class="col-md-1 b">
 			<a href="ReviewCon.do">리뷰</a></div>
-			<!-- <div class="col-md-1 b">메뉴</div> -->
+			<div class="col-md-2 b"><a href="course.jsp">여행 코스</a></div> 
 
 		</div>
 		  <!-- 줄였을때 네비게이션바 -->

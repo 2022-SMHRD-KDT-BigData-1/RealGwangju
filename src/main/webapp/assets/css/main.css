@@ -708,7 +708,7 @@ ul{
 }
 
 .recommend_top_img{
-	margin-top: 50px;
+	margin-top:35px;
 	position: relative;
 }
 .recommend_top_text{
@@ -732,4 +732,19 @@ ul{
 	position: relative;
 	width: 100vw;
 	height: 450px;
+}
+.recommend_top_img1{
+	margin-top:35px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.rc_top1{
+	position: relative;
+	width: 100vw;
+	height: 300px;
+}
+.recommend_top_text1{
+	position: absolute;
+	top: 15%;
 }

@@ -56,7 +56,7 @@ request.setAttribute("tsRank10", tsRank10);
 		</div>
 			<div class="row top3">
 				<div class="col-md-1"></div>
-				<div class="col-md-11">이런곳은 어떠신가요?</div>
+				<div class="col-md-11">(id님)이런곳은 어떠신가요?</div>
 			</div>
 			<hr style="color: red; height: 5px; width: 90%; margin-left: 5%;">
 			<div>
