@@ -10,6 +10,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <title>테마별 코스 추천</title>
 </head>
@@ -24,16 +25,17 @@
 		</div>
 	<div>
 		<ul class="course_top_tap">
-			<li><button>맞춤코스</button></li>
-				<li><button>테마여행</button></li>
-			<li><button>나홀로여행</button></li>
+			<li><button class="course1">맞춤코스</button></li>
+				<li><button class="course2" >테마여행</button></li>
+			<li><button class="course3">나홀로여행</button></li>
 		</ul>
 		<hr style="border: 2px red; margin-top: 0px;">
 		
-	<p style="margin-left:10%; margin-top: 10px;">총 x건의 추천코스가 있습니다</p>
+	<p style="margin-left:10%; margin-top: 10px;">총 (x)건의 추천코스가 있습니다</p>
 	</div>
-	<!-- course_box를 반복하면 됨 -->
-	<div class="course_box"><a href="course_view.jsp">
+	<!-- course_box를 반복하면 됨 1번 선택지는 cour1-->
+	
+			<div class="course_box cour1"><a href="#">
 				<span class="thumb">				
 						<img src="img/main/plz11.png" style="margin-right:20px; width: 260px;height: 148px" align="left">									
 				</span>
@@ -48,21 +50,69 @@
 			</a></div>
 			
 			
-			<!--반복  -->
-			<div class="course_box"><a href="#">
+			<!--반복  2번 선택지는 cour2-->
+			<div class="course_box cour2"><a href="#">
 				<span class="thumb">				
-						<img src="img/main/plz11.png" style="margin-right:20px; width: 260px;height: 148px" align="left">									
+						<img src="img/main/plz22.png" style="margin-right:20px; width: 260px;height: 148px" align="left">									
 				</span>
 				<span class="info">
 					<em class="title">이런 컨셉의 코스입니다</em><br>
-					<span class="cource_ne">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관 &gt; 광주문화예술회관 &gt; 광주전통문화관 &gt; 국립아시아문화전당</span>
+					<span class="cource_ne">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관</span>
 				</span>
 			<span class="etc">
-					<span class="tag"><span class="comment">태그:</span> 태그를 | 넣을까 | 말까 |  </span>
+					<span class="tag"><span class="comment">태그:</span> 두번쨰 | 넣을까 | 말까 |  </span>
+				<!-- 	<span class="btn"><img src="/modules/tour/img/course_board_btn.jpg" alt="코스보기"></span> -->
+				</span> 
+			</a></div>
+			
+			<!-- 3번 선택지는 cour3으로 한다 -->
+			<div class="course_box cour3"><a href="#">
+				<span class="thumb">				
+						<img src="img/main/plz3.png" style="margin-right:20px; width: 260px;height: 148px" align="left">									
+				</span>
+				<span class="info">
+					<em class="title">이런 컨셉의 코스입니다</em><br>
+					<span class="cource_ne">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관</span>
+				</span>
+			<span class="etc">
+					<span class="tag"><span class="comment">태그:</span> 두번쨰 | 넣을까 | 말까 |  </span>
 				<!-- 	<span class="btn"><img src="/modules/tour/img/course_board_btn.jpg" alt="코스보기"></span> -->
 				</span> 
 			</a></div>
 			<jsp:include page="bottomBar.jsp"></jsp:include>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$('.cour1').show();
+			$('.cour2').hide();
+			$('.cour3').hide();
+		})
+			$('.course1').click(function() {
+			$('.course1').css('color','red');
+			$('.course2').css('color','black');
+			$('.course3').css('color','black');
+			$('.cour1').show();
+			$('.cour2').hide();
+			$('.cour3').hide();
+		})
+			$('.course2').click(function() {
+				$('.course1').css('color','black');
+				$('.course2').css('color','red');
+				$('.course3').css('color','black');
+			$('.cour1').hide();
+			$('.cour2').show();
+			$('.cour3').hide();
+		})
+			$('.course3').click(function() {
+				$('.course1').css('color','black');
+				$('.course2').css('color','black');
+				$('.course3').css('color','red');
+			$('.cour1').hide();
+			$('.cour2').hide();
+			$('.cour3').show();
+		})
+
+	</script>
 		
 </body>
 </html>
