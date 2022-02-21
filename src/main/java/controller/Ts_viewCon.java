@@ -23,7 +23,7 @@ public class Ts_viewCon implements iCommand {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		
 		
 		
@@ -32,10 +32,15 @@ public class Ts_viewCon implements iCommand {
 		VisitDAO dao = new VisitDAO();
 		TsDTO tsInfo = dao.selectTsInfo(ts_name);
 		
+		
+		//String mem_id = request.getParameter(member.getMem_id());
+		String mem_id = "È£¿ì";
+		int cnt = dao.selectTsSee(mem_id, ts_name);
+		
 		if (tsInfo != null) {
 			request.setAttribute("tsInfo", tsInfo);
 			ReviewDAO reviewDao = new ReviewDAO();
-			MemberDTO member = (MemberDTO)session.getAttribute("member");
+			
 			ArrayList<ReviewDTO> allReview =  reviewDao.selectAllReview(ts_name);
 			request.setAttribute("allReview", allReview);
 			if (member != null) {
