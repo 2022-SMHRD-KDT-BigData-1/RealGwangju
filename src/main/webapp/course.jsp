@@ -23,14 +23,25 @@
 			</div>
 		</div>
 	<div>
-		<ul>
-			<li>1번</li>
-				<li>2번</li>
-			<li>3번</li>
+		<ul class="course_top_tap">
+			<li><button>맞춤코스</button></li>
+				<li><button>테마여행</button></li>
+			<li><button>나홀로여행</button></li>
 		</ul>
-	
-	
-	
 	</div>
+	<div class="course_box"><a href="#">
+				<span class="thumb">				
+						<img src="img/main/plz11.png" style="width: 260px;height: 148px">									
+				</span>
+				<span class="info">
+					<em class="title">편안한 무장애 문화산책</em>
+					<span class="cource_ne">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관 &gt; 광주문화예술회관 &gt; 광주전통문화관 &gt; 국립아시아문화전당</span>
+				</span>
+			<!-- 	<span class="etc">
+					<span class="tag"><span class="comment">태그:</span> 무장애 |  무장애여행 |  문화산책 |  </span>
+					<span class="btn"><img src="/modules/tour/img/course_board_btn.jpg" alt="코스보기"></span>
+				</span> -->
+			</a></div>
+
 </body>
 </html>
