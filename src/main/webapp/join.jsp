@@ -24,6 +24,7 @@ table {
 
 <jsp:include page="topBar.jsp"></jsp:include>
 	<div class="join_main"><!--  -->
+	<form action='JoinCon.do'>
 		<table>
 			<tr>
 				<td class="table-1">아이디</td>
@@ -54,19 +55,20 @@ table {
 			</tr>
 			<tr>
 				<td class="table-1">나이</td>
-				<td class="table-2"><input type="number"></td>
+				<td class="table-2"><input type="number" name="age"></td>
 
 			</tr>
 
 			<tr>
-				<td colspan="3" style="text-align: center;"><a
-					href="real_main.html"> <input type="submit" value="가입하기"
+				<td colspan="3" style="text-align: center;">
+					<input type="submit" value="가입하기"
 						style="background-color: white; border-radius: 10%;">
-				</a></td>
+				</td>
 
 			</tr>
 
 		</table>
+		</form>
 	</div>
 <jsp:include page="bottomBar.jsp"></jsp:include>
 

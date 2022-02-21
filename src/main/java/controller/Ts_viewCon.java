@@ -32,10 +32,13 @@ public class Ts_viewCon implements iCommand {
 		VisitDAO dao = new VisitDAO();
 		TsDTO tsInfo = dao.selectTsInfo(ts_name);
 		
-		
-		//String mem_id = request.getParameter(member.getMem_id());
-		String mem_id = "호우";
-		int cnt = dao.selectTsSee(mem_id, ts_name);
+		try {
+			String mem_id = member.getMem_id();
+			int cnt = dao.selectTsSee(mem_id, ts_name);
+		} catch (Exception e) {
+			
+		}
+		//String mem_id = "호우";
 		
 		if (tsInfo != null) {
 			request.setAttribute("tsInfo", tsInfo);
