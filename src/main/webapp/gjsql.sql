@@ -26,12 +26,15 @@ create sequence location_loc_num_seq increment by 1 start with 1 maxvalue 99999 
 
 --조회내역
 create table see(
+	see_num number(10),
 	mem_id varchar2(20),
 	ts_num number(10),
-    constraint see_mem_id_pk primary key(mem_id),
+	constraint see_see_num_pk primary key(see_num),
 	constraint see_fk1 foreign key(mem_id) references member(mem_id),
     constraint see_fk2 foreign key(ts_num) references ts(ts_num)
 );
+
+
 
 drop table see
 select * from see
