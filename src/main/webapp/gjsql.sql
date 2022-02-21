@@ -33,7 +33,7 @@ create table see(
 	constraint see_fk1 foreign key(mem_id) references member(mem_id),
     constraint see_fk2 foreign key(ts_num) references ts(ts_num)
 );
-
+create sequence see_see_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
 
 drop table see
