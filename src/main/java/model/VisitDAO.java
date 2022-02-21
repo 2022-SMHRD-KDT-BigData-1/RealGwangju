@@ -70,7 +70,39 @@ public class VisitDAO {
 
 		return ts;
 	}
+	
+	public int selectTsSee(String mem_id, String ts_name) {
+		connect();
+		try {
+			String selectTsNum = "select ts_num from ts where ts_name=?";
+			psmt = conn.prepareStatement(selectTsNum);
+			//String t = "무등산 전망대";
+//			System.out.println(mem_id);
+//			System.out.println(ts_name);
+			psmt.setString(1, ts_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+//				System.out.println(rs.getInt(1));
+				String insertVisitTs = "insert into see values(see_see_num_seq.nextval,?,?)";
+				psmt = conn.prepareStatement(insertVisitTs);
+				psmt.setString(1, mem_id);
+				psmt.setInt(2, rs.getInt(1));
+				
+				cnt = psmt.executeUpdate();
+			}
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+	
+	
+	
+	
 	public ResDTO selectResInfo(String res_name) {
 		connect();
 		ResDTO res = null;

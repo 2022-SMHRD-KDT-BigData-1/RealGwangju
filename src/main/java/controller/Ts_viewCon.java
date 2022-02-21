@@ -23,16 +23,27 @@ public class Ts_viewCon implements iCommand {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+
+		
 		
 
 		String ts_name = request.getParameter("visit_name");
 		VisitDAO dao = new VisitDAO();
 		TsDTO tsInfo = dao.selectTsInfo(ts_name);
 		
+		try {
+			String mem_id = member.getMem_id();
+			int cnt = dao.selectTsSee(mem_id, ts_name);
+		} catch (Exception e) {
+			
+		}
+		//String mem_id = "È£¿ì";
+		
 		if (tsInfo != null) {
 			request.setAttribute("tsInfo", tsInfo);
 			ReviewDAO reviewDao = new ReviewDAO();
-			MemberDTO member = (MemberDTO)session.getAttribute("member");
+			
 			ArrayList<ReviewDTO> allReview =  reviewDao.selectAllReview(ts_name);
 			request.setAttribute("allReview", allReview);
 			if (member != null) {
