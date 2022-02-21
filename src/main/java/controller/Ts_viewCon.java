@@ -24,9 +24,6 @@ public class Ts_viewCon implements iCommand {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		
-		
-		
-		
 
 		String ts_name = request.getParameter("visit_name");
 		VisitDAO dao = new VisitDAO();

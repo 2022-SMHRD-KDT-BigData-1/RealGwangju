@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="model.TsDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,18 +128,16 @@
 		</div>
 
 	</div>
-
-
 	<div class="search_result">
 		<c:choose>
 			<c:when test="${!empty searchedTsList}">
-		
 				<p class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">관광지</span>
-					 <span style="margin-right: 5%"><a href="#" class="">(${searchedTsList.size()})　+더보기</a></span>
-					
+					 <span style="margin-right: 5%">
+					 	<%-- <a href="#" class="">(${searchedTsList.size()})　+더보기</a> --%>
+					 	<a href="searchSeeMore.jsp?visit_kind=ts" class="">(${searchedTsList.size()})　+더보기</a>
+					 </span>
 				</p>
-				
 				<div class="gong">
 				<ul class="result_box">
 					<!-- 한칸을 area div로 묶음 -->
@@ -154,16 +156,13 @@
 					<!-- 여기까지 1칸 -->
 				</ul>
 				</div>
-			
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${!empty searchedResList}">
-			
 				<p class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">음식점</span>
-					 <span style="margin-right: 5%"><a href="#">(${searchedResList.size()})　+더보기</a></span>
-					
+					 <span style="margin-right: 5%"><a href="searchSeeMore.jsp?visit_kind=res">(${searchedResList.size()})　+더보기</a></span>
 				</p>
 				<div class="gong">
 				<ul class="result_box">
@@ -182,16 +181,14 @@
 					</c:forEach>
 					<!-- 여기까지 1칸 -->
 				</ul>
-				
 			</div>
 			</c:when>
-			
 		</c:choose>
 		<c:choose>
 			<c:when test="${!empty searchedCfList}">
 				<div class="dbdb">
 					<span style="text-align: left; margin-left: 5%;">카페</span> <a
-						href="#"> <span style="text-align: left; margin-left: 200px;">(${searchedCfList.size()})　+더보기　</span>
+						href="searchSeeMore.jsp?visit_kind=cf"> <span style="text-align: left; margin-left: 200px;">(${searchedCfList.size()})　+더보기　</span>
 					</a>
 				</div>
 				<ul class="result_box">
@@ -214,7 +211,58 @@
 			</c:when>
 		</c:choose>
 		<c:choose>
-			<c:when test="${empty searchedTsList and empty searchedResList and empty searchedCfList }">
+			<c:when test="${!empty searchedAccomList}">
+				<div class="dbdb">
+					<span style="text-align: left; margin-left: 5%;">숙박</span> <a
+						href="searchSeeMore.jsp?visit_kind=acc"> <span style="text-align: left; margin-left: 200px;">(${searchedAccomList.size()})　+더보기　</span>
+					</a>
+				</div>
+				<ul class="result_box">
+					<!-- 한칸을 area div로 묶음 -->
+					<c:forEach items="${searchedAccomList}" var="accom" end="5">
+						<div class="area">
+							<li class="result_boxin"><a
+								href="Accom_viewCon.do?visit_name=${accom.acc_name}"
+								class="result_link"> <span> <img src="${accom.acc_img}"
+										class="inimg">
+								</span> <span class="intext"> <span>${accom.acc_name}</span> <!-- <span>설명이나
+											주소</span> --> <!-- 3칸까지 성공 --> <!-- <span>줄바꿈</span> -->
+								</span>
+							</a></li>
+						</div>
+					</c:forEach>
+					<!-- 여기까지 1칸 -->
+				</ul>
+				<p>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test="${!empty searchedPList}">
+				<div class="dbdb">
+					<span style="text-align: left; margin-left: 5%;">주차장</span> <a
+						href="searchSeeMore.jsp?visit_kind=p"> <span style="text-align: left; margin-left: 200px;">(${searchedPList.size()})　+더보기　</span>
+					</a>
+				</div>
+				<ul class="result_box">
+					<!-- 한칸을 area div로 묶음 -->
+					<c:forEach items="${searchedPList}" var="p" end="5">
+						<div class="area">
+							<li class="result_boxin"><a
+								href="P_viewCon.do?visit_name=${p.p_name}"
+								class="result_link"> <span>
+								</span> <span class="intext"> <span>${p.p_name}</span> <!-- <span>설명이나
+											주소</span> --> <!-- 3칸까지 성공 --> <!-- <span>줄바꿈</span> -->
+								</span>
+							</a></li>
+						</div>
+					</c:forEach>
+					<!-- 여기까지 1칸 -->
+				</ul>
+				<p>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test="${empty searchedTsList and empty searchedResList and empty searchedCfList and empty searchedPList}">
 				<div class="none">
 					<img src="img/other/dot.png" style="height: 200px; width: 200px;">
 					<h1>검색을 해주세요</h1>
@@ -222,8 +270,7 @@
 			</c:when>
 		</c:choose>
 		<!-- 검색탭 묶어서 -->
-<!-- 
-		<div class="search
+<!-- <div class="search
 		_result2">
 			<button>1</button>
 		</div> -->
@@ -231,8 +278,13 @@
 	</div>
 
 	<script>
-		$('.the').click(function(){
-		});
+  		$('#searchSeeMore').click(function(){
+		}); 
+  		
+  		var t = document.getElementById('searchSeeMore');
+  		t.addEventListener('click', function(event){
+  		    alert('Hello world, '+event.target.value);
+  		});
 	</script> 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/

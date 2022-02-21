@@ -57,7 +57,7 @@
 
 			</div>
 			<div class="col-md-1 b">
-				<a href="search.jsp">검색</a>
+				<a href="search_viewCon.do">검색</a>
 			</div>
 			<div class="col-md-1 b">
 				<A href="ts_view.html">추천</A>

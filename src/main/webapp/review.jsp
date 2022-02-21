@@ -37,28 +37,24 @@ reviewList = dao.selectAllReview();
 				<div>${re.re_date}</div>
 			</div>
 		</c:forEach>
-
-
 		<!-- 		<div class="review_list_in">
-			<img src="img/main/plz3.png" class="review_list_img">
-			<div style="text-align: left; margin-left: 5%">
-				리뷰제목
-				<hr style="width: auto; padding: 0; margin: 0;">
-			</div>
-
-			<div>>?>??</div>
-			<div>>?>??</div>
-		</div>
-		<div class="review_list_in">
-			<img src="img/other/noimg.PNG" class="review_list_img">
-			<div style="text-align: left; margin-left: 5%">
-				리뷰제목
-				<hr style="width: auto; padding: 0; margin: 0;">
-			</div>
-
-			<div>>?>??</div>
-			<div>>?>??</div>
-		</div> -->
+<img src="img/main/plz3.png" class="review_list_img">
+<div style="text-align: left; margin-left: 5%">
+리뷰제목
+<hr style="width: auto; padding: 0; margin: 0;">
+</div>
+<div>>?>??</div>
+<div>>?>??</div>
+</div>
+<div class="review_list_in">
+<img src="img/other/noimg.PNG" class="review_list_img">
+<div style="text-align: left; margin-left: 5%">
+리뷰제목
+<hr style="width: auto; padding: 0; margin: 0;">
+</div>
+<div>>?>??</div>
+<div>>?>??</div>
+</div> -->
 	</div>
 </body>
 </html>

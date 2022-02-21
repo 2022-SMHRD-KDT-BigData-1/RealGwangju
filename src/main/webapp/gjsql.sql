@@ -1,20 +1,20 @@
 --회원
 select * from member;
 create table member(
-	mem_id varchar2(30),
-	mem_pw varchar2(20) not null,
-	mem_nick varchar2(20) not null,
-	mem_age number(3),
-	mem_gen varchar2(6),
-	constraint member_mem_id_pk primary key(mem_id),
-	constraint member_mem_nick_UK UNIQUE(mem_nick)
+   mem_id varchar2(30),
+   mem_pw varchar2(20) not null,
+   mem_nick varchar2(20) not null,
+   mem_age number(3),
+   mem_gen varchar2(6),
+   constraint member_mem_id_pk primary key(mem_id),
+   constraint member_mem_nick_UK UNIQUE(mem_nick)
 );
 
 --지역
 create table location(
-	loc_name varchar2(20),
-	loc number(1),
-	constraint location_loc_pk primary key(loc)
+   loc_name varchar2(20),
+   loc number(1),
+   constraint location_loc_pk primary key(loc)
 );
 insert into location values('테스트지역',1);
 
@@ -26,12 +26,15 @@ create sequence location_loc_num_seq increment by 1 start with 1 maxvalue 99999 
 
 --조회내역
 create table see(
-	mem_id varchar2(20),
-	ts_num number(10),
-    constraint see_mem_id_pk primary key(mem_id),
-	constraint see_fk1 foreign key(mem_id) references member(mem_id),
+   see_num number(10),
+   mem_id varchar2(20),
+   ts_num number(10),
+   constraint see_see_num_pk primary key(see_num),
+   constraint see_fk1 foreign key(mem_id) references member(mem_id),
     constraint see_fk2 foreign key(ts_num) references ts(ts_num)
 );
+create sequence see_see_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
+
 
 drop table see
 select * from see
@@ -39,10 +42,10 @@ select * from see
 --선호도
 create table mem_score(
     mem_num number(10),
-	mem_id varchar2(20),
-	mem_score number(1),
+   mem_id varchar2(20),
+   mem_score number(1),
     constraint mem_score_mem_num_pk primary key(mem_num),
-	constraint mem_score_fk foreign key(mem_id) references member(mem_id)
+   constraint mem_score_fk foreign key(mem_id) references member(mem_id)
  );
 
 --선호도 시퀀스
@@ -51,10 +54,10 @@ create sequence mem_score_mem_num_seq increment by 1 start with 1 maxvalue 99999
 --찜 목록
 create table visit_like(
     visit_num number(10),
-	mem_id varchar2(30) not null,
-	mem_like varchar2(200),
+   mem_id varchar2(30) not null,
+   mem_like varchar2(200),
     constraint visit_like_visit_num_pk primary key(visit_num),
-	constraint visit_like_fk foreign key(mem_id) references member(mem_id)
+   constraint visit_like_fk foreign key(mem_id) references member(mem_id)
 );
 drop table visit_like
 select * from VISIT_LIKE
@@ -64,8 +67,8 @@ create sequence visit_like_visit_num_seq increment by 1 start with 1 maxvalue 99
 --관광지
 create table ts(
     ts_num number(10),
-	ts_name varchar2(400) not null,
-	ts_tel varchar2(100),
+   ts_name varchar2(400) not null,
+   ts_tel varchar2(100),
     ts_time varchar2(500),
     ts_ct varchar2(200),
     ts_add varchar2(100) not null,
@@ -76,7 +79,7 @@ create table ts(
     ts_lat varchar2(20),
     ts_lng varchar2(20),
     constraint ts_ts_num_pk primary key(ts_num),
-	constraint ts_fk foreign key(ts_loc) references location(loc)
+   constraint ts_fk foreign key(ts_loc) references location(loc)
 );
 
 drop table ts
@@ -230,7 +233,6 @@ alter table p add p_views number(10) default 0
 select * from res
 
 select ts_name, ts_tel, ts_time, ts_add, ts_img from ts
-
 
 
 

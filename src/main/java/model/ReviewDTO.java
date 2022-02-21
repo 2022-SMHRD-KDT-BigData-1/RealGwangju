@@ -10,5 +10,7 @@ public class ReviewDTO {
 	private String mem_nick;
 	private String re_title;
 	private String re_content;
+	private String re_img;
 	private String re_date;
+	private int re_num;
 }

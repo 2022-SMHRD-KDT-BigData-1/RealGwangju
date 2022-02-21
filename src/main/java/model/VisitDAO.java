@@ -70,6 +70,7 @@ public class VisitDAO {
 
 		return ts;
 	}
+
 	public ResDTO selectResInfo(String res_name) {
 		connect();
 		ResDTO res = null;
@@ -79,7 +80,7 @@ public class VisitDAO {
 			psmt.setString(1, res_name);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views, res_lat, res,lng from res where res_name=?";
+				String getResInfoSql = "select res_tel, res_time, res_ct, res_add, res_loc, res_img, res_info, res_views, res_lat, res_lng from res where res_name=?";
 				psmt = conn.prepareStatement(getResInfoSql);
 				psmt.setString(1, res_name);
 				rs = psmt.executeQuery();
@@ -96,6 +97,7 @@ public class VisitDAO {
 
 		return res;
 	}
+
 	public CfDTO selectCfInfo(String cf_name) {
 		connect();
 		CfDTO cf = null;
@@ -121,6 +123,53 @@ public class VisitDAO {
 		}
 
 		return cf;
+	}
+	
+	public AccDTO selectAccomInfo(String accom_name) {
+		connect();
+		AccDTO accom = null;
+		try {
+			String plusViewsSql = "update accom set accom_views = accom_views+1 where accom_name=?";
+			psmt = conn.prepareStatement(plusViewsSql);
+			psmt.setString(1, accom_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				String getAccomInfoSql = "select accom_tel, accom_time, accom_ct, accom_add, accom_loc, accom_img, accom_info, accom_lat, accom_lng, accom_views from accom where accom_name=?";
+				psmt = conn.prepareStatement(getAccomInfoSql);
+				psmt.setString(1, accom_name);
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					accom = new AccDTO(accom_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return accom;
+	}
+	
+
+	public ParkDTO selectPInfo(String p_name) {
+		connect();
+		ParkDTO p = null;
+		try {
+			String getPInfoSql = "select p_tel, p_ct, p_add, p_loc, p_lat, p_lng from p where p_name=?";
+			psmt = conn.prepareStatement(getPInfoSql);
+			psmt.setString(1, p_name);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				p = new ParkDTO(p_name, rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), 0, rs.getString(5), rs.getString(6));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return p;
 	}
 
 	public TsDTO selectAllInfo(String ts_name) {

@@ -19,4 +19,5 @@ public class ParkDTO {
 	ParkDTO(String p_name){
 		this.p_name = p_name;
 	}
+
 }

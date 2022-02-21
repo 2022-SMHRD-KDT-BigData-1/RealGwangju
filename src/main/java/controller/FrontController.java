@@ -28,8 +28,11 @@ public class FrontController extends HttpServlet {
 			map.put("/Ts_viewCon.do", new Ts_viewCon());
 			map.put("/Res_viewCon.do", new Res_viewCon());
 			map.put("/Cf_viewCon.do", new Cf_viewCon());
+			map.put("/Accom_viewCon.do", new Accom_viewCon());
+			map.put("/P_viewCon.do", new P_viewCon());
 			map.put("/DeleteLikeListCon.do", new DeleteLikeListCon());
 			map.put("/SearchCon.do", new SearchCon());
+			map.put("/search_viewCon.do", new search_viewCon());
 			map.put("/WriteReviewCon.do", new WriteReviewCon());
 			map.put("/DeleteReviewCon.do", new DeleteReviewCon());
 			map.put("/ReviewCon.do", new ReviewCon());

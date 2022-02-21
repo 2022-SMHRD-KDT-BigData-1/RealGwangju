@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="asseres/css/main.css">
 </head>
 <body>
+	<c:set var="visit_lat" value="${resInfo.res_lat}" scope="request"></c:set>
+	<c:set var="visit_lng" value="${resInfo.res_lng}" scope="request"></c:set>
+	<c:set var="visit_name" value="${resInfo.res_name}" scope="request"></c:set>
 	<jsp:include page="topBar.jsp"></jsp:include>
 	<div class="container r_view">
 		<div class="top_view_img">
@@ -115,82 +118,10 @@
 		<!-- 설명 -->
 		<div class="view_sul">${resInfo.res_info}</div>
 		<div class="view_map">
-			<!-- 지도 -->
-			지도가 들어갑ㄴ디ㅏ
+			<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
 		</div>
 		<div class="view_riew">
-			<c:choose>
-				<c:when test="${empty member}">
-					<div class="review_nologin">
-					<textarea class="textin" placeholder="로그인 후에 리뷰작성이 가능합니다!" disabled></textarea>
-					<!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
-					<button class="textinbtn" disabled="disabled">작성</button>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<c:choose>
-						<c:when test="${empty myReview}">
-							<div class="review_yeslogin">
-								<form action="WriteReviewCon.do?visit_name=${resInfo.res_name}" method="post">
-									<textarea class="texttitle" name="title" placeholder="제목을 작성해주세요"></textarea>
-									<textarea class="textin" name ="content" placeholder="리뷰를 작성해주세요"></textarea>
-									<!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
-									<button class="textinbtn" type="submit">작성</button>
-								</form>
-							</div>
-						</c:when>
-						<c:otherwise>
-						<form action="">
-							<ul class="review_main">
-								<li><span>내가 작성한 리뷰</span></li>
-								<li class="review_in">
-									<p class="review_id" style="padding-left: 5%;">
-									<p style="padding-left: 5%">${myReview.re_title}</p>
-									<span style="padding-left: 70%; position: relative;">${myReview.re_date}</span>
-									<span style="padding-left: 5%">${member.mem_nick}</span>
-									<hr style="color: black;">
-									<p style="padding-left: 2%;">
-										<img src="img/other/like.PNG" class="review_img">
-										 ${myReview.re_content}
-									</p>
-									<P class="deleteandrebuild">
-										<!-- <button class="modify" type="submit">수정</button> -->
-										<button type="button" class="delete">x</button>
-									</P>
-								</li>
-							</ul>
-						</form>
-						</c:otherwise>
-					</c:choose>
-				</c:otherwise>
-			</c:choose>
-			
-			<ul class="review_main">
-				<!-- review_no는 리뷰가 하나도 없을 떄 ul안에서 실행 -->
-				<c:choose>
-					<c:when test="${empty allReview}">
-						<li class="review_no" style="text-align: center;">
-						<P style="padding-left: 2%;">리뷰가 없습니다. 리뷰를 작성해 주세요.</P>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${allReview}" var="re">
-							<li class="review_in">
-								<p class="review_id" style="padding-left: 5%;">
-								<p style="padding-left: 5%">${re.re_title}</p> <span
-								style="padding-left: 70%; position: relative;">${re.re_date}</span>
-								<span style="padding-left: 5%">${re.mem_nick}</span>
-								<hr style="color: black;">
-								<P style="padding-left: 2%;">
-									<img src="img/other/like.PNG" class="review_img"> ${re.re_content}
-								</P>
-						</li>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-
-			</ul>
-
+			<jsp:include page="visit_view_review.jsp"></jsp:include>
 		</div>
 
 	</div>

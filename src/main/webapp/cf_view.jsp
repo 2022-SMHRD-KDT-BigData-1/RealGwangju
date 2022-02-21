@@ -15,19 +15,25 @@
 <link rel="stylesheet" type="text/css" href="assecf/css/main.css">
 </head>
 <body>
+	<c:set var="visit_lat" value="${cfInfo.cf_lat}" scope="request"></c:set>
+	<c:set var="visit_lng" value="${cfInfo.cf_lng}" scope="request"></c:set>
+	<c:set var="visit_name" value="${cfInfo.cf_name}" scope="request"></c:set>
 	<jsp:include page="topBar.jsp"></jsp:include>
 	<div class="container r_view">
 		<div class="top_view_img">
 			<!-- <h1 style="padding-bottom: 20px;"> 아무튼 여기에 무슨 제목을 넣어야되는데</h1> -->
 			<ul class="view_img_line">
-				<li class="slide_1"><img src="${cfInfo.cf_img}"	class="view_img"></li>
+				<li class="slide_1"><img src="${cfInfo.cf_img}"
+					class="view_img"></li>
 			</ul>
 			<button class="pr3">&lt;</button>
 			<button class="nx3">&gt;</button>
 		</div>
 		<div class="view_title">
 			<!-- 이름 -->
-			<p><h1>${cfInfo.cf_name}</h1></p>
+			<p>
+			<h1>${cfInfo.cf_name}</h1>
+			</p>
 			<!-- 주소 -->
 			<p>주소 : ${cfInfo.cf_add}</p>
 			<!-- 전화번호 -->
@@ -41,7 +47,7 @@
 	</div>
 	<!-- 사진3개만가능 -->
 	<script type="text/javascript">
-		$('.gbtn').click(function(){
+		$('.gbtn').click(function() {
 			location.href = 'LikeCon.do?ts_name=${cfInfo.cf_name}';
 		});
 		// 조정버튼
@@ -74,11 +80,11 @@
 				$('.slide_' + a + '').css('opacity', 1);
 			}
 		})
-
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/boocftrap@5.1.3/dist/js/
             boocftrap.bundle.min.js">
+		
 	</script>
 	<div class="view_li">
 		<ul>
@@ -87,7 +93,7 @@
 			<li class="view_tab"><button class="posi">위치</button></li>
 			<li class="view_tab"><button class="riew">리뷰</button></li>
 		</ul>
-			<hr>
+		<hr>
 	</div>
 	<script>
 		$('button.sul').click(function() {
@@ -115,92 +121,20 @@
 		<!-- 설명 -->
 		<div class="view_sul">카페는 설명이 없어서 다른거 적어야함</div>
 		<div class="view_map">
-			<!-- 지도 -->
-			지도가 들어갑ㄴ디ㅏ
+			<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
 		</div>
 		<div class="view_riew">
-			<c:choose>
-				<c:when test="${empty member}">
-					<div class="review_nologin">
-					<textarea class="textin" placeholder="로그인 후에 리뷰작성이 가능합니다!" disabled></textarea>
-					<!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
-					<button class="textinbtn" disabled="disabled">작성</button>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<c:choose>
-						<c:when test="${empty myReview}">
-							<div class="review_yeslogin">
-								<form action="WriteReviewCon.do?visit_name=${cfInfo.cf_name}" method="post">
-									<textarea class="texttitle" name="title" placeholder="제목을 작성해주세요"></textarea>
-									<textarea class="textin" name ="content" placeholder="리뷰를 작성해주세요"></textarea>
-									<!-- <input type="textbox" class = "textin" value="  리뷰가들어갑니다^^"> -->
-									<button class="textinbtn" type="submit">작성</button>
-								</form>
-							</div>
-						</c:when>
-						<c:otherwise>
-						<form action="">
-							<ul class="review_main">
-								<li><span>내가 작성한 리뷰</span></li>
-								<li class="review_in">
-									<p class="review_id" style="padding-left: 5%;">
-									<p style="padding-left: 5%">${myReview.re_title}</p>
-									<span style="padding-left: 70%; position: relative;">${myReview.re_date}</span>
-									<span style="padding-left: 5%">${member.mem_nick}</span>
-									<hr style="color: black;">
-									<p style="padding-left: 2%;">
-										<img src="img/other/like.PNG" class="review_img">
-										 ${myReview.re_content}
-									</p>
-									<P class="deleteandrebuild">
-										<!-- <button class="modify" type="submit">수정</button> -->
-										<button type="button" class="delete">x</button>
-									</P>
-								</li>
-							</ul>
-						</form>
-						</c:otherwise>
-					</c:choose>
-				</c:otherwise>
-			</c:choose>
-			
-			<ul class="review_main">
-				<!-- review_no는 리뷰가 하나도 없을 떄 ul안에서 실행 -->
-				<c:choose>
-					<c:when test="${empty allReview}">
-						<li class="review_no" style="text-align: center;">
-						<P style="padding-left: 2%;">리뷰가 없습니다. 리뷰를 작성해 주세요.</P>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${allReview}" var="re">
-							<li class="review_in">
-								<p class="review_id" style="padding-left: 5%;">
-								<p style="padding-left: 5%">${re.re_title}</p> <span
-								style="padding-left: 70%; position: relative;">${re.re_date}</span>
-								<span style="padding-left: 5%">${re.mem_nick}</span>
-								<hr style="color: black;">
-								<P style="padding-left: 2%;">
-									<img src="img/other/like.PNG" class="review_img"> ${re.re_content}
-								</P>
-						</li>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-
-			</ul>
-
+			<jsp:include page="visit_view_review.jsp"></jsp:include>
 		</div>
 
 	</div>
-<script>
-	$('.modify').click(function(){
-		location.href = 'ModifyReviewCon.do?visit_name=${cfInfo.cf_name}';
-	});
-	$('.delete').click(function(){
-		location.href = 'DeleteReviewCon.do?visit_name=${cfInfo.cf_name}';
-	});
-</script>
+	<script>
+		$('.modify').click(function() {
+			location.href = 'ModifyReviewCon.do?visit_name=${cfInfo.cf_name}';
+		});
+		$('.delete').click(function() {
+			location.href = 'DeleteReviewCon.do?visit_name=${cfInfo.cf_name}';
+		});
+	</script>
 </body>
 </html>

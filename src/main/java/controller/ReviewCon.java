@@ -26,6 +26,8 @@ public class ReviewCon implements iCommand {
 		ArrayList<ReviewDTO> allReviewList = new ArrayList<ReviewDTO>();
 		ReviewDAO dao = new ReviewDAO();
 		allReviewList = dao.selectAllReview();
+//		System.out.println(allReviewList.toString());
+		
 		request.setAttribute("allReviewList", allReviewList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
 		dispatcher.forward(request, response);
