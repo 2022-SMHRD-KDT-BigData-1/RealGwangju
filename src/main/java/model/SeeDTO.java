@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // 모든 필드변수를 초기화하는 생성자 생성
 public class SeeDTO {
 
+	private int SeeDtoNo; 
 	private String mem_id;
 	private int ts_num;
 	
