@@ -43,7 +43,7 @@
 
 	</build>
 
-	<!-- 필요한 라이브러리에 대한 태그를 추가하는 영역 -->
+	<!-- 필요한 라이브러리에 대한 태그를 추가하는 영역  -->
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
