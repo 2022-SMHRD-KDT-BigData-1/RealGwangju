@@ -70,6 +70,7 @@ table {
 		</table>
 		</form>
 	</div>
+	<div class="nonono" style="height: 300px;"></div> 
 <jsp:include page="bottomBar.jsp"></jsp:include>
 
 
