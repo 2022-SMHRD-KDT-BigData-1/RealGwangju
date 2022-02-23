@@ -25,7 +25,6 @@ ArrayList<CourseDTO> courseInfo = dao.courseSelectAll();
 </head>
 <body>
 <script type="text/javascript">
-console.log(${courseInfo.get(1).getTheme_name()});
 </script>
 <jsp:include page="topBar.jsp"></jsp:include>
 	<div class="recommend_top_img1">
@@ -49,6 +48,7 @@ console.log(${courseInfo.get(1).getTheme_name()});
 	<% for(int i = 0; i < courseInfo.size(); i++){
 		if(!courseInfo.get(i).getTheme_ct().equals("여행별 맞춤코스")){%>
 			<div class="course_box cour1"><a href="#">
+			<%-- "CourseCon?course_name=<%=courseInfo.get(i).getTheme_name()%>" --%>
 				<span class="thumb">				
 						<img src=<%=courseInfo.get(i).getTheme_img() %> style="margin-right:20px; width: 260px;height: 148px" align="left">									
 				</span>

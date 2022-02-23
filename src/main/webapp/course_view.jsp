@@ -1,6 +1,14 @@
+<%@page import="model.CourseDAO"%>
+<%@page import="model.CourseDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("UTF-8");
+CourseDTO course = (CourseDTO)session.getAttribute("viewInfo");
+CourseDAO dao = new CourseDAO();
+   
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +30,9 @@
 				<h1 style="font-size: 75px;">맞춤 코스 추천</h1>
 			</div>
 		</div>
-
 	<div class="course_main">
-	<div class="course_main_title">편안한여행코스</div>
-		<div class="course_title">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관 </div>
+	<div class="course_main_title"><%=course.getTheme_name() %></div>
+		<div class="course_title"><%=course.getTheme_course() %> </div>
 		<div class="inmap" style="background-color: violet">
 			지도가들어감
 		</div>

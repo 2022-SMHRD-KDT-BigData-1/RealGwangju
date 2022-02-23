@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,33 +14,31 @@ import javax.servlet.http.HttpSession;
 import model.CourseDAO;
 import model.CourseDTO;
 
-
 @WebServlet("/CourseCon")
 public class CourseCon extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		//HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		
 		System.out.println("CourseCon 요청이 들어왔다");
-		// int course_num = Integer.parseInt(request.getParameter("course_num"));
+		String course_name = request.getParameter("course_name");
+		System.out.println(course_name);
 		CourseDAO dao = new CourseDAO();
-		ArrayList<CourseDTO> courseInfo = dao.courseSelectAll();
+		CourseDTO viewInfo = dao.selectCourse(course_name);
 		
-		if (courseInfo != null) {
-			request.setAttribute("courseInfo", courseInfo);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("course.jsp");
-			dispatcher.forward(request, response);
-			response.sendRedirect("course.jsp");
-		} else {
-			out.print("<script>");
-			out.print("alert('페이지 로딩 실패..!');");
-			out.print("history.back()");
-			out.print("</script>");
-		}
+		session.setAttribute("viewInfo", viewInfo);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("course_view.jsp");
+//		dispatcher.forward(request, response);
+		response.sendRedirect("course_view.jsp");
+		
+
 	}
 
 }

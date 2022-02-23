@@ -44,11 +44,11 @@ public class CourseDAO {
 		}
 	}
 
-//	public CourseDTO selectThemeInfo(String theme_name) {
+//	public CourseDTO selectViewInfo(String theme_name) {
 //		connect();
-//		TsDTO ts = null;
+//		CourseDTO c = null;
 //		try {
-//			String plusViewsSql = "select ";
+//			String plusViewsSql = "select theme_name, theme_ct, theme_course, theme_dis, theme_img from theme where theme_name=?";
 //			psmt = conn.prepareStatement(plusViewsSql);
 //			psmt.setString(1, theme_name);
 //			rs = psmt.executeQuery();
@@ -71,17 +71,17 @@ public class CourseDAO {
 //		return ts;
 //	}
 	
-	public CourseDTO selectCourse(int theme_num) {
+	public CourseDTO selectCourse(String theme_name) {
 		connect();
 		
 		CourseDTO course = null;
 		try {
-			String selectCourse = "select theme_name, theme_ct, theme_course, theme_dis, theme_img from theme where theme_num=?";
+			String selectCourse = "select theme_name, theme_ct, theme_course, theme_dis, theme_img from theme where theme_name=?";
 			psmt = conn.prepareStatement(selectCourse);
 			//String t = "무등산 전망대";
-			System.out.println(theme_num);
+			System.out.println(theme_name);
 //			System.out.println(ts_name);
-			psmt.setInt(1, theme_num);
+			psmt.setString(1, theme_name);
 
 			rs = psmt.executeQuery();
 			if (rs.next()) {
@@ -90,7 +90,7 @@ public class CourseDAO {
 				String cs = rs.getString(3);
 				String dis = rs.getString(4);
 				String img = rs.getString(5);
-				course = new CourseDTO(theme_num, name, ct, cs, dis, img);
+				course = new CourseDTO(0, name, ct, cs, dis, img);
 			}
 
 		} catch (SQLException e) {
