@@ -40,14 +40,15 @@ console.log(${courseInfo.get(1).getTheme_name()});
 		<ul class="course_top_tap">
 			<li><button class="course1">맞춤코스</button></li>
 				<li><button class="course2" >테마여행</button></li>
-			<li><button class="course3">나홀로여행</button></li>
+			<!-- <li><button class="course3">나홀로여행</button></li> -->
 		</ul>
 		<hr style="border: 2px red; margin-top: 0px;">
 		
 	<p style="margin-left:10%; margin-top: 10px;">총 (<%=cnt %>)건의 추천코스가 있습니다</p>
 	</div>
 	<!-- course_box를 반복하면 됨 1번 선택지는 cour1-->
-	<% for(int i = 0; i < courseInfo.size(); i++){%>
+	<% for(int i = 0; i < courseInfo.size(); i++){
+		if(!courseInfo.get(i).getTheme_ct().equals("여행별 맞춤코스")){%>
 			<div class="course_box cour1"><a href="#">
 				<span class="thumb">				
 						<img src=<%=courseInfo.get(i).getTheme_img() %> style="margin-right:20px; width: 260px;height: 148px" align="left">									
@@ -57,30 +58,43 @@ console.log(${courseInfo.get(1).getTheme_name()});
 					<span class="cource_ne"><%=courseInfo.get(i).getTheme_course() %></span>
 				</span>
 			<span class="etc">
-					<span class="tag"><span class="comment">거리:</span><%=courseInfo.get(i).getTheme_dis() %></span>
+					<span class="tag"><span class="comment">거리 : </span><%=courseInfo.get(i).getTheme_dis() %></span>
+					<br>
+					<span class="tag"><span class="comment">태그 : </span><%=courseInfo.get(i).getTheme_ct() %></span>
 				<!-- 	<span class="btn"><img src="/modules/tour/img/course_board_btn.jpg" alt="코스보기"></span> -->
 				</span> 
 			</a></div>
 			
 			<%
 				cnt++;	
-			} 
+			}
+		}
 			%>	
 			<!--반복  2번 선택지는 cour2-->
+	<% for(int i = 0; i < courseInfo.size(); i++){
+		cnt = 0;
+		if(courseInfo.get(i).getTheme_ct().equals("여행별 맞춤코스")){%>
 			<div class="course_box cour2"><a href="#">
 				<span class="thumb">				
-						<img src="img/main/plz22.png" style="margin-right:20px; width: 260px;height: 148px" align="left">									
+						<img src=<%=courseInfo.get(i).getTheme_img() %> style="margin-right:20px; width: 260px;height: 148px" align="left">									
 				</span>
 				<span class="info">
-					<em class="title">이런 컨셉의 코스입니다</em><br>
-					<span class="cource_ne">국립광주박물관 &gt; 광주광역시역사민속박물관 &gt; 광주시립미술관</span>
+					<em class="title"><%=courseInfo.get(i).getTheme_name() %></em><br>
+					<span class="cource_ne"><%=courseInfo.get(i).getTheme_course() %></span>
 				</span>
 			<span class="etc">
-					<span class="tag"><span class="comment">태그:</span> 두번쨰 | 넣을까 | 말까 |  </span>
+					<span class="tag"><span class="comment">거리 : </span><%=courseInfo.get(i).getTheme_dis() %></span>
+					<br>
+					<span class="tag"><span class="comment">태그 : </span><%=courseInfo.get(i).getTheme_ct() %></span>
 				<!-- 	<span class="btn"><img src="/modules/tour/img/course_board_btn.jpg" alt="코스보기"></span> -->
 				</span> 
 			</a></div>
 			
+			<%
+				cnt++;	
+			}
+		}
+			%>	
 			<!-- 3번 선택지는 cour3으로 한다 -->
 			<div class="course_box cour3"><a href="#">
 				<span class="thumb">				
