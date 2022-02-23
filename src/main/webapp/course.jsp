@@ -9,7 +9,6 @@
 CourseDAO dao = new CourseDAO();
 ArrayList<CourseDTO> courseInfo = dao.courseSelectAll();
 //courseInfo.get(1).getTheme_name()
-int cnt = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@ console.log(${courseInfo.get(1).getTheme_name()});
 		</ul>
 		<hr style="border: 2px red; margin-top: 0px;">
 		
-	<p style="margin-left:10%; margin-top: 10px;">총 (<%=cnt %>)건의 추천코스가 있습니다</p>
+<p style="margin-left:10%; margin-top: 10px;">총 (<%=courseInfo.size() %>)건의 여행 코스가 있습니다</p>
 	</div>
 	<!-- course_box를 반복하면 됨 1번 선택지는 cour1-->
 	<% for(int i = 0; i < courseInfo.size(); i++){
@@ -66,13 +65,12 @@ console.log(${courseInfo.get(1).getTheme_name()});
 			</a></div>
 			
 			<%
-				cnt++;	
+				
 			}
 		}
 			%>	
 			<!--반복  2번 선택지는 cour2-->
 	<% for(int i = 0; i < courseInfo.size(); i++){
-		cnt = 0;
 		if(courseInfo.get(i).getTheme_ct().equals("여행별 맞춤코스")){%>
 			<div class="course_box cour2"><a href="#">
 				<span class="thumb">				
@@ -91,7 +89,7 @@ console.log(${courseInfo.get(1).getTheme_name()});
 			</a></div>
 			
 			<%
-				cnt++;	
+
 			}
 		}
 			%>	
