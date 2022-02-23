@@ -1,6 +1,12 @@
+<%@page import="model.CourseDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+CourseDAO dao = new CourseDAO();
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
