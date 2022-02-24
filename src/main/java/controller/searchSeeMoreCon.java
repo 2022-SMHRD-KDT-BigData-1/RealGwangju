@@ -41,6 +41,7 @@ public class searchSeeMoreCon implements iCommand {
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
+		request.setAttribute("page", page);
 		System.out.println("page : " + page);
 		Paging paging = new Paging();
 //		paging.setPage(page);
