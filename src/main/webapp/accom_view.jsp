@@ -23,14 +23,25 @@
 		<div class="top_view_img">
 			<!-- <h1 style="padding-bottom: 20px;"> 아무튼 여기에 무슨 제목을 넣어야되는데</h1> -->
 			<ul class="view_img_line">
-				<li class="slide_1"><img src="${accomInfo.acc_img}"	class="view_img"></li>
+				<li class="slide_1">
+					<c:choose>
+						<c:when test="${accomInfo.acc_img eq '-'}">
+							<img src="img/other/noimg.PNG" class="view_img">
+						</c:when>
+						<c:otherwise>
+							<img src="${accomInfo.acc_img}" class="view_img">
+						</c:otherwise>
+					</c:choose>
+				</li>
 			</ul>
 			<button class="pr3">&lt;</button>
 			<button class="nx3">&gt;</button>
 		</div>
 		<div class="view_title">
 			<!-- 이름 -->
-			<p><h1>${accomInfo.acc_name}</h1></p>
+			<p>
+			<h1>${accomInfo.acc_name}</h1>
+			</p>
 			<!-- 주소 -->
 			<p>주소 : ${accomInfo.acc_add}</p>
 			<!-- 전화번호 -->
@@ -44,9 +55,11 @@
 	</div>
 	<!-- 사진3개만가능 -->
 	<script type="text/javascript">
-		$('.gbtn').click(function(){
-			location.href = 'LikeCon.do?acc_name=${accomInfo.acc_name}&kind=?accom';
-		});
+		$('.gbtn')
+				.click(
+						function() {
+							location.href = 'LikeCon.do?acc_name=${accomInfo.acc_name}&kind=?accom';
+						});
 		// 조정버튼
 		let a = 1;
 
@@ -77,11 +90,11 @@
 				$('.slide_' + a + '').css('opacity', 1);
 			}
 		})
-
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/booaccomtrap@5.1.3/dist/js/
             booaccomtrap.bundle.min.js">
+		
 	</script>
 	<div class="view_li">
 		<ul>
@@ -90,7 +103,7 @@
 			<li class="view_tab"><button class="posi">위치</button></li>
 			<li class="view_tab"><button class="riew">리뷰</button></li>
 		</ul>
-			<hr>
+		<hr>
 	</div>
 	<script>
 		$('button.sul').click(function() {
@@ -118,21 +131,25 @@
 		<!-- 설명 -->
 		<div class="view_sul">${accomInfo.acc_info}</div>
 		<div class="view_map">
-		<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
+			<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
 		</div>
-		
+
 		<div class="view_riew">
 			<jsp:include page="visit_view_review.jsp"></jsp:include>
 		</div>
 
 	</div>
-<script>
-	$('.modify').click(function(){
-		location.href = 'ModifyReviewCon.do?visit_name=${accomInfo.acc_name}';
-	});
-	$('.delete').click(function(){
-		location.href = 'DeleteReviewCon.do?visit_name=${accomInfo.acc_name}';
-	});
-</script>
+	<script>
+		$('.modify')
+				.click(
+						function() {
+							location.href = 'ModifyReviewCon.do?visit_name=${accomInfo.acc_name}';
+						});
+		$('.delete')
+				.click(
+						function() {
+							location.href = 'DeleteReviewCon.do?visit_name=${accomInfo.acc_name}';
+						});
+	</script>
 </body>
 </html>

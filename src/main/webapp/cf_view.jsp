@@ -119,7 +119,7 @@
 	</script>
 	<div class="view_cfult">
 		<!-- 설명 -->
-		<div class="view_sul">카페는 설명이 없어서 다른거 적어야함</div>
+		<div class="view_sul">${cfInfo.cf_name}</div>
 		<div class="view_map">
 			<jsp:include page="kakaoCaTest6.jsp"></jsp:include>
 		</div>

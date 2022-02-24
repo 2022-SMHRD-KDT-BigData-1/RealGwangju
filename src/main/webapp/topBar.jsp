@@ -12,7 +12,9 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
+<style>
+	.inimg:hover {border:blue 5px solid;}
+</style>
 <title>Insert title here</title>
 </head>
 <body>

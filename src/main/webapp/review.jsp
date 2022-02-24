@@ -21,6 +21,9 @@ reviewList = dao.selectAllReview();
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>review</title>
+<style>
+	.review_list_img:hover {border:blue 5px solid;}
+</style>
 </head>
 <body>
 	<jsp:include page="topBar.jsp"></jsp:include>
@@ -28,33 +31,25 @@ reviewList = dao.selectAllReview();
 		<!-- div class="review_list_in"을 반복하면됨 -->
 		<c:forEach var="re" items="${allReviewList}">
 			<div class="review_list_in">
-				<a href="review_view.jsp"><img src="img/other/noimg.PNG"
-					class="review_list_img"></a>
-				<div style="text-align: left; margin-left: 5%">${re.re_title}
+				<a href="review_view.jsp?re_num=${re.re_num}"> 
+				<c:choose>
+					<c:when test="${re.re_img ne 'images/uploadedReviewImages/null'}">
+						<img src="${re.re_img}" class="review_list_img">
+					</c:when>
+					<c:otherwise>
+						<img src="img/other/noimg.PNG" class="review_list_img">
+					</c:otherwise>
+				</c:choose>
+				</a>
+				<div style="text-align: left; margin-left: 5%">
+					${re.re_title}
 					<hr style="width: auto; padding: 0; margin: 0;">
 				</div>
 				<div>${re.mem_nick}</div>
 				<div>${re.re_date}</div>
 			</div>
 		</c:forEach>
-		<!-- 		<div class="review_list_in">
-<img src="img/main/plz3.png" class="review_list_img">
-<div style="text-align: left; margin-left: 5%">
-리뷰제목
-<hr style="width: auto; padding: 0; margin: 0;">
-</div>
-<div>>?>??</div>
-<div>>?>??</div>
-</div>
-<div class="review_list_in">
-<img src="img/other/noimg.PNG" class="review_list_img">
-<div style="text-align: left; margin-left: 5%">
-리뷰제목
-<hr style="width: auto; padding: 0; margin: 0;">
-</div>
-<div>>?>??</div>
-<div>>?>??</div>
-</div> -->
+
 	</div>
 </body>
 </html>

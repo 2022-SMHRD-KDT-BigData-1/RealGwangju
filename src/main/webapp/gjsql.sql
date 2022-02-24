@@ -204,6 +204,15 @@ create table theme(
 --테마 관광 시퀀스
 create sequence theme_theme_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
+--인기검색어 저장
+drop table popularSearchWord
+create table popularSearchWord(
+	word varchar2(100),
+	word_count number(10) default 0,
+    constraint popularSearchWord_word_pk primary key(word)
+)
+select * from popularSearchWord
+
 drop table theme
 drop sequence theme_theme_num_seq
 
@@ -233,6 +242,3 @@ alter table p add p_views number(10) default 0
 select * from res
 
 select ts_name, ts_tel, ts_time, ts_add, ts_img from ts
-
-
-

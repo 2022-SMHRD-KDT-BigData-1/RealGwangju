@@ -138,7 +138,7 @@ public class ReviewDAO {
 	public ArrayList<ReviewDTO> selectAllReview(String visit_name) {
 		connect();
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
-		sql = "select mem_nick, re_title, re_content, re_img, re_date, re_num from review where visit_name=?";
+		sql = "select mem_nick, re_title, re_content, re_img, re_date, re_num from review where visit_name=? order by re_num desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, visit_name);
@@ -151,13 +151,14 @@ public class ReviewDAO {
 		} finally {
 			close();
 		}
+		
 		return reviewList;
 	}
 	
 	public ArrayList<ReviewDTO> selectAllReview() {
 		connect();
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
-		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num from review";
+		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num from review order by re_num desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -169,6 +170,7 @@ public class ReviewDAO {
 		} finally {
 			close();
 		}
+//		System.out.println(reviewList.toString());
 		return reviewList;
 	}
 }
