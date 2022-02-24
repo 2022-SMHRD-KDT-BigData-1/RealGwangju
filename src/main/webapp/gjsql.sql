@@ -236,7 +236,10 @@ drop table ts
 
 select ts_name, ts_views from ts order by desc ts_views where ROWNUM <=10
 select ts_name, ts_img from (select ts_name, ts_img from ts order by  ts_views desc) where ROWNUM <=10
+select * from ACCOM order by accom_num
 
+
+commit
 drop table imageadd
 
 alter table res add res_views number(10) default 0
