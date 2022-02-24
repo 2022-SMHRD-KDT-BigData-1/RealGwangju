@@ -232,11 +232,17 @@
 		</c:choose>
 	<div class="" style="text-align: center; font-size: 30px">
 		<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" varStatus="status">
-			<a href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${status.index}&pageCount=">${status.index}</a>
+			<a href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${status.index}&pageCount=" class ="bottom_count"${status.index}>${status.index}</a>
 		</c:forEach>
 	</div>
 	</div>
-	
+	<!-- <script type="text/javascript">
+		$('.bottom_ count1'}).click(function() {
+		$('.bottom_ count1').css('color','red');
+		$('.course2').css('color','red');
+		$('.course3').css('color','black');
+		}
+	</script> -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/
     bootstrap.bundle.min.js"></script>
