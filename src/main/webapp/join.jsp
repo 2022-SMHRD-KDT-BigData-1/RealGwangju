@@ -24,7 +24,7 @@ table {
 
 <jsp:include page="topBar.jsp"></jsp:include>
 	<div class="join_main"><!--  -->
-	<form action='JoinCon.do'>
+	<form action='JoinCon.do' method="post">
 		<table>
 			<tr>
 				<td class="table-1">아이디</td>
@@ -70,6 +70,7 @@ table {
 		</table>
 		</form>
 	</div>
+	<div class="nonono" style="height: 300px;"></div> 
 <jsp:include page="bottomBar.jsp"></jsp:include>
 
 

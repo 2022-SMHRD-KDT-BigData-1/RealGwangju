@@ -430,6 +430,7 @@ button{
     padding-left: 30%;
     padding-right: 30%;
     padding-top: 150px;
+    height: 1500px;
     /* text-alig0n: center; */
 }
 @keyframes fadein {
@@ -789,11 +790,6 @@ ul{
 	margin-bottom: 30px;
 	}	
 }
-.info{
-}
-.thumb{
-	
-}
 
 .comment span{
 	overflow: hidden;
@@ -842,10 +838,22 @@ ul{
 	
 }
 .course_num{
-	margin-top:70px;
+	margin-top:40px;
 	display:flex;
 	flex-wrap:wrap;
 	justify-content: center;
+	border: solid 1px rgba(0,0,0,.3);
+	padding-top: 10px;
+	
+} 
+
+.cnum{
+	width: 50px;
+	height :50px;
+	border: solid red 10px;
+	border-radius: 50%;
+	text-align: center;
+	margin-left: 10px;
 }
 .ref{
 		display:flex;
@@ -878,4 +886,9 @@ ul{
 }
 .sub submit{
  border: none;
+}
+.cnumul{
+	text-align: left;
+	margin-left: 20px;
+width: 964px;
 }

@@ -168,6 +168,9 @@ create table accom(
        accom_loc number(5),
        accom_img clob,
        accom_info clob,
+       accom_lat varchar2(20),
+       accom_lng varchar2(20),
+       accom_views number(10),
        constraint accom_accom_num_pk primary key(accom_num),
        constraint accom_fk foreign key(accom_loc) references location(loc)       
 );

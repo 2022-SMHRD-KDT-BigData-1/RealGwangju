@@ -507,7 +507,7 @@ function pMarker(){
 					    e.parentElement.parentElement.style.background = "unset";
 					});
 				
-				// 마커를 지도에 표시합니다.
+				// 마커를 지도에 표시합니다. 
 				marker.setMap(map);
 				markers.push(marker);
 				//console.log(posistions[i].slice(1,2));

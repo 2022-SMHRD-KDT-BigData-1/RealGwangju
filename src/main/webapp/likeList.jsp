@@ -11,7 +11,9 @@
 .cc {
    display : inline-block;
    font-size: 20px;
-   width: 800px;
+   width: 75%;
+   margin-top : 0;
+   margin-left: 20px;
 }
 
 table {
@@ -48,8 +50,17 @@ input[type="checkbox"] {
    display: none;
 }
 
-.f {
+/* .f {
    margin-left: 10%;
+} */
+
+.nojjim{
+	display: block;
+	text-align: center;
+	margin-left: 0;
+}
+.jjimlist{
+margin-left: 10%;
 }
 </style>
 </head>
@@ -57,25 +68,32 @@ input[type="checkbox"] {
 
    <jsp:include page="topBar.jsp"></jsp:include>
    <form action="DeleteLikeListCon.do" class="f">
-      <h1 align="left">[ 찜 목록 ]</h1>
+      <h1 align="left" style="margin-top: 70px;margin-left: 10%; ">[ 찜 목록 ]</h1>
+      <div style="margin-left: 10%; margin-top: 30px;">
       <input type='checkbox' name='selectall' value='selectall' id="cb1"
          onclick='selectAll(this)' /> <label for="cb1"></label><b>전체선택</b> <input
          type="submit" value="선택삭제"
          style="background-color: white; border-radius: 10%;">
+         </div>
       <!-- <button type="button" onclick="allCheck()">전체선택</button -->
       <c:choose>
          <c:when test="${empty likeList}">
-            <h2>찜목록이 없어요</h2>
+        	 <div class="nojjim">
+            <h2 style="height:max-content;text-align: center;" >
+			<a href="search.jsp">찜목록이 없어요.. 찜목록을 채우러 가볼까요?</a></h2>
+			<br/>
+			<img src="img/character/gw3.png" style="text-align: center; ">
+			</div>
          </c:when>
          <c:otherwise>
-            <table>
+            <table class="jjimlist">
                <c:forEach var="e" items="${likeList}" varStatus="status">
-                  <tr>
+                  <tr >
                      <td><input type="checkbox" id="cb${status.index+2}"
                         name="delete_ts_nameList" value="${e.ts_name}"><label
                         for="cb${status.index+2}"></label></td>
                      <td><a href="Ts_viewCon.do?visit_name=${e.ts_name}">
-                     <img src="${e.ts_img}" width="230px" height="180px"> 
+                     <img src="${e.ts_img}" width="280px" height="180px"> 
                            <p align="center">${e.ts_name}</p>
                      <!-- </a> --></td>
                      <td><a href="Ts_viewCon.do?visit_name=${e.ts_name}"><span
