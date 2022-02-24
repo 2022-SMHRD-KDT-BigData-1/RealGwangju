@@ -335,7 +335,7 @@ public class SearchDAO {
 		} else if (visit_kind.equals("cf")) {
 			sql = "select count(*) as count from cf";
 		} else if (visit_kind.equals("acc")) {
-			sql = "select count(*) as count from accom";
+			sql = "select count(*) as count from accom where accom_info is not null";
 		} else if (visit_kind.equals("p")) {
 			sql = "select count(*) as count from p";
 		}
