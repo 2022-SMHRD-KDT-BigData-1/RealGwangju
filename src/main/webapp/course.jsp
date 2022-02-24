@@ -65,7 +65,7 @@ ArrayList<CourseDTO> courseInfo = dao.courseSelectAll();
 			</a></div>
 			
 			<%
-				
+				 
 			}
 		}
 			%>	
