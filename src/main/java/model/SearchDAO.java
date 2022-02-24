@@ -113,7 +113,7 @@ public class SearchDAO {
 		} finally {
 			close();
 		}
-		System.out.println(searchedTsList.size());
+//		System.out.println("searchedTsList.size() : " + searchedTsList.size());
 		return searchedTsList;
 	}
 

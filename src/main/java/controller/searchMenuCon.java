@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
 
 import model.AccDTO;
 import model.CfDTO;
@@ -18,19 +17,15 @@ import model.ResDTO;
 import model.SearchDAO;
 import model.TsDTO;
 
-public class searchSeeMoreCon implements iCommand {
+public class searchMenuCon implements iCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		String visit_kind = request.getParameter("visit_kind");
 //		session.removeAttribute("search_word");
-		String search_word = (String) request.getAttribute("search_word");
-		if (search_word == null) {
-			System.out.println("search_word : " + search_word);
-			search_word = "";
-		}
-
+		String search_word = "";
+		
 		System.out.println("visit_kind : " + visit_kind + " / search_word : " + search_word);
 
 		SearchDAO dao = new SearchDAO();
@@ -40,48 +35,20 @@ public class searchSeeMoreCon implements iCommand {
 		int page;
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
-		} else {
-			page = 1;
+		}else {
+			page=1;
 		}
 		request.setAttribute("page", page);
 		System.out.println("page : " + page);
 		Paging paging = new Paging();
 		paging.setPage(page);
-//		session.removeAttribute("pageCount");
-
-//		String pageCount = request.getParameter("pageCount");
-//		System.out.println("pageCount : " + pageCount);
-//		if (pageCount.equals("")) { //더보기 내에서 클릭한경우
-//			pageCount = Integer.toString(dao.getVisitCount(visit_kind));
-//			session.setAttribute("pageCount", pageCount);
-////			pageCount = Integer.parseInt((String) session.getAttribute("pageCount"));
-//		} else {// 서치 jsp에서 클릭한경우 
-//			session.setAttribute("pageCount", pageCount);
-//			pageCount = Integer.parseInt(pageCount);
-//		}
-
-		String pc = request.getParameter("pageCount");
-		System.out.println("pc : " + pc);
-		int pageCount;
-		if (pc.equals("")) { // 더보기 내에서 클릭한경우
-//			pageCount = (int)session.getAttribute("pageCount");
-			pageCount = Integer.parseInt(String.valueOf(session.getAttribute("pageCount")));
-		} else {// 서치 jsp에서 클릭한경우
-			session.setAttribute("pageCount", pc);
-			pageCount = Integer.parseInt(pc);
-		}
-
+		
+		
 //		String pc = request.getParameter("pageCount");
 //		System.out.println("pc : " + pc);
-//		int pageCount = 0;
-//		if (pc.equals("")) { //더보기 내에서 클릭한경우
-//			pageCount = dao.getVisitCount(visit_kind);
-//			session.setAttribute("pageCount", pageCount);
-////			pageCount = Integer.parseInt((String) session.getAttribute("pageCount"));
-//		} else {// 서치 jsp에서 클릭한경우 
-//			session.setAttribute("pageCount", pc);
-//			pageCount = Integer.parseInt(pc);
-//		}
+		int pageCount;
+		pageCount = dao.getVisitCount(visit_kind);
+		session.setAttribute("pageCount", pageCount);
 
 		System.out.println("pageCount : " + pageCount);
 		paging.setTotalCount(pageCount);

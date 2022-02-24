@@ -38,21 +38,22 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2" style="border: solid black 1px;">
-					<a href="searchSeeMoreCon.do?visit_kind=ts&search_word=&pageCount=" class="choice_btn">관광지</a>
+					<a href="searchMenuCon.do?visit_kind=ts" class="choice_btn">관광지</a>
 				</div>
 				<div class="col-md-2" style="border: solid black 1px;">
-					<a href="searchSeeMoreCon.do?visit_kind=res&search_word=&pageCount=" class="choice_btn">식당</a>
+					<a href="searchMenuCon.do?visit_kind=res" class="choice_btn">식당</a>
 				</div>
 				<div class="col-md-2" style="border: solid black 1px;">
-					<a href="searchSeeMoreCon.do?visit_kind=cf&search_word=&pageCount=" class="choice_btn">카페</a>
+					<a href="searchMenuCon.do?visit_kind=cf" class="choice_btn">카페</a>
 				</div>
 				<div class="col-md-2" style="border: solid black 1px;">
-					<a href="searchSeeMoreCon.do?visit_kind=acc&search_word=&pageCount=" class="choice_btn">숙소</a>
+					<a href="searchMenuCon.do?visit_kind=acc" class="choice_btn">숙소</a>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2" style="border: solid black 1px;">
-					<a href="searchSeeMoreCon.do?visit_kind=p&search_word=&pageCount=" class="choice_btn">주차장</a>
+					<a href="searchMenuCon.do?visit_kind=p" class="choice_btn">주차장</a>
+<!-- 					<a href="searchSeeMoreCon.do?visit_kind=p&search_word=&pageCount=" class="choice_btn">주차장</a> -->
 				</div>
 
 				
