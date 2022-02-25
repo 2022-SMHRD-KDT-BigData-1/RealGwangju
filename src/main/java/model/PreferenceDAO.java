@@ -44,18 +44,15 @@ public class PreferenceDAO {
 		}
 	}
 	
-	public int savePrefer(int mem_num , String mem_id, String[] mem_like) {
+	public int savePrefer(PreferenceDTO preferenceDTO) {
 		
 		connect();
-		
 		try {
-			for (int i = 0; i < mem_like.length; i++) {
-			sql = "insert into mem_score(mem_id, mem_like) values(mem_score_mem_num_seq.nextval,?,?)";
+			sql = "insert into mem_score values(mem_score_mem_num_seq.nextval,?,?)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, mem_id);
-			psmt.setString(2, mem_like[i]);
+			psmt.setString(1, preferenceDTO.getMem_id());
+			psmt.setString(2, preferenceDTO.getMem_like());
 			cnt = psmt.executeUpdate();
-			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

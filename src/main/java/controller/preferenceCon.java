@@ -19,16 +19,20 @@ public class preferenceCon implements iCommand {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+		int cnt = 0;
+		String mem_like2 = null;
 		HttpSession session =request.getSession();
-		MemberDTO member;
-		member=(MemberDTO)session.getAttribute("member");
-		String id = member.getMem_id();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		String mem_id = member.getMem_id();
 		
-		String[] mem_like = request.getParameterValues("place");
-		
+		String mem_like[] = request.getParameterValues("place");
 		PreferenceDAO dao = new PreferenceDAO();
-		int cnt = dao.savePrefer(0, id, mem_like);
+		
+		for(int i = 0; i < mem_like.length; i++) {
+			
+			mem_like2 = mem_like[i];
+			cnt = dao.savePrefer(new PreferenceDTO(0, mem_id, mem_like2));
+		}
 		
 		if (cnt > 0) {
 			session.setAttribute("place", mem_like);
