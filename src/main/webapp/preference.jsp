@@ -16,6 +16,7 @@
 <body>
 <jsp:include page="topBar.jsp"></jsp:include>
 
+<form action="preferenceCon.do" method="post">
 <div class=ref>
 	<img src="img/character/gw1.png"class ="bgc1">
 	<img src="img/character/gw2.png"class ="bgc2">
@@ -60,6 +61,7 @@
 			</div>
 
 </div>
+</form>
 	<jsp:include page="bottomBar.jsp"></jsp:include>
 </body>
 </html>
