@@ -41,13 +41,15 @@ select * from see
 
 --선호도
 create table mem_score(
-    mem_num number(10),
+   mem_num number(10),
    mem_id varchar2(20),
-   mem_score number(1),
+   mem_like varchar2(50),
     constraint mem_score_mem_num_pk primary key(mem_num),
    constraint mem_score_fk foreign key(mem_id) references member(mem_id)
  );
 
+ drop sequence mem_score_mem_num_seq
+ drop table mem_score
 --선호도 시퀀스
 create sequence mem_score_mem_num_seq increment by 1 start with 1 maxvalue 99999 nocache nocycle;
 
