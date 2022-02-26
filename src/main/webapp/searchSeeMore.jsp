@@ -48,20 +48,20 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-2" style="border: solid black 1px;">
 					<a href="searchMenuCon.do?visit_kind=p" class="choice_btn">주차장</a>
-<!-- 					<a href="searchSeeMoreCon.do?visit_kind=p&search_word=&pageCount=" class="choice_btn">주차장</a> -->
+					<!-- 					<a href="searchSeeMoreCon.do?visit_kind=p&search_word=&pageCount=" class="choice_btn">주차장</a> -->
 				</div>
 
-				
+
 				<div class="col-md-2"></div>
 			</div>
 		</div>
 
 		<div class="row search_favorite">
-			<div class="col-md-2"></div> 
+			<div class="col-md-2"></div>
 			<div class="col-md-10"
 				style="text-align: left; padding-bottom: 20px; padding-top: 20px;">인기검색어</div>
 			<div class="col-md-2"></div>
-			
+
 			<div class="col-md-2">
 				<em class="search_rank">1</em><a class="search_text" href="#">${searchedPopularWordList[0]}</a>
 			</div>
@@ -79,7 +79,7 @@
 			</div>
 
 			<div class="col-md-2"></div>
-			
+
 			<div class="col-md-2">
 				<em class="search_rank2">6</em><a class="search_text" href="#">${searchedPopularWordList[5]}</a>
 			</div>
@@ -95,7 +95,7 @@
 			<div class="col-md-2">
 				<em class="search_rank2">10</em><a class="search_text" href="#">${searchedPopularWordList[9]}</a>
 			</div>
-			
+
 			<div class="col-md-1" style="padding-bottom: 20px;"></div>
 		</div>
 
@@ -104,11 +104,11 @@
 	<div class="search_result">
 
 		<c:choose>
-		
+
 			<c:when test="${visit_kind eq 'ts'}">
 				<p class="dbdb">
-					<span style="text-align: left; margin-left: 5%;">관광지</span>
-					 <span style="margin-right: 5%"></span>
+					<span style="text-align: left; margin-left: 5%;">관광지</span> <span
+						style="margin-right: 5%"></span>
 				</p>
 				<div class="gong">
 					<ul class="result_box">
@@ -127,36 +127,36 @@
 					</ul>
 				</div>
 			</c:when>
-			
+
 			<c:when test="${visit_kind eq 'res'}">
 				<p class="dbdb">
-					<span style="text-align: left; margin-left: 5%;">음식점</span>
-					 <span style="margin-right: 5%"></span>
+					<span style="text-align: left; margin-left: 5%;">음식점</span> <span
+						style="margin-right: 5%"></span>
 				</p>
 				<div class="gong">
-				<ul class="result_box">
-					<!-- 한칸을 area div로 묶음 -->
-					<c:forEach items="${searchedResList}" var="res">
-						<div class="area">
-							<li class="result_boxin"><a
-								href="Res_viewCon.do?visit_name=${res.res_name}"
-								class="result_link"> <span> <img src="${res.res_img}"
-										class="inimg">
-								</span> <span class="intext"> <span>${res.res_name}</span> <!--  <span>설명이나
+					<ul class="result_box">
+						<!-- 한칸을 area div로 묶음 -->
+						<c:forEach items="${searchedResList}" var="res">
+							<div class="area">
+								<li class="result_boxin"><a
+									href="Res_viewCon.do?visit_name=${res.res_name}"
+									class="result_link"> <span> <img
+											src="${res.res_img}" class="inimg">
+									</span> <span class="intext"> <span>${res.res_name}</span> <!--  <span>설명이나
 											주소</span --> <!-- 3칸까지 성공 --> <!-- <span>줄바꿈</span> -->
-								</span>
-							</a></li>
-						</div>
-					</c:forEach>
-					<!-- 여기까지 1칸 -->
-				</ul>
-			</div>
+									</span>
+								</a></li>
+							</div>
+						</c:forEach>
+						<!-- 여기까지 1칸 -->
+					</ul>
+				</div>
 			</c:when>
-			
+
 			<c:when test="${visit_kind eq 'cf'}">
 				<p class="dbdb">
-					<span style="text-align: left; margin-left: 5%;">카페</span>
-					 <span style="margin-right: 5%"></span>
+					<span style="text-align: left; margin-left: 5%;">카페</span> <span
+						style="margin-right: 5%"></span>
 				</p>
 				<div class="gong">
 					<ul class="result_box">
@@ -175,11 +175,11 @@
 					</ul>
 				</div>
 			</c:when>
-			
+
 			<c:when test="${visit_kind eq 'acc'}">
 				<p class="dbdb">
-					<span style="text-align: left; margin-left: 5%;">숙박</span>
-					 <span style="margin-right: 5%"></span>
+					<span style="text-align: left; margin-left: 5%;">숙박</span> <span
+						style="margin-right: 5%"></span>
 				</p>
 				<div class="gong">
 					<ul class="result_box">
@@ -188,15 +188,14 @@
 							<div class="area">
 								<li class="result_boxin"><a
 									href="Accom_viewCon.do?visit_name=${acc.acc_name}"
-									class="result_link"> <span> 
-								<c:choose>
-									<c:when test="${acc.acc_img eq '-'}">
-										<img src="img/other/noimg.PNG" class="inimg">
-									</c:when>
-									<c:otherwise>
-										<img src="${acc.acc_img}" class="inimg">
-									</c:otherwise>
-								</c:choose>
+									class="result_link"> <span> <c:choose>
+												<c:when test="${acc.acc_img eq '-'}">
+													<img src="img/other/noimg.PNG" class="inimg">
+												</c:when>
+												<c:otherwise>
+													<img src="${acc.acc_img}" class="inimg">
+												</c:otherwise>
+											</c:choose>
 									</span> <span class="intext"> <span>${acc.acc_name}</span>
 									</span>
 								</a></li>
@@ -205,23 +204,21 @@
 					</ul>
 				</div>
 			</c:when>
-			
+
 			<c:when test="${visit_kind eq 'p'}">
 				<p class="dbdb">
-					<span style="text-align: left; margin-left: 5%;">주차장</span>
-					 <span style="margin-right: 5%"></span>
+					<span style="text-align: left; margin-left: 5%;">주차장</span> <span
+						style="margin-right: 5%"></span>
 				</p>
 				<div class="gong">
 					<ul class="result_box">
 						<!-- 한칸을 area div로 묶음 -->
 						<c:forEach items="${searchedPList}" var="p">
 							<div class="area">
-								<li class="result_boxin">
-								<a	href="P_viewCon.do?visit_name=${p.p_name}"	class="result_link"> 
-									<span> 
-										<!-- <img src="img/other/noimg.PNG" class="inimg"> -->
-									</span>
-									<span class="intext"> <span>${p.p_name}</span>
+								<li class="result_boxin"><a
+									href="P_viewCon.do?visit_name=${p.p_name}" class="result_link">
+										<span> <!-- <img src="img/other/noimg.PNG" class="inimg"> -->
+									</span> <span class="intext"> <span>${p.p_name}</span>
 									</span>
 								</a></li>
 							</div>
@@ -229,13 +226,29 @@
 					</ul>
 				</div>
 			</c:when>
-			
+
 		</c:choose>
-	<div class="" style="text-align: center; font-size: 30px">
-		<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" varStatus="status">
-			<a href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${status.index}&pageCount=" class ="bottom_count${status.index}">${status.index}</a>
-		</c:forEach>
-	</div>
+		<div class="" style="text-align: center; font-size: 30px">
+			<c:choose>
+				<c:when test="${paging.prev}">
+					<a
+						href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${paging.beginPage-1}&pageCount=">◀</a>
+				</c:when>
+			</c:choose>
+			<c:forEach begin="${paging.beginPage}" end="${paging.endPage}"
+				step="1" varStatus="status">
+				<a
+					href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${status.index}&pageCount="
+					class="bottom_count${status.index}">${status.index}</a>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${paging.next}">
+					<a
+						href="searchSeeMoreCon.do?visit_kind=${visit_kind}&page=${paging.endPage+1}&pageCount=">▶</a>
+				</c:when>
+			</c:choose>
+
+		</div>
 	</div>
 	<script>
 		$(".bottom_count"+${page}).css('color','red');

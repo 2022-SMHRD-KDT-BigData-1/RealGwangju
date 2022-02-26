@@ -155,15 +155,36 @@ public class ReviewDAO {
 		return reviewList;
 	}
 	
-	public ArrayList<ReviewDTO> selectAllReview() {
+//	public ArrayList<ReviewDTO> selectAllReview() {
+//		connect();
+//		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+//		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num from review order by re_num desc";
+//		try {
+//			psmt = conn.prepareStatement(sql);
+//			rs = psmt.executeQuery();
+//			while (rs.next()) {
+//				reviewList.add(new ReviewDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close();
+//		}
+////		System.out.println(reviewList.toString());
+//		return reviewList;
+//	}
+	public ArrayList<ReviewDTO> selectAllReview(int page) {
 		connect();
 		ArrayList<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
-		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num from review order by re_num desc";
+		int startNum = (page - 1) * 9 + 1;
+		int endNum = page * 9;
+//		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num, rownum as row_num from review where row_num between "+startNum+" and "+endNum+" order by re_num desc";
+		sql = "select * from (select review.*, rownum as row_num from review) where row_num between "+startNum+" and "+endNum+" order by re_num desc";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				reviewList.add(new ReviewDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
+				reviewList.add(new ReviewDTO(rs.getString("visit_name"), rs.getString("mem_nick"), rs.getString("re_title"), rs.getString("re_content"), rs.getString("re_img"), rs.getString("re_date"), rs.getInt("re_num")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -172,5 +193,22 @@ public class ReviewDAO {
 		}
 //		System.out.println(reviewList.toString());
 		return reviewList;
+	}
+	public int getReviewCount() {
+		connect();
+		int reviewCount = 0;
+		sql = "select count(*) as count from review";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				reviewCount = rs.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return reviewCount;
 	}
 }

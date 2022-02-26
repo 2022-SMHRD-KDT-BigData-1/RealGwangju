@@ -245,8 +245,7 @@ public class SearchDAO {
 		ArrayList<AccDTO> searchedAccomList = new ArrayList<AccDTO>();
 		int startNum = (page - 1) * 9 + 1;
 		int endNum = page * 9;
-		sql = "select accom_name, accom_img from (" + "select accom_name, accom_img, ROWNUM as ROW_NUM from accom" + " where accom_name like ?" + "and accom_info is not null" + ") where ROW_NUM between " +
-													startNum + " and " + endNum ;
+		sql = "select accom_name, accom_img from (" + "select accom_name, accom_img, ROWNUM as ROW_NUM from accom" + " where accom_name like ?" + "and accom_info is not null" + ") where ROW_NUM between " + startNum + " and " + endNum;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, "%" + search_word + "%");

@@ -22,7 +22,19 @@ reviewList = dao.selectAllReview();
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>review</title>
 <style>
-	.review_list_img:hover {border:blue 5px solid;}
+.review_list_img:hover {
+	border: blue 5px solid;
+}
+
+.page a{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    color: red;
+    border: 5px skyblue;
+    opacity: 0.8;
+    font-size: 60px;
+}
 </style>
 </head>
 <body>
@@ -31,15 +43,14 @@ reviewList = dao.selectAllReview();
 		<!-- div class="review_list_in"을 반복하면됨 -->
 		<c:forEach var="re" items="${allReviewList}">
 			<div class="review_list_in">
-				<a href="review_view.jsp?re_num=${re.re_num}"> 
-				<c:choose>
-					<c:when test="${re.re_img ne 'images/uploadedReviewImages/null'}">
-						<img src="${re.re_img}" class="review_list_img">
-					</c:when>
-					<c:otherwise>
-						<img src="img/other/noimg.PNG" class="review_list_img">
-					</c:otherwise>
-				</c:choose>
+				<a href="review_view.jsp?re_num=${re.re_num}"> <c:choose>
+						<c:when test="${re.re_img ne 'images/uploadedReviewImages/null'}">
+							<img src="${re.re_img}" class="review_list_img">
+						</c:when>
+						<c:otherwise>
+							<img src="img/other/noimg.PNG" class="review_list_img">
+						</c:otherwise>
+					</c:choose>
 				</a>
 				<div style="text-align: left; margin-left: 5%">
 					${re.re_title}
@@ -49,7 +60,30 @@ reviewList = dao.selectAllReview();
 				<div>${re.re_date}</div>
 			</div>
 		</c:forEach>
-
 	</div>
+	<div class="" style="text-align: center; font-size: 30px;">
+		<c:choose>
+			<c:when test="${paging.prev}">
+				<a href="ReviewCon.do?page=${paging.beginPage-1}">◀</a>
+			</c:when>
+		</c:choose>
+		<c:forEach begin="${paging.beginPage}" end="${paging.endPage}"
+			step="1" varStatus="status">
+			<div class="page">
+			<a href="ReviewCon.do?page=${status.index}"
+				class="bottom_count${status.index}">${status.index}</a>
+			</div>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${paging.next}">
+				<a href="ReviewCon.do?page=${paging.endPage+1}">▶</a>
+			</c:when>
+		</c:choose>
+	</div>
+
+
+	<script>
+		$(".bottom_count"+${page}).css('color','red');
+	</script>
 </body>
 </html>

@@ -29,6 +29,7 @@ public class WriteReviewCon implements iCommand {
 
 		String dir = "images/uploadedReviewImages";
 		String realDir = request.getRealPath(dir);
+//		String realDir = "C:/Users/smhrd/git/RealGwangju/src/main/webapp/images/reviewImages";
 		
 		MultipartRequest multi = new MultipartRequest(request, realDir, 1024*1024*10, "utf-8", new DefaultFileRenamePolicy());
 		String title = multi.getParameter("title");
