@@ -68,37 +68,37 @@
 			<div class="col-md-2"></div>
 			
 			<div class="col-md-2">
-				<em class="search_rank">1</em><a class="search_text" href="#">${searchedPopularWordList[0]}</a>
+				<em class="search_rank">1</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[0]}">${searchedPopularWordList[0]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank">2</em><a class="search_text" href="#">${searchedPopularWordList[1]}</a>
+				<em class="search_rank">2</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[1]}">${searchedPopularWordList[1]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank">3</em><a class="search_text" href="#">${searchedPopularWordList[2]}</a>
+				<em class="search_rank">3</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[2]}">${searchedPopularWordList[2]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">4</em><a class="search_text" href="#">${searchedPopularWordList[3]}</a>
+				<em class="search_rank2">4</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[3]}">${searchedPopularWordList[3]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">5</em><a class="search_text" href="#">${searchedPopularWordList[4]}</a>
+				<em class="search_rank2">5</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[4]}">${searchedPopularWordList[4]}</a>
 			</div>
 
 			<div class="col-md-2"></div>
 			
 			<div class="col-md-2">
-				<em class="search_rank2">6</em><a class="search_text" href="#">${searchedPopularWordList[5]}</a>
+				<em class="search_rank2">6</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[5]}">${searchedPopularWordList[5]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">7</em><a class="search_text" href="#">${searchedPopularWordList[6]}</a>
+				<em class="search_rank2">7</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[6]}">${searchedPopularWordList[6]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">8</em><a class="search_text" href="#">${searchedPopularWordList[7]}</a>
+				<em class="search_rank2">8</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[7]}">${searchedPopularWordList[7]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">9</em><a class="search_text" href="#">${searchedPopularWordList[8]}</a>
+				<em class="search_rank2">9</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[8]}">${searchedPopularWordList[8]}</a>
 			</div>
 			<div class="col-md-2">
-				<em class="search_rank2">10</em><a class="search_text" href="#">${searchedPopularWordList[9]}</a>
+				<em class="search_rank2">10</em><a class="search_text" href="SearchCon.do?search_word=${searchedPopularWordList[9]}">${searchedPopularWordList[9]}</a>
 			</div>
 			
 			
