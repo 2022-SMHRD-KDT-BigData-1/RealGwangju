@@ -25,6 +25,8 @@ request.setAttribute("tsRank10", tsRank10);
 <body>
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
 	<jsp:include page="topBar.jsp"></jsp:include>
+	
+	
 
 	<!-- 메인 이미지 -->
 	<div class="inner" style="overflow: hidden;">
@@ -76,6 +78,9 @@ request.setAttribute("tsRank10", tsRank10);
 					</div>
 				</div>
 			</div>
+			
+	<a href ="Easter_Egg.jsp" id="Easter_Egg" style="color: white">ㅎ</a>
+	
 			
 		<jsp:include page="bottomBar.jsp"></jsp:include>
 

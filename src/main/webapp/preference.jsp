@@ -16,6 +16,7 @@
 <body>
 <jsp:include page="topBar.jsp"></jsp:include>
 
+<form action="preferenceCon.do" method="post">
 <div class=ref>
 	<img src="img/character/gw1.png"class ="bgc1">
 	<img src="img/character/gw2.png"class ="bgc2">
@@ -27,9 +28,9 @@
 		
 		    <p >좋아하는 장소</p>
 		 
-      자연과함께<input type="checkbox" name = "place" value="1a">
-      문화유적지<input type="checkbox" name = "place" value="2a"> 
-      도심지<input type="checkbox" name = "place" value="3a"> 
+      자연과함께<input type="checkbox" name = "place" value="자연과함께">
+      문화유적지<input type="checkbox" name = "place" value="문화유적지"> 
+      도심지<input type="checkbox" name = "place" value="도심지"> 
 	</div>
 		<div style="margin-top: 50px;"class="checks">
 		    <p>사람이 많은곳?</p>
@@ -60,6 +61,7 @@
 			</div>
 
 </div>
+</form>
 	<jsp:include page="bottomBar.jsp"></jsp:include>
 </body>
 </html>
