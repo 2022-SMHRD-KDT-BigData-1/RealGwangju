@@ -113,10 +113,10 @@ public class SearchDAO {
 		} finally {
 			close();
 		}
-//		System.out.println("searchedTsList.size() : " + searchedTsList.size());
 		return searchedTsList;
 	}
 
+//		System.out.println("searchedTsList.size() : " + searchedTsList.size());
 	public ArrayList<TsDTO> search_ts(String search_word) {
 		connect();
 		ArrayList<TsDTO> searchedTsList = new ArrayList<TsDTO>();

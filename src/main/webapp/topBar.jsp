@@ -27,7 +27,11 @@
 				<a href="main.jsp">홈</a>
 			</div>
 			<div class="col-md-1">
-			<a href="preference.jsp">선호도</a></div>
+			<c:if test="${!empty member}">
+				<a href="preference.jsp">선호도</a>
+			</c:if>
+			
+			</div>
 			<c:choose>
 				<c:when test="${empty member}">
 					<div class="col-md-3" style="text-align: right;">
