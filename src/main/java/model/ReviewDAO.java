@@ -179,7 +179,8 @@ public class ReviewDAO {
 		int startNum = (page - 1) * 9 + 1;
 		int endNum = page * 9;
 //		sql = "select visit_name, mem_nick, re_title, re_content, re_img, re_date ,re_num, rownum as row_num from review where row_num between "+startNum+" and "+endNum+" order by re_num desc";
-		sql = "select * from (select review.*, rownum as row_num from review) where row_num between "+startNum+" and "+endNum+" order by re_num desc";
+//		sql = "select * from (select review.*, rownum as row_num from review) where row_num between "+startNum+" and "+endNum+" order by re_num desc";
+		sql = "select * from (select review.*, rownum as row_num from review order by re_num desc) where row_num between "+startNum+" and "+endNum;
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
