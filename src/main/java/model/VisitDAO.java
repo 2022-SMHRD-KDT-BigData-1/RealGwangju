@@ -326,5 +326,26 @@ public class VisitDAO {
 
 		return tsRe;
 	}
+	
+	public ArrayList<TsDTO> selectRe4() {
+		connect();
+		ArrayList<TsDTO> tsRe = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from (select ts_name, ts_img from ts order by DBMS_RANDOM.RANDOM) where ROWNUM <=10";
+
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRe.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRe;
+	}
 
 }
