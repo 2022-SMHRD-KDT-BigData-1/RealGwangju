@@ -64,7 +64,7 @@ request.setAttribute("tsReco4", tsReco4);
 			<!-- 컨텐츠 2 -->
 			<div class="row top3">
 				<div class="col-md-1"></div>
-				<div class="col-md-11">추천</div>
+				<div class="col-md-11">오늘의 추천</div>
 			</div>
 			<hr style="color: red; height: 5px; width: 90%; margin-left: 5%;">
 			<div>
