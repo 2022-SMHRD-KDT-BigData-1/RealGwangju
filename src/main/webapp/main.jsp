@@ -6,9 +6,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 ArrayList<TsDTO> tsRank10 = new ArrayList<TsDTO>();
+ArrayList<TsDTO> tsReco4 = new ArrayList<TsDTO>();
 VisitDAO dao = new VisitDAO();
 tsRank10 = dao.selectRank10();
+tsReco4 = dao.selectRe4();
 request.setAttribute("tsRank10", tsRank10);
+request.setAttribute("tsReco4", tsReco4);
 %>
 <!DOCTYPE html>
 <html>
@@ -69,12 +72,14 @@ request.setAttribute("tsRank10", tsRank10);
 					<button class="prev pr2">&lt;</button>
 					<button class="next nx2">&gt;</button>
 					<div class="container2 cn2">
-						<a href="ts_view.html">
+						<c:forEach var="ts" items="${tsReco4}" varStatus="status">
 							<div class="img-slide">
-								<span><img src="img/chucun/bo1.PNG" class="img-size"></span>
-								<span class="silde-text">1번</span>
+								<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
+								src="${ts.ts_img}" class="img-size">${status.index+1}위</span> <span
+								class="slide-text">${ts.ts_name}</span>
+								</a>
 							</div>
-						</a>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

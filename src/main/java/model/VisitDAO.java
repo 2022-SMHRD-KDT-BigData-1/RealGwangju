@@ -263,5 +263,89 @@ public class VisitDAO {
 
 		return tsRank10;
 	}
+	
+	public ArrayList<TsDTO> selectRe() {
+		connect();
+		ArrayList<TsDTO> tsRe = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from ts where ts_ct in ('자연과함께', '도심지') and ROWNUM <= 10 order by ts_name desc ";
+
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRe.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRe;
+	}
+	
+	public ArrayList<TsDTO> selectRe2() {
+		connect();
+		ArrayList<TsDTO> tsRe = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from ts where ts_ct in ('도심지') and ROWNUM <= 10 order by ts_name desc ";
+
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRe.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRe;
+	}
+	
+	public ArrayList<TsDTO> selectRe3() {
+		connect();
+		ArrayList<TsDTO> tsRe = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from ts where ts_name in ('무등산 전망대', '1913 송정역시장', '남광주밤기차야시장', '광주호호수생태원', '원효사', '무등산 등산로', '수완호수공원 야경', '대인시장', '제 2 수원지 자연과함께', '사직공원 전망대') and ROWNUM <= 10 order by ts_name desc ";
+
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRe.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRe;
+	}
+	
+	public ArrayList<TsDTO> selectRe4() {
+		connect();
+		ArrayList<TsDTO> tsRe = new ArrayList<TsDTO>();
+		try {
+			String getTsInfoSql = "select ts_name, ts_img from (select ts_name, ts_img from ts order by DBMS_RANDOM.RANDOM) where ROWNUM <=10";
+
+			psmt = conn.prepareStatement(getTsInfoSql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tsRe.add(new TsDTO(rs.getString("ts_name"), rs.getString("ts_img")));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return tsRe;
+	}
 
 }
