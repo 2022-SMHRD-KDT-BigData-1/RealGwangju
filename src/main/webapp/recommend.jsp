@@ -1,3 +1,4 @@
+<%@page import="model.MemberDTO"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="model.VisitDAO"%>
 <%@page import="model.TsDTO"%>
@@ -10,6 +11,19 @@ ArrayList<TsDTO> tsRank10 = new ArrayList<TsDTO>();
 VisitDAO dao = new VisitDAO();
 tsRank10 = dao.selectRank10();
 request.setAttribute("tsRank10", tsRank10);
+
+ArrayList<TsDTO> tsReco = new ArrayList<TsDTO>();
+ArrayList<TsDTO> tsReco2 = new ArrayList<TsDTO>();
+ArrayList<TsDTO> tsReco3 = new ArrayList<TsDTO>();
+tsReco = dao.selectRe();
+tsReco2 = dao.selectRe2();
+tsReco3 = dao.selectRe3();
+request.setAttribute("tsReco", tsReco);
+request.setAttribute("tsReco2", tsReco2);
+request.setAttribute("tsReco3", tsReco3);
+
+MemberDTO member = (MemberDTO)session.getAttribute("member");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -56,7 +70,7 @@ request.setAttribute("tsRank10", tsRank10);
 		</div>
 			<div class="row top3">
 				<div class="col-md-1"></div>
-				<div class="col-md-11">(id님)이런곳은 어떠신가요?</div>
+				<div class="col-md-11">${member.mem_nick } 님! 이런곳은 어떠신가요?</div>
 			</div>
 			<hr style="color: red; height: 5px; width: 90%; margin-left: 5%;">
 			<div>
@@ -64,12 +78,14 @@ request.setAttribute("tsRank10", tsRank10);
 					<button class="prev pr2">&lt;</button>
 					<button class="next nx2">&gt;</button>
 					<div class="container2 cn2">
-						<a href="ts_view.html">
+						<c:forEach var="ts" items="${tsReco}" varStatus="status">
 							<div class="img-slide">
-								<span><img src="img/chucun/bo1.PNG" class="img-size"></span>
-								<span class="silde-text">1번</span>
+								<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
+										src="${ts.ts_img}" class="img-size">${status.index+1}번</span> <span
+									class="slide-text">${ts.ts_name}</span>
+								</a>
 							</div>
-						</a>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -83,12 +99,14 @@ request.setAttribute("tsRank10", tsRank10);
 					<button class="prev pr33">&lt;</button>
 					<button class="next nx33">&gt;</button>
 					<div class="container2 cn3">
-						<a href="ts_view.html">
+						<c:forEach var="ts" items="${tsReco2}" varStatus="status">
 							<div class="img-slide">
-								<span><img src="img/chucun/bo1.PNG" class="img-size"></span>
-								<span class="silde-text">1번</span>
+								<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
+										src="${ts.ts_img}" class="img-size">${status.index+1}번</span> <span
+									class="slide-text">${ts.ts_name}</span>
+								</a>
 							</div>
-						</a>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -121,12 +139,14 @@ request.setAttribute("tsRank10", tsRank10);
 					<button class="prev pr4">&lt;</button>
 					<button class="next nx4">&gt;</button>
 					<div class="container2 cn4">
-						<a href="ts_view.html">
+						<c:forEach var="ts" items="${tsReco3}" varStatus="status">
 							<div class="img-slide">
-								<span><img src="img/chucun/bo1.PNG" class="img-size"></span>
-								<span class="silde-text">1번</span>
+								<a href="Ts_viewCon.do?visit_name=${ts.ts_name}"> <span><img
+										src="${ts.ts_img}" class="img-size">${status.index+1}번</span> <span
+									class="slide-text">${ts.ts_name}</span>
+								</a>
 							</div>
-						</a>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
