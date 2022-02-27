@@ -141,7 +141,7 @@ request.setAttribute("tsReco4", tsReco4);
 			document.querySelector(".nx2").addEventListener('click',
 					function() {
 						b = b - 30
-						if (b < -30) {
+						if (b < -210) {
 							b = 0
 							cn2.style.transform = 'translate(0vw)';
 						} else {
