@@ -236,7 +236,7 @@ MemberDTO member = (MemberDTO)session.getAttribute("member");
 						if (d > 0) {
 							d = 0
 						}
-						cn3.style.transform = 'translate(' + d + 'vw)';
+						cn4.style.transform = 'translate(' + d + 'vw)';
 
 					})
 			if (d> 0) {
