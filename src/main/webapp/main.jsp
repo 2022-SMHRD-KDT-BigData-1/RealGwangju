@@ -147,7 +147,8 @@ request.setAttribute("tsReco4", tsReco4);
 						} else {
 							cn2.style.transform = 'translate(' + b + 'vw)';
 						}
-					})
+					}) 
+					
 		</script>
 </body>
 </html>
