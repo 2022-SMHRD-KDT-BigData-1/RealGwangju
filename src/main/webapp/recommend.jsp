@@ -211,6 +211,7 @@ MemberDTO member = (MemberDTO) session.getAttribute("member");
 			c = 0
 		}
 
+
 		document.querySelector(".nx33").addEventListener('click', function() {
 			c = c - 30
 			if (c < -210) {
