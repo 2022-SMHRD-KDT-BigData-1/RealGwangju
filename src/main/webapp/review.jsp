@@ -56,8 +56,8 @@ reviewList = dao.selectAllReview();
 					${re.re_title}
 					<hr style="width: auto; padding: 0; margin: 0;">
 				</div>
-				<div>${re.mem_nick}</div>
-				<div>${re.re_date}</div>
+				<div>${re.visit_name}</div>
+				<div>${re.mem_nick}　　　　　${re.re_date}</div>
 			</div>
 		</c:forEach>
 	</div>
