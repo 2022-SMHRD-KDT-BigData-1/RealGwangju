@@ -84,7 +84,7 @@ request.setAttribute("tsReco4", tsReco4);
 				</div>
 			</div>
 				<!-- <a href ="Easter_Egg.jsp"  style="color: white">g</a> -->
-	<a href ="Easter_Egg.jsp" class="Easter_Egg" style="color: white">ㅎ</a>
+	<a href ="Easter_Egg.jsp" class="Easter_Egg" style="color:white">ㅎ</a>
 	
 			 
 		<jsp:include page="bottomBar.jsp"></jsp:include>

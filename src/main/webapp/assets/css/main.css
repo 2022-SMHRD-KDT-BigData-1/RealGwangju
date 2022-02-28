@@ -36,9 +36,9 @@ body{
 	position: fixed;
 	height: 300px;
 	width: 300px;
-	margin-top : 50px;
-/* 	left: 0;
-	bottom: 0; */
+	/* margin-top : 50px; */
+	left: 0;
+	bottom: 0;
 	z-index: 10000;
 
 }
