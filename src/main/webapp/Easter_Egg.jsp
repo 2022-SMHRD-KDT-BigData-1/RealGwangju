@@ -12,7 +12,9 @@
 <div class="nakksi"><button class="on"> <img src="img/easter/404.PNG"></button></div>
 	<div class="easter_main">
 		<div class="hurricain">
+		<a href="https://heroesofthestorm.com/ko-kr/">
 		<img src="img/easter/hios.PNG" class="hios">
+		</a>
 		<span style = "font-size: 50px;"> 시공의 포풍은 정말 최고야!</span>
 		</div>
 		
