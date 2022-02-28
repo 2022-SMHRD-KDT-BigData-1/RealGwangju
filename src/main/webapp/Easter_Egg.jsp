@@ -19,8 +19,9 @@
 		</div>
 		
 		<div class="bonobono">
+		<a href="https://www.google.com/search?q=%EB%B3%B4%EB%85%B8%EB%B3%B4%EB%85%B8&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjS4Ofa06H2AhXLsVYBHb3dDWcQ_AUoAXoECAEQAw&biw=1920&bih=969">
 			<img src="img/easter/bonobono.PNG">
-			
+		</a>	
 			<img src = "img/easter/sun.png" class ="sun">
 		
 		</div>
