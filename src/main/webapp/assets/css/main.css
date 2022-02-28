@@ -23,15 +23,15 @@ body{
     font-size: 25px;
   
 }
-#Easter_Egg{
+.Easter_Egg{
 
 	position: fixed;
 	height: 300px;
 	width: 300px;
 	margin-top : 50px;
-	left: 0;
-	bottom: 0;
-	z-index: -1;
+/* 	left: 0;
+	bottom: 0; */
+	z-index: 10000;
 
 }
 .top{
