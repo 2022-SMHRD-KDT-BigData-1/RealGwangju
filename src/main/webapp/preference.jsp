@@ -28,33 +28,33 @@
 		
 		    <p >좋아하는 장소</p>
 		 
-      자연과함께<input type="checkbox" name = "place" value="자연과함께">
-      문화유적지<input type="checkbox" name = "place" value="문화유적지"> 
-      도심지<input type="checkbox" name = "place" value="도심지"> 
+      자연과함께 <input type="checkbox" name = "place" value="자연과함께" id="cb">
+      문화유적지 <input type="checkbox" name = "place" value="문화유적지"id="cb"> 
+      도심지 <input type="checkbox" name = "place" value="도심지"id="cb"> 
 	</div>
 		<div style="margin-top: 50px;"class="checks">
 		    <p>사람이 많은곳?</p>
-		많다<input type="checkbox" name = "human" value="1b">
-      적다<input type="checkbox" name = "human" value="2b"> 
+		많다 <input type="checkbox" name = "human" value="1b"id="cb">
+      적다 <input type="checkbox" name = "human" value="2b"id="cb"> 
   
 	</div>
 		<div style="margin-top: 50px;"class="checks">
 		    <p>좋아하는 분위기</p>
-		  잔잔한<input type="checkbox" name = "feel" value="1c">
-      북적북적<input type="checkbox" name = "feel" value="2c"> 
-      편안한<input type="checkbox" name = "feel" value="3c"> 
+		  잔잔한 <input type="checkbox" name = "feel" value="1c"id="cb">
+      북적북적 <input type="checkbox" name = "feel" value="2c"id="cb"> 
+      편안한 <input type="checkbox" name = "feel" value="3c"id="cb"> 
 	</div>
 		<div style="margin-top: 50px;"class="checks">
 	    <p>여행은 누구랑!?</p>
-		  혼자서<input type="checkbox" name = "travel" value="1d">
-      둘이서<input type="checkbox" name = "travel" value="2d"> 
-      여럿이서<input type="checkbox" name = "travel" value="3d"> 
+		  혼자서 <input type="checkbox" name = "travel" value="1d"id="cb">
+      둘이서 <input type="checkbox" name = "travel" value="2d"id="cb"> 
+      여럿이서 <input type="checkbox" name = "travel" value="3d"id="cb"> 
 	</div>
 		<div style="margin-top: 50px;"class="checks">
 		    <p>여행 경비는</p>
-		  많이 쓴다<input type="checkbox" name = "money" value="1e">
-      조금 쓴다<input type="checkbox" name = "money" value="2e"> 
-      적당히?<input type="checkbox" name = "money" value="3e"> 
+		  많이 쓴다 <input type="checkbox" name = "money" value="1e"id="cb">
+      조금 쓴다 <input type="checkbox" name = "money" value="2e"id="cb"> 
+      적당히? <input type="checkbox" name = "money" value="3e"id="cb"> 
 	</div>
 			<div style="margin-top: 50px;"class="sub">
 			<input type="submit" value="go">
