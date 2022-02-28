@@ -3,12 +3,29 @@ body{
 	margin: 0;
 	padding: 0;
 }
+.nakksi{
+	height: max-content;;
+	width: 1920px;
+
+}
 .easter_main{
 	height: 1111px;
 	width: 1920px;
 	display: inline-block;
 	animation : example 1s linear infinite;
 	position: relative;
+}
+button{
+	border:none;
+	outline: none;
+	box-shadow: none;
+	background-color: white;
+}
+button:focus,
+button:active {
+	border:none;
+  outline: none;
+  box-shadow: none;
 }
 .hurricain{
 	padding-left: 100px;

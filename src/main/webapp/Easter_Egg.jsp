@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/Easter_Egg.css">
 <title>받아라보노보노빔!!</title>
 </head>
 <body>
+<div class="nakksi"><button class="on"> <img src="img/easter/404.PNG"></button></div>
 	<div class="easter_main">
 		<div class="hurricain">
 		<img src="img/easter/hios.PNG" class="hios">
@@ -25,6 +27,19 @@
 		
 		</div>
 	</div>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('.nakksi').show();
+		$('.easter_main').hide();
+		
+	})
+		$('.on').click(function() {
+	
+		$('.easter_main').show();
+		$('.nakksi').hide();
+	
+	})</script>
 	
 </body>
 </html>
