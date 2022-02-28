@@ -51,7 +51,7 @@
   
 }
 .allin{
-	border: solid rgba(0,0,128,.5) 3px;
+	border: solid rgba(0,0,128,.5) 3px; 
  
 }
 </style>
