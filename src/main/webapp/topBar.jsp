@@ -84,15 +84,15 @@
             <hr style="color: red;">
             <div>
                 <ul class="nav_list">
-                    <li style="color: red;"> <img src="img/gwang.PNG "
-                         style="width: 38px; height: 38px;"> 두유노광주
+                    <li style="color: red;"><a href="main.jsp"> <img src="img/gwang.PNG "
+                         style="width: 38px; height: 38px;"> 두유노광주</a>
                          <!-- <button style="padding-left: 50%;
                          position: absolute;">x</button> -->
                          </li>
-                    <li>  <a href="gwang_search.html">검색</a></li>
-                    <li> <A href="ts_view.html">추천</A>    </li>
-                    <li>리뷰</li>
-                    <li>메뉴</li>
+                    <li>  <a href="search.jsp">검색</a></li>
+                    <li> <A href="recommend.jsp">추천</A>    </li>
+                    <li><a href="review.jsp">리뷰</a></li>
+                    <li><a href ="login.jsp">로그인</a></li>
                 </ul>
             </div>
          
