@@ -113,7 +113,7 @@ public class CourseDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				// rs객체 내 저장된 회원정보들은 접근 -> Member 객체 생성 -> list에 저장 
+				// rs객체 내 저장된 회원정보들은 접근 -> Member 객체 생성 -> list에 저장  
 				String name = rs.getString(1);
 				String ct = rs.getString(2);
 				String cs = rs.getString(3);
