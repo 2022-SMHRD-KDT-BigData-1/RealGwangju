@@ -24,8 +24,8 @@
     > 계절에따른 광주내의 관광지를 추천해준다.
 - 회원관리 기능(로그인, 회원가입)
 ## 4.개발 및 작업 환경
-- 사용언어 : Java 15 / HTML / CSS / Javascript / Python
-- 개발도구 : eclipse / anaconda3 / VSCode / SQL Developer
+- 사용언어 : Java 15 / HTML / CSS / Javascript / Python 
+- 개발도구 : Eclipse / Jupyter Notebook / VSCode / SQL Developer
 - 서버환경 : tomcat 8.5 / Flask
 - 데이터베이스 : oracle 11g
 - 빌드도구 : maven
