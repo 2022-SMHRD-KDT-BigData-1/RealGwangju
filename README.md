@@ -31,6 +31,7 @@
 ![메인화면](https://user-images.githubusercontent.com/97093411/156503777-1abc7cb1-6a7e-4409-bcfb-8cc8f94c5296.png)
 ## 6.활용 사진 예시
 - 추천
+
 ![추천](https://user-images.githubusercontent.com/97093411/156504513-de9fc357-c8c9-45b1-bc3e-d1e7ff25d6c2.png)
 - 검색창
 ![검색 기능](https://user-images.githubusercontent.com/97093411/156504526-f4be1cfd-3130-4435-8269-825f750c8e13.png)
