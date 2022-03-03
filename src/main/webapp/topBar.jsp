@@ -92,7 +92,25 @@
                     <li>  <a href="search.jsp">검색</a></li>
                     <li> <A href="recommend.jsp">추천</A>    </li>
                     <li><a href="review.jsp">리뷰</a></li>
-                    <li><a href ="login.jsp">로그인</a></li>
+                    <!-- 로그인유무 -->
+        	            		<c:choose>
+				<c:when test="${empty member}">
+					<li>
+						<a href="login.jsp">로그인</a>
+						</li>
+					
+					<li>
+						<a href="join.jsp">회원가입</a>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li>
+						<a href="logout.jsp">로그아웃</a>
+					</li>
+				</c:otherwise>
+			</c:choose>
+                    <!-- 마무s -->
+                   <!--  <li><a href ="login.jsp">로그인</a></li> -->
                 </ul>
             </div>
          
