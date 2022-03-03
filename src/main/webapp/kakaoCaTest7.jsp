@@ -69,7 +69,7 @@
 
 <div id="map" style="width: 100%; height: 50px;"></div>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ddfd7b8a2d630988678cbd6eb719178f&libraries=services"></script>
 <script type="text/javascript">
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = {
@@ -185,8 +185,8 @@ function tsMarker(){
 							+ "<td>" + posistions[i].slice(6,7) + "</td>"
 							+ "<td>" + posistions[i].slice(4,5) + "</td>"
 							+ "<td>" + posistions[i].slice(7,8) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + info[i].slice(0,1) + "</td>"
 							+ "</tr>");
 					
@@ -250,8 +250,8 @@ function resMarker(){
 							+ "<td>" + posistions[i].slice(6,7) + "</td>"
 							+ "<td>" + posistions[i].slice(4,5) + "</td>"
 							+ "<td>" + posistions[i].slice(7,8) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "<td>" +  + "</td>"
 							+ "</tr>");
 					
@@ -314,8 +314,8 @@ function cfMarker(){
 							+ "<td>" + posistions[i].slice(6,7) + "</td>"
 							+ "<td>" + posistions[i].slice(4,5) + "</td>"
 							+ "<td>" + posistions[i].slice(7,8) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "</tr>");
 					
 					
@@ -377,8 +377,8 @@ function accMarker(){
 							+ "<td>" + posistions[i].slice(6,7) + "</td>"
 							+ "<td>" + posistions[i].slice(4,5) + "</td>"
 							+ "<td>" + posistions[i].slice(7,8) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + info[i].slice(0,1) + "</td>"
 							+ "</tr>");
 					
@@ -439,8 +439,8 @@ function pMarker(){
 							+ "<td>" + posistions[i].slice(6,7) + "</td>"
 							+ "<td>" + posistions[i].slice(4,5) + "</td>"
 							+ "<td>" + posistions[i].slice(7,8) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + info[i].slice(0,1) + "</td>"
 							+ "</tr>");
 					

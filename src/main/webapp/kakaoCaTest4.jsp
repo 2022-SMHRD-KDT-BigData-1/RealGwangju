@@ -69,7 +69,7 @@
 
 <div id="map" style="width: 100%; height: 50px;"></div>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68878d404fd6bd8eed85265e5a08e807&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ddfd7b8a2d630988678cbd6eb719178f&libraries=services"></script>
 <script type="text/javascript">
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = {
@@ -176,8 +176,8 @@ function tsMarker(){
 					$("#start").append("<tr>"
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "</tr>");
 					
 				}
@@ -232,8 +232,8 @@ function resMarker(){
 					$("#start").append("<tr>" 
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "</tr>");
 					
 				}
@@ -288,8 +288,8 @@ function cfMarker(){
 					$("#start").append("<tr>" 
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "</tr>");
 					
 					
@@ -343,8 +343,8 @@ function accMarker(){
 					$("#start").append("<tr>" 
 							+ "<td>" + i + "</td>"
 							+ "<td>" + posistions[i].slice(1,2) + "</td>"
-							+ "<td>" + coords.La + "</td>"
 							+ "<td>" + coords.Ma + "</td>"
+							+ "<td>" + coords.La + "</td>"
 							+ "</tr>");
 					
 				}
